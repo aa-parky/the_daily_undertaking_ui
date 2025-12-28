@@ -1,0 +1,12 @@
+{
+  "prompt": "Antique, hand-drawn, in the style of a detailed ink and pencil fantasy sketch on aged parchment paper of a slightly tarnished brass key, uneven teeth, small scratches and patina, centered on parchment background, whimsical goblin aesthetic, sketchy ink lines, muted colours, no text, square composition, eldritch, cosmic horror, unknown, mysterious, surreal, highly detailed.",
+  "width": 1024,
+  "height": 1024,
+  "num_inference_steps": 9,
+  "seed": 3001452507,
+  "guidance_scale": 0.0,
+  "model_id": "Tongyi-MAI/Z-Image-Turbo",
+  "timestamp": "2025-12-28T12:32:04.513211",
+  "image_path": "outputs/ur_00/pipeworks_20251228_123204_seed3001452507.png",
+  "model_name": "Z-Image-Turbo"
+}

@@ -1,0 +1,12 @@
+{
+  "prompt": "Antique, hand-drawn, in the style of a detailed ink and pencil fantasy sketch on aged parchment paper of a small irregular pebble with a subtle carved or scratched symbol, hand-drawn fantasy illustration, ink and wash style, centered on plain parchment background, mysterious but mundane, ",
+  "width": 1024,
+  "height": 1024,
+  "num_inference_steps": 9,
+  "seed": 120962255,
+  "guidance_scale": 0.0,
+  "model_id": "Tongyi-MAI/Z-Image-Turbo",
+  "timestamp": "2025-12-28T14:34:33.831684",
+  "image_path": "outputs/ur_07/pipeworks_20251228_143433_seed120962255.png",
+  "model_name": "Z-Image-Turbo"
+}

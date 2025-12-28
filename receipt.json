@@ -1,0 +1,12 @@
+{
+  "prompt": "Antique, hand-drawn, in the style of a detailed ink and pencil fantasy sketch on aged parchment paper of a crumpled paper receipt \"Jezebel's\", with faint writing and red stamps, edges torn, light sepia tones, parchment texture background, centered, square format, ",
+  "width": 1024,
+  "height": 1024,
+  "num_inference_steps": 9,
+  "seed": 2223876489,
+  "guidance_scale": 0.0,
+  "model_id": "Tongyi-MAI/Z-Image-Turbo",
+  "timestamp": "2025-12-28T14:22:52.417523",
+  "image_path": "outputs/ur_06/pipeworks_20251228_142252_seed2223876489.png",
+  "model_name": "Z-Image-Turbo"
+}
