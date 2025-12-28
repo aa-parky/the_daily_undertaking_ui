@@ -48,31 +48,50 @@ commandInput.addEventListener('keydown', (e) => {
     }
 });
 
-
 // Item Detail Modal Functions
 function openItemModal(itemElement) {
-    // Get item data from the equipment item
-    const itemImage = itemElement.querySelector('.equipment-image img');
-    const itemTitle = itemElement.querySelector('.equipment-name');
-    const itemDescription = itemElement.querySelector('.equipment-description');
+    let itemImage, itemTitle, itemDescription;
     
-    // Populate modal with item data
-    document.getElementById('modalItemImage').src = itemImage.src;
-    document.getElementById('modalItemTitle').textContent = itemTitle.textContent;
-    document.getElementById('modalItemDescription').textContent = itemDescription.textContent;
+    // Check if it's an equipment item or inventory slot
+    if (itemElement.classList.contains('equipment-item')) {
+        // Equipment item from Useful Rubbish
+        itemImage = itemElement.querySelector('.equipment-image img');
+        itemTitle = itemElement.querySelector('.equipment-name');
+        itemDescription = itemElement.querySelector('.equipment-description');
+        
+        if (itemImage && itemTitle && itemDescription) {
+            document.getElementById('modalItemImage').src = itemImage.src;
+            document.getElementById('modalItemTitle').textContent = itemTitle.textContent;
+            document.getElementById('modalItemDescription').textContent = itemDescription.textContent;
+        }
+    } else if (itemElement.classList.contains('inventory-slot')) {
+        // Inventory slot from Satchel
+        itemImage = itemElement.querySelector('img');
+        itemTitle = itemElement.getAttribute('data-item-name');
+        itemDescription = itemElement.getAttribute('data-item-desc');
+        
+        if (itemImage && itemImage.src && itemTitle) {
+            document.getElementById('modalItemImage').src = itemImage.src;
+            document.getElementById('modalItemTitle').textContent = itemTitle;
+            document.getElementById('modalItemDescription').textContent = itemDescription || '';
+        }
+    }
     
-    // Show modal
-    document.getElementById('itemModal').classList.add('active');
+    // Show modal if we have data
+    if (itemImage && itemImage.src) {
+        document.getElementById('itemModal').classList.add('active');
+    }
 }
 
 function closeItemModal() {
     document.getElementById('itemModal').classList.remove('active');
 }
 
-// Close modal when clicking outside the content
+// Initialize modal interactions
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('itemModal');
     
+    // Close modal when clicking outside the content
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             closeItemModal();
@@ -84,6 +103,15 @@ document.addEventListener('DOMContentLoaded', function() {
     equipmentItems.forEach(item => {
         item.style.cursor = 'pointer';
         item.addEventListener('click', function() {
+            openItemModal(this);
+        });
+    });
+    
+    // Add click handlers to filled inventory slots
+    const inventorySlots = document.querySelectorAll('.inventory-slot.filled');
+    inventorySlots.forEach(slot => {
+        slot.style.cursor = 'pointer';
+        slot.addEventListener('click', function() {
             openItemModal(this);
         });
     });
