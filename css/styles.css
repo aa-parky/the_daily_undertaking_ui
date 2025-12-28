@@ -40,7 +40,7 @@ body {
     z-index: 2;
     overflow: hidden;
     /* Using uploaded texture image */
-    background-image: url("assult.png");
+    background-image: url("../assets/images/textures/assult.png");
     background-size: auto;
     background-repeat: repeat;
 }

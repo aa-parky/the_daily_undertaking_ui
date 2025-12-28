@@ -1,0 +1,178 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+"The Daily Undertaking" is an interactive fiction game with a vintage newspaper aesthetic. The project is built entirely with vanilla HTML, CSS, and JavaScript—no build tools, package managers, or frameworks required.
+
+## Development Workflow
+
+### Running the Application
+
+This is a static website with no build process. To run:
+
+```bash
+# Open in browser directly
+open index.html
+
+# Or serve with Python's built-in server
+python3 -m http.server 8000
+# Then visit http://localhost:8000
+
+# Or use any other static file server
+```
+
+### Directory Structure
+
+The project is organized into a clean, scalable directory structure:
+
+```
+/
+├── index.html           # Main UI structure and layout
+├── css/
+│   └── styles.css       # Newspaper-themed styling
+├── js/
+│   └── script.js        # Client-side interactivity
+└── assets/
+    ├── images/
+    │   ├── characters/  # Character portraits
+    │   ├── items/       # Item images
+    │   └── textures/    # Background textures
+    └── data/            # Item metadata (JSON files)
+```
+
+**Organization principles:**
+- Code files (`css/`, `js/`) separated from assets
+- Images categorized by type for easy scaling
+- JSON metadata stored in `assets/data/` for future use
+- Root directory contains only essential files
+
+## Architecture
+
+### UI Layout System
+
+The interface uses a **3-column grid layout** defined in `index.html`:
+
+1. **Left Panel (315px)**: Character information
+   - Portrait display (from `assets/images/characters/`)
+   - Stats with bars (HP/MP)
+   - Character description in newspaper article style
+
+2. **Center Panel (580px)**: Game interaction area
+   - `#gameOutput` div - scrollable game text output (310px height)
+   - `#commandInput` textarea - player command entry (80px height)
+   - Text appears in vintage newspaper/terminal hybrid style
+
+3. **Right Panel (350px)**: Game state panels
+   - Collapsible sections (inventory, equipment, quests, skills, notes)
+   - 3x3 inventory grid system
+   - Equipment items with images and descriptions
+
+### Collapsible Section System
+
+All right-panel sections use a uniform collapsible pattern controlled by `toggleSection()` in `js/script.js`:
+
+- Click `.section-header` to toggle `.collapsed` class
+- CSS transitions handle expand/collapse animations
+- Arrow indicators rotate via CSS transform
+
+### Item System
+
+Items exist in two forms:
+
+1. **Inventory slots** (`.inventory-slot.filled`)
+   - Data stored in `data-item-name` and `data-item-desc` attributes
+   - Images loaded directly as `<img>` tags
+
+2. **Equipment items** (`.equipment-item`)
+   - Structured with `.equipment-image` and `.equipment-info` divs
+   - Name and description in separate child elements
+
+Both types open a detail modal on click via `openItemModal()`.
+
+### Modal System
+
+The item detail modal (`#itemModal`) displays enlarged item views:
+- Activated by clicking filled inventory slots or equipment items
+- Closed via close button, clicking outside, or pressing Escape
+- Extracts data from either inventory or equipment item structure
+
+### Command Input System
+
+Player input handled via `#commandInput` textarea:
+- Enter key submits command (Shift+Enter for new line)
+- Commands appended to `#gameOutput` as `.output-text` divs
+- Auto-scroll to bottom on new content
+- Currently shows placeholder response (LLM integration pending)
+
+## Visual Design System
+
+### Theme
+
+Vintage newspaper aesthetic with custom CSS variables defined in `:root`:
+
+```
+--paper: #f5f1e8 (background)
+--newsprint-black: #2b2b2b (primary text/borders)
+--ink-gray: #404040 (secondary elements)
+--faded-ink: #5a5a5a (tertiary text)
+```
+
+### Typography
+
+Multiple Google Fonts create the newspaper feel:
+
+- **Masthead title**: "IM Fell English SC" (ornate, all-caps)
+- **Subtitles/headers**: "Cinzel" and "Special Elite" (vintage typewriter)
+- **Body text**: "EB Garamond" (classic serif)
+- **Character descriptions**: "Courier Prime" (typewriter monospace)
+- **Game output**: "Inconsolata" (modern monospace for terminal feel)
+
+### Background Texture
+
+Paper texture applied via `assets/images/textures/assult.png` as a tiled background image on `.container`. CSS uses relative path from `css/styles.css`.
+
+## Key Implementation Details
+
+### Safari Compatibility
+
+All CSS `filter: blur()` properties have been removed for Safari compatibility. This is noted throughout `css/styles.css` with comments like `/* filter: blur removed for Safari compatibility */`.
+
+### Fixed Dimensions
+
+The container has fixed dimensions (1250x590px) centered on viewport, simulating a physical newspaper layout. Not responsive by design.
+
+### Stat Bars
+
+HP/MP bars use inline `style="width: X%"` for fill percentages. To update stats dynamically, modify the width of `.stat-bar-fill` elements.
+
+### Menu System
+
+Top navigation (`.sub-masthead .menu-item`) currently only toggles `.active` class and logs to console. Full menu functionality not yet implemented.
+
+## Asset Organization
+
+Game assets are organized by type:
+
+**Images:**
+- `assets/images/characters/` - Character portraits (e.g., `brigg_fenwick.png`, `brigg_fenwick_bk.png`)
+- `assets/images/items/` - Item images (e.g., `stick.png`, `key.png`, `pebble.png`, `token.png`, `receipt.png`)
+- `assets/images/textures/` - Background textures (e.g., `assult.png`)
+
+**Data:**
+- `assets/data/` - Item metadata in JSON format (e.g., `stick.json`, `key.json`)
+- JSON files follow naming pattern `[item_name].json`
+- Currently not loaded by UI but positioned for future metadata integration
+
+All image paths in HTML use full paths from project root (e.g., `assets/images/items/key.png`). CSS paths are relative to the CSS file location.
+
+## Integration Points
+
+The comment in `js/script.js:36` indicates where LLM integration should occur:
+
+```javascript
+// Simulate response (in real app, this would call your LLM)
+```
+
+Command processing should replace the setTimeout placeholder with actual game logic/API calls.
