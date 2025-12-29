@@ -1,20 +1,73 @@
-/* Daily News Page Styles
- * Extends base styles from styles.css
- * Maintains vintage newspaper aesthetic
- */
-
 /* ===========================
-   MASTHEAD NAVIGATION
+   DAILY NEWS PAGE - FULL BROADSHEET LAYOUT
+   Scrollable newspaper experience with authentic vintage styling
    =========================== */
 
-.masthead-nav {
-  margin-top: 15px;
-  padding-top: 12px;
-  border-top: 2px solid var(--newsprint-black);
+/* ===========================
+   BODY & PAGE OVERRIDES
+   =========================== */
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px 0 40px;
+  background: var(--paper);
+  overflow-y: scroll;
+}
+
+/* Override fixed container for daily.html - make it scrollable */
+.container {
+  width: 90%;
+  max-width: 1600px;
+  min-height: auto;
+  height: auto;
+  margin: 0 auto;
+  padding: 40px 60px 60px;
+  background: var(--paper);
+  background-image: url('../assets/images/textures/assult.png');
+  border: 3px solid var(--newsprint-black);
+  box-shadow:
+    0 4px 6px rgb(0 0 0 / 10%),
+    0 8px 20px rgb(0 0 0 / 15%);
+}
+
+/* ===========================
+   MASTHEAD STYLING
+   =========================== */
+
+.masthead {
   text-align: center;
-  font-family: 'Courier Prime', monospace;
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+  border-bottom: 4px double var(--newsprint-black);
+}
+
+.title {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 56px;
+  letter-spacing: 4px;
+  margin: 0 0 12px;
+  color: var(--newsprint-black);
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.subtitle {
+  font-family: 'Special Elite', cursive;
   font-size: 11px;
-  letter-spacing: 0.5px;
+  letter-spacing: 2px;
+  color: var(--ink-gray);
+  margin: 0 0 18px;
+  text-transform: uppercase;
+}
+
+.masthead-nav {
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 2px solid var(--newsprint-black);
+  font-family: 'Courier Prime', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 
 .nav-link {
@@ -22,8 +75,9 @@
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 700;
-  padding: 4px 8px;
+  padding: 6px 14px;
   transition: all 0.2s ease;
+  display: inline-block;
 }
 
 .nav-link:hover {
@@ -37,7 +91,7 @@
 }
 
 .nav-separator {
-  margin: 0 8px;
+  margin: 0 12px;
   color: var(--ink-gray);
 }
 
@@ -46,71 +100,108 @@
    =========================== */
 
 .news-content {
-  margin-top: 25px;
+  margin-top: 40px;
 }
 
 /* ===========================
-   LEAD STORY
+   LEAD STORY - HERO SECTION
    =========================== */
 
 .lead-story {
-  border: 3px double var(--newsprint-black);
-  padding: 25px 30px;
-  margin-bottom: 25px;
+  border: 4px double var(--newsprint-black);
+  padding: 45px 55px 50px;
+  margin-bottom: 50px;
   background: var(--paper);
   box-shadow:
     inset 0 0 0 1px var(--newsprint-black),
-    3px 3px 0 rgb(43 43 43 / 15%);
+    4px 4px 0 rgb(43 43 43 / 12%);
+  position: relative;
+}
+
+/* Decorative corner ornaments */
+.lead-story::before,
+.lead-story::after {
+  content: '✦';
+  position: absolute;
+  font-size: 20px;
+  color: var(--newsprint-black);
+}
+
+.lead-story::before {
+  top: 15px;
+  left: 20px;
+}
+
+.lead-story::after {
+  top: 15px;
+  right: 20px;
 }
 
 .story-title {
   font-family: Cinzel, serif;
-  font-size: 28px;
+  font-size: 38px;
   font-weight: 700;
-  line-height: 1.3;
-  margin: 0 0 12px;
+  line-height: 1.25;
+  margin: 0 0 18px;
   color: var(--newsprint-black);
   text-align: center;
   letter-spacing: 0.5px;
+  padding: 0 20px;
 }
 
 .story-byline {
   font-family: 'Special Elite', cursive;
-  font-size: 10px;
+  font-size: 11px;
   text-align: center;
   color: var(--ink-gray);
-  margin: 0 0 20px;
+  margin: 0 0 35px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgb(43 43 43 / 25%);
 }
 
 .story-content {
   font-family: 'EB Garamond', serif;
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.8;
   color: var(--newsprint-black);
-  column-count: 2;
-  column-gap: 30px;
+  column-count: 3;
+  column-gap: 45px;
+  column-rule: 1px solid rgb(43 43 43 / 20%);
   text-align: justify;
 }
 
 .story-content p {
-  margin: 0 0 14px;
+  margin: 0 0 18px;
+  break-inside: avoid;
 }
 
 .story-content p:last-child {
   margin-bottom: 0;
 }
 
+/* Drop cap for first paragraph */
+.story-content p:first-child::first-letter {
+  font-family: Cinzel, serif;
+  font-size: 62px;
+  line-height: 0.85;
+  float: left;
+  margin: 8px 10px 0 0;
+  font-weight: 700;
+  color: var(--newsprint-black);
+}
+
 .dateline {
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.5px;
+  font-size: 16px;
 }
 
 .story-cta {
-  margin-top: 25px;
-  padding-top: 20px;
-  border-top: 1px solid var(--ink-gray);
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 2px solid var(--newsprint-black);
   text-align: center;
 }
 
@@ -119,22 +210,68 @@
   background: var(--newsprint-black);
   color: var(--paper);
   font-family: Cinzel, serif;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   text-decoration: none;
-  padding: 14px 32px;
-  border: 2px solid var(--newsprint-black);
-  box-shadow: 3px 3px 0 rgb(43 43 43 / 25%);
+  padding: 18px 45px;
+  border: 3px solid var(--newsprint-black);
+  box-shadow: 4px 4px 0 rgb(43 43 43 / 25%);
   transition: all 0.2s ease;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .play-button:hover {
   background: var(--paper);
   color: var(--newsprint-black);
-  transform: translate(1px, 1px);
+  transform: translate(2px, 2px);
   box-shadow: 2px 2px 0 rgb(43 43 43 / 25%);
+}
+
+/* ===========================
+   SECTION DIVIDER
+   =========================== */
+
+.section-title {
+  font-family: Cinzel, serif;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0 0 35px;
+  padding: 18px 0;
+  border-top: 4px double var(--newsprint-black);
+  border-bottom: 4px double var(--newsprint-black);
+  color: var(--newsprint-black);
+  background: linear-gradient(
+    to bottom,
+    transparent 45%,
+    rgb(43 43 43 / 5%) 45%,
+    rgb(43 43 43 / 5%) 55%,
+    transparent 55%
+  );
+}
+
+.section-header {
+  font-family: Cinzel, serif;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0 0 35px;
+  padding: 18px 0;
+  border-top: 4px double var(--newsprint-black);
+  border-bottom: 4px double var(--newsprint-black);
+  color: var(--newsprint-black);
+  background: linear-gradient(
+    to bottom,
+    transparent 45%,
+    rgb(43 43 43 / 5%) 45%,
+    rgb(43 43 43 / 5%) 55%,
+    transparent 55%
+  );
 }
 
 /* ===========================
@@ -142,138 +279,85 @@
    =========================== */
 
 .world-news-section {
-  margin-bottom: 25px;
-}
-
-.section-title {
-  font-family: Cinzel, serif;
-  font-size: 18px;
-  font-weight: 700;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin: 0 0 20px;
-  padding: 10px 0;
-  border-top: 3px double var(--newsprint-black);
-  border-bottom: 3px double var(--newsprint-black);
-  color: var(--newsprint-black);
+  margin-bottom: 60px;
 }
 
 .news-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 30px;
 }
 
 .news-item {
-  border: 2px solid var(--newsprint-black);
-  padding: 15px;
+  border: 3px solid var(--newsprint-black);
+  padding: 25px;
   background: var(--paper);
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 0 rgb(43 43 43 / 10%);
 }
 
 .news-item:hover {
-  box-shadow: 3px 3px 0 rgb(43 43 43 / 15%);
-  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 rgb(43 43 43 / 18%);
+  transform: translate(-2px, -2px);
 }
 
 .news-title {
   font-family: Cinzel, serif;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 1.3;
-  margin: 0 0 10px;
+  line-height: 1.4;
+  margin: 0 0 15px;
   color: var(--newsprint-black);
-  border-bottom: 1px solid var(--ink-gray);
-  padding-bottom: 8px;
+  border-bottom: 2px solid var(--newsprint-black);
+  padding-bottom: 12px;
 }
 
 .news-excerpt {
   font-family: 'EB Garamond', serif;
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.7;
   color: var(--ink-gray);
   margin: 0;
   text-align: justify;
 }
 
 /* ===========================
-   COLLAPSIBLE SECTIONS
+   ARCHIVES SECTION
    =========================== */
 
-.collapsible-section {
-  margin-bottom: 20px;
-}
-
-.section-header {
-  font-family: Cinzel, serif;
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  padding: 12px 20px;
-  background: var(--newsprint-black);
-  color: var(--paper);
-  border: 3px solid var(--newsprint-black);
-  cursor: pointer;
-  user-select: none;
-  transition: all 0.2s ease;
-  text-align: center;
-  position: relative;
-}
-
-.section-header:hover {
-  background: var(--ink-gray);
-  border-color: var(--ink-gray);
-}
-
-.toggle-arrow {
-  position: absolute;
-  left: 20px;
-  transition: transform 0.3s ease;
-}
-
-.section-header:not(.collapsed) .toggle-arrow {
-  transform: rotate(90deg);
+.archives-section {
+  margin-bottom: 60px;
 }
 
 .section-content {
-  max-height: 500px;
-  overflow: hidden;
-  transition:
-    max-height 0.3s ease,
-    opacity 0.3s ease,
-    padding 0.3s ease;
-  border: 2px solid var(--newsprint-black);
-  border-top: none;
-  background: var(--paper);
-  padding: 20px;
-  opacity: 1;
-}
-
-.section-content.collapsed {
-  max-height: 0;
-  padding: 0 20px;
-  opacity: 0;
+  padding: 0;
   border: none;
 }
-
-/* ===========================
-   ARCHIVES LIST
-   =========================== */
 
 .archive-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 30px 40px;
+  background: var(--paper);
+  border: 3px solid var(--newsprint-black);
+  box-shadow: inset 0 0 0 1px var(--newsprint-black);
 }
 
 .archive-item {
-  padding: 10px 0;
-  border-bottom: 1px solid rgb(43 43 43 / 15%);
+  padding: 16px 0;
+  border-bottom: 1px solid rgb(43 43 43 / 20%);
   display: flex;
-  gap: 15px;
+  gap: 25px;
   align-items: baseline;
+  transition: background 0.2s ease;
+}
+
+.archive-item:hover {
+  background: rgb(43 43 43 / 3%);
+  padding-left: 10px;
+  margin-left: -10px;
+  padding-right: 10px;
+  margin-right: -10px;
 }
 
 .archive-item:last-child {
@@ -282,18 +366,18 @@
 
 .archive-date {
   font-family: 'Special Elite', cursive;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--ink-gray);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   white-space: nowrap;
   flex-shrink: 0;
-  min-width: 100px;
+  min-width: 120px;
 }
 
 .archive-link {
   font-family: 'EB Garamond', serif;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--newsprint-black);
   text-decoration: none;
   transition: all 0.2s ease;
@@ -309,10 +393,16 @@
    LEADERBOARD TABLE
    =========================== */
 
+.leaderboards-section {
+  margin-bottom: 60px;
+}
+
 .leaderboard-table {
   width: 100%;
   border-collapse: collapse;
   font-family: 'EB Garamond', serif;
+  border: 3px solid var(--newsprint-black);
+  box-shadow: inset 0 0 0 1px var(--newsprint-black);
 }
 
 .leaderboard-table thead {
@@ -321,14 +411,14 @@
 }
 
 .leaderboard-table th {
-  padding: 12px 10px;
+  padding: 18px 15px;
   text-align: left;
   font-family: Cinzel, serif;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  border-right: 1px solid rgb(255 255 255 / 20%);
+  letter-spacing: 1.5px;
+  border-right: 1px solid rgb(255 255 255 / 25%);
 }
 
 .leaderboard-table th:last-child {
@@ -336,16 +426,16 @@
 }
 
 .rank-col {
-  width: 60px;
+  width: 80px;
   text-align: center;
 }
 
 .name-col {
-  width: 180px;
+  width: 220px;
 }
 
 .score-col {
-  width: 100px;
+  width: 120px;
   text-align: right;
 }
 
@@ -354,7 +444,7 @@
 }
 
 .leaderboard-entry {
-  border-bottom: 1px solid rgb(43 43 43 / 15%);
+  border-bottom: 1px solid rgb(43 43 43 / 20%);
   transition: background 0.2s ease;
 }
 
@@ -367,8 +457,8 @@
 }
 
 .leaderboard-table td {
-  padding: 10px;
-  font-size: 13px;
+  padding: 16px 15px;
+  font-size: 15px;
   color: var(--newsprint-black);
 }
 
@@ -376,31 +466,73 @@
   text-align: center;
   font-family: 'Courier Prime', monospace;
   font-weight: 700;
+  font-size: 16px;
   color: var(--ink-gray);
 }
 
 .leaderboard-table .name {
   font-family: Cinzel, serif;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .leaderboard-table .score {
   text-align: right;
   font-family: 'Courier Prime', monospace;
   font-weight: 700;
+  font-size: 15px;
 }
 
 .leaderboard-table .achievement {
   font-style: italic;
   color: var(--ink-gray);
+  line-height: 1.6;
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+
+.footer-notice {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 3px double var(--newsprint-black);
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--faded-ink);
+  text-align: center;
+}
+
+.footer-notice p {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* ===========================
    RESPONSIVE ADJUSTMENTS
    =========================== */
 
-/* Reduce columns on narrower layouts if container is ever made responsive */
+@media (width <= 1400px) {
+  .container {
+    width: 95%;
+    padding: 30px 40px 50px;
+  }
+
+  .story-content {
+    column-count: 2;
+    column-gap: 35px;
+  }
+
+  .title {
+    font-size: 48px;
+  }
+
+  .story-title {
+    font-size: 32px;
+  }
+}
+
 @media (width <= 1100px) {
   .news-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -408,5 +540,40 @@
 
   .story-content {
     column-count: 1;
+  }
+
+  .lead-story {
+    padding: 35px 40px 40px;
+  }
+}
+
+@media (width <= 768px) {
+  .container {
+    width: 100%;
+    padding: 20px 25px 40px;
+    border-left: none;
+    border-right: none;
+  }
+
+  .title {
+    font-size: 36px;
+    letter-spacing: 2px;
+  }
+
+  .story-title {
+    font-size: 24px;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-item {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .archive-date {
+    min-width: auto;
   }
 }
