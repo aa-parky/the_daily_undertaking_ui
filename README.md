@@ -2,11 +2,11 @@
 
 > An interactive fiction game with a vintage newspaper aesthetic
 
-[![CI/CD Pipeline](https://github.com/aapark/the_daily_undertaking_ui/actions/workflows/ci.yml/badge.svg)](https://github.com/aapark/the_daily_undertaking_ui/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/aapark/the_daily_undertaking_ui/branch/main/graph/badge.svg)](https://codecov.io/gh/aapark/the_daily_undertaking_ui)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI/CD Pipeline](https://github.com/aa-parky/the_daily_undertaking_ui/actions/workflows/ci.yml/badge.svg)](https://github.com/aa-parky/the_daily_undertaking_ui/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/aa-parky/the_daily_undertaking_ui/branch/main/graph/badge.svg)](https://codecov.io/gh/aa-parky/the_daily_undertaking_ui)
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/aapark/the_daily_undertaking_ui/pulls)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/aa-parky/the_daily_undertaking_ui/pulls)
 
 ## 📰 Overview
 
@@ -37,7 +37,7 @@ Built entirely with vanilla HTML, CSS, and JavaScript—no frameworks, no build 
 
 ```bash
 # Clone the repository
-git clone https://github.com/aapark/the_daily_undertaking_ui.git
+git clone https://github.com/aa-parky/the_daily_undertaking_ui.git
 cd the_daily_undertaking_ui
 
 # Install development dependencies
@@ -258,7 +258,18 @@ Contributions are welcome! Please follow these steps:
 
 ## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **GNU General Public License v3.0** - see the [LICENSE](LICENSE) file for details.
+
+Key points of GPL-3.0:
+
+- ✅ Commercial use allowed
+- ✅ Modification allowed
+- ✅ Distribution allowed
+- ✅ Patent use allowed
+- ⚠️ Disclose source - Source code must be made available when distributing
+- ⚠️ License and copyright notice - Must include original license
+- ⚠️ Same license - Modifications must use the same GPL-3.0 license
+- ⚠️ State changes - Document changes made to the code
 
 ## 🙏 Acknowledgments
 
@@ -268,7 +279,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 📧 Contact
 
-Project Link: [https://github.com/aapark/the_daily_undertaking_ui](https://github.com/aapark/the_daily_undertaking_ui)
+Project Link: [https://github.com/aa-parky/the_daily_undertaking_ui](https://github.com/aa-parky/the_daily_undertaking_ui)
 
 ---
 

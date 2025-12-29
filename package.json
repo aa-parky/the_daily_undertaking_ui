@@ -23,7 +23,7 @@
     "frontend"
   ],
   "author": "",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "devDependencies": {
     "@babel/preset-env": "^7.23.5",
     "@testing-library/dom": "^9.3.3",
