@@ -18,7 +18,7 @@ repos:
         name: Prettier
         entry: npx prettier --write
         language: node
-        types_or: [javascript, css, markdown, json, yaml]
+        types_or: [javascript, css, html, markdown, json, yaml]
         pass_filenames: true
 
       # Stylelint for CSS
