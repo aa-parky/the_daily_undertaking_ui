@@ -2,143 +2,143 @@ name: CI/CD Pipeline
 
 on:
   push:
-	branches: [main, develop]
+    branches: [main, develop]
   pull_request:
-	branches: [main, develop]
+    branches: [main, develop]
 
 jobs:
   quality-checks:
-	name: Code Quality Checks
-	runs-on: ubuntu-latest
-	strategy:
-	  matrix:
-		node-version: [18.x, 20.x]
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
 
-	steps:
-	  - name: Checkout code
-		uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-	  - name: Setup Node.js ${{ matrix.node-version }}
-		uses: actions/setup-node@v4
-		with:
-		  node-version: ${{ matrix.node-version }}
-		  cache: 'npm'
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
 
-	  - name: Install dependencies
-		run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-	  - name: Run ESLint
-		run: npm run lint
-		continue-on-error: false
+      - name: Run ESLint
+        run: npm run lint
+        continue-on-error: false
 
-	  - name: Run Stylelint
-		run: npm run style:lint
-		continue-on-error: false
+      - name: Run Stylelint
+        run: npm run style:lint
+        continue-on-error: false
 
-	  - name: Check code formatting with Prettier
-		run: npm run format:check
-		continue-on-error: false
+      - name: Check code formatting with Prettier
+        run: npm run format:check
+        continue-on-error: false
 
   tests:
-	name: Unit & Integration Tests
-	runs-on: ubuntu-latest
-	needs: quality-checks
-	strategy:
-	  matrix:
-		node-version: [18.x, 20.x]
+    name: Unit & Integration Tests
+    runs-on: ubuntu-latest
+    needs: quality-checks
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
 
-	steps:
-	  - name: Checkout code
-		uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-	  - name: Setup Node.js ${{ matrix.node-version }}
-		uses: actions/setup-node@v4
-		with:
-		  node-version: ${{ matrix.node-version }}
-		  cache: 'npm'
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
 
-	  - name: Install dependencies
-		run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-	  - name: Run tests with coverage
-		run: npm run test:coverage
+      - name: Run tests with coverage
+        run: npm run test:coverage
 
-	  - name: Upload coverage to Codecov
-		uses: codecov/codecov-action@v3
-		with:
-		  file: ./coverage/coverage-final.json
-		  flags: unittests
-		  name: codecov-umbrella
-		  fail_ci_if_error: false
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage/coverage-final.json
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
 
   security-scan:
-	name: Security Scanning
-	runs-on: ubuntu-latest
-	needs: quality-checks
+    name: Security Scanning
+    runs-on: ubuntu-latest
+    needs: quality-checks
 
-	steps:
-	  - name: Checkout code
-		uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-	  - name: Run Trivy vulnerability scanner
-		uses: aquasecurity/trivy-action@master
-		with:
-		  scan-type: 'fs'
-		  scan-ref: '.'
-		  format: 'sarif'
-		  output: 'trivy-results.sarif'
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
 
-	  - name: Upload Trivy results to GitHub Security tab
-		uses: github/codeql-action/upload-sarif@v2
-		with:
-		  sarif_file: 'trivy-results.sarif'
+      - name: Upload Trivy results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
 
   build-verification:
-	name: Build Verification
-	runs-on: ubuntu-latest
-	needs: tests
+    name: Build Verification
+    runs-on: ubuntu-latest
+    needs: tests
 
-	steps:
-	  - name: Checkout code
-		uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-	  - name: Setup Python
-		uses: actions/setup-python@v4
-		with:
-		  python-version: '3.11'
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-	  - name: Start local server
-		run: |
-		  python3 -m http.server 8000 &
-		  sleep 2
+      - name: Start local server
+        run: |
+          python3 -m http.server 8000 &
+          sleep 2
 
-	  - name: Verify server is running
-		run: curl -f http://localhost:8000/ || exit 1
+      - name: Verify server is running
+        run: curl -f http://localhost:8000/ || exit 1
 
-	  - name: Check HTML validity
-		run: |
-		  pip install html5lib
-		  python3 -c "import html5lib; html5lib.parse(open('index.html' ).read())"
+      - name: Check HTML validity
+        run: |
+          pip install html5lib
+          python3 -c "import html5lib; html5lib.parse(open('index.html').read())"
 
   results:
-	name: CI Results Summary
-	runs-on: ubuntu-latest
-	needs: [quality-checks, tests, security-scan, build-verification]
-	if: always()
+    name: CI Results Summary
+    runs-on: ubuntu-latest
+    needs: [quality-checks, tests, security-scan, build-verification]
+    if: always()
 
-	steps:
-	  - name: Check job statuses
-		run: |
-		  if [ "${{ needs.quality-checks.result }}" != "success" ]; then
-			echo "Quality checks failed"
-			exit 1
-		  fi
-		  if [ "${{ needs.tests.result }}" != "success" ]; then
-			echo "Tests failed"
-			exit 1
-		  fi
-		  if [ "${{ needs.build-verification.result }}" != "success" ]; then
-			echo "Build verification failed"
-			exit 1
-		  fi
-		  echo "All checks passed!"
+    steps:
+      - name: Check job statuses
+        run: |
+          if [ "${{ needs.quality-checks.result }}" != "success" ]; then
+            echo "Quality checks failed"
+            exit 1
+          fi
+          if [ "${{ needs.tests.result }}" != "success" ]; then
+            echo "Tests failed"
+            exit 1
+          fi
+          if [ "${{ needs.build-verification.result }}" != "success" ]; then
+            echo "Build verification failed"
+            exit 1
+          fi
+          echo "All checks passed!"
