@@ -209,3 +209,13 @@ __marimo__/
 # OSX 
 ._.DS_Store
 .DS_Store
+
+# Pre-commit
+.pre-commit-framework/
+
+# Node modules (if installing ESLint/Prettier locally)
+node_modules/
+package-lock.json
+
+# Secrets baseline
+.secrets.baseline

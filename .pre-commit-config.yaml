@@ -1,0 +1,46 @@
+# Pre-commit configuration for The Daily Undertaking UI
+# Local-only hooks - no remote repositories
+# See https://pre-commit.com for more information
+
+repos:
+  - repo: local
+    hooks:
+      # ESLint for JavaScript
+      - id: eslint
+        name: ESLint
+        entry: npx eslint
+        language: node
+        types: [javascript]
+        pass_filenames: true
+
+      # Prettier for code formatting
+      - id: prettier
+        name: Prettier
+        entry: npx prettier --write
+        language: node
+        types_or: [javascript, css, markdown, json, yaml]
+        pass_filenames: true
+
+      # Stylelint for CSS
+      - id: stylelint
+        name: Stylelint
+        entry: npx stylelint --fix
+        language: node
+        types: [css]
+        pass_filenames: true
+
+      # Trailing whitespace
+      - id: trailing-whitespace
+        name: Trim trailing whitespace
+        entry: bash -c 'find . -type f \( -name "*.js" -o -name "*.css" -o -name "*.html" -o -name "*.json" -o -name "*.yaml" -o -name "*.md" \) ! -path "./node_modules/*" ! -path "./.git/*" -exec sed -i "" "s/[[:space:]]*$//" {} +'
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      # Check for merge conflicts
+      - id: check-merge-conflicts
+        name: Check for merge conflicts
+        entry: bash -c 'grep -r "<<<<<<< HEAD" . --include="*.js" --include="*.css" --include="*.html" --include="*.json" --include="*.yaml" --include="*.md" 2>/dev/null || true'
+        language: system
+        pass_filenames: false
+        always_run: true

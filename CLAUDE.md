@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-"The Daily Undertaking" is an interactive fiction game with a vintage newspaper aesthetic. The project is built entirely with vanilla HTML, CSS, and JavaScript—no build tools, package managers, or frameworks required.
+"The Daily Undertaking" is an interactive fiction game with a vintage newspaper aesthetic. The project is built entirely with vanilla HTML, CSS, and JavaScript—no build tools or frameworks required for production. Development tooling (testing, linting) is managed via npm.
 
 ## Development Workflow
 
@@ -13,40 +13,90 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a static website with no build process. To run:
 
 ```bash
-# Open in browser directly
-open index.html
-
-# Or serve with Python's built-in server
-python3 -m http.server 8000
+# Development server (recommended)
+npm run dev
 # Then visit http://localhost:8000
 
-# Or use any other static file server
+# Or open in browser directly
+open index.html
+
+# Or use Python directly
+python3 -m http.server 8000
 ```
+
+### Testing
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode (for TDD)
+npm run test:watch
+
+# Run tests with coverage report
+npm run test:coverage
+```
+
+Tests are written using Jest with jsdom environment. Test files are located in:
+
+- `tests/unit/` - Unit tests for individual functions
+- `tests/integration/` - Integration tests for UI interactions
+
+Coverage thresholds are set at 70% for branches, functions, lines, and statements (see jest.config.js:5-11).
+
+### Code Quality
+
+```bash
+# JavaScript linting
+npm run lint          # Check for errors
+npm run lint:fix      # Auto-fix errors
+
+# CSS linting
+npm run style:lint    # Check CSS
+npm run style:fix     # Auto-fix CSS
+
+# Code formatting (Prettier)
+npm run format        # Format all files
+npm run format:check  # Check formatting without changing
+
+# Pre-commit hooks (runs all linters + formatters)
+npm run pre-commit
+```
+
+The project uses:
+
+- **ESLint** with Airbnb base config for JavaScript
+- **Stylelint** with standard config for CSS
+- **Prettier** for consistent formatting
+- **pre-commit hooks** configured in `.pre-commit-config.yaml` (runs on git commit)
 
 ### Directory Structure
 
-The project is organized into a clean, scalable directory structure:
-
 ```
 /
-├── index.html           # Main UI structure and layout
-├── css/
-│   └── styles.css       # Newspaper-themed styling
-├── js/
-│   └── script.js        # Client-side interactivity
-└── assets/
-    ├── images/
-    │   ├── characters/  # Character portraits
-    │   ├── items/       # Item images
-    │   └── textures/    # Background textures
-    └── data/            # Item metadata (JSON files)
+├── index.html              # Main UI structure and layout
+├── css/styles.css          # Newspaper-themed styling
+├── js/script.js            # Client-side interactivity
+├── assets/
+│   ├── images/
+│   │   ├── characters/     # Character portraits
+│   │   ├── items/          # Item images
+│   │   └── textures/       # Background textures
+│   └── data/               # Item metadata (JSON files)
+├── tests/
+│   ├── unit/               # Unit tests
+│   └── integration/        # Integration tests
+├── .github/workflows/      # CI/CD pipeline
+└── package.json            # Dev dependencies & scripts
 ```
 
 **Organization principles:**
+
 - Code files (`css/`, `js/`) separated from assets
 - Images categorized by type for easy scaling
-- JSON metadata stored in `assets/data/` for future use
-- Root directory contains only essential files
+- JSON metadata stored in `assets/data/` for future metadata integration
+- Tests mirror the code structure in separate `tests/` directory
+- No node_modules or build artifacts in production (static HTML/CSS/JS only)
 
 ## Architecture
 
@@ -94,6 +144,7 @@ Both types open a detail modal on click via `openItemModal()`.
 ### Modal System
 
 The item detail modal (`#itemModal`) displays enlarged item views:
+
 - Activated by clicking filled inventory slots or equipment items
 - Closed via close button, clicking outside, or pressing Escape
 - Extracts data from either inventory or equipment item structure
@@ -101,6 +152,7 @@ The item detail modal (`#itemModal`) displays enlarged item views:
 ### Command Input System
 
 Player input handled via `#commandInput` textarea:
+
 - Enter key submits command (Shift+Enter for new line)
 - Commands appended to `#gameOutput` as `.output-text` divs
 - Auto-scroll to bottom on new content
@@ -156,16 +208,49 @@ Top navigation (`.sub-masthead .menu-item`) currently only toggles `.active` cla
 Game assets are organized by type:
 
 **Images:**
+
 - `assets/images/characters/` - Character portraits (e.g., `brigg_fenwick.png`, `brigg_fenwick_bk.png`)
 - `assets/images/items/` - Item images (e.g., `stick.png`, `key.png`, `pebble.png`, `token.png`, `receipt.png`)
 - `assets/images/textures/` - Background textures (e.g., `assult.png`)
 
 **Data:**
+
 - `assets/data/` - Item metadata in JSON format (e.g., `stick.json`, `key.json`)
 - JSON files follow naming pattern `[item_name].json`
 - Currently not loaded by UI but positioned for future metadata integration
 
 All image paths in HTML use full paths from project root (e.g., `assets/images/items/key.png`). CSS paths are relative to the CSS file location.
+
+## Testing Strategy
+
+### Writing Tests
+
+When adding new functionality to `js/script.js`, create corresponding tests in `tests/unit/script.test.js`. The test suite uses:
+
+- **@testing-library/jest-dom** for DOM assertions
+- **jsdom** environment to simulate browser DOM
+- Inline function mocking (functions defined within tests, not imported from script.js)
+
+Current test coverage includes:
+
+- `toggleSection()` - Collapsible section toggling
+- `openItemModal()` - Modal population for equipment and inventory items
+- `closeItemModal()` - Modal closing
+- Command input handling (Enter vs Shift+Enter)
+- Menu item active state toggling
+
+**Important**: Since `script.js` is not currently modularized (no exports), tests mock the functions inline rather than importing them. When refactoring for testability, consider exporting functions or using a module pattern.
+
+### CI/CD Pipeline
+
+GitHub Actions workflow (`.github/workflows/ci.yml`) runs on push/PR to main/develop:
+
+1. **Quality Checks** - ESLint, Stylelint, Prettier (on Node 18.x, 20.x)
+2. **Tests** - Jest with coverage reporting to Codecov
+3. **Security Scan** - Trivy vulnerability scanner
+4. **Build Verification** - Starts Python server and validates HTML5
+
+All checks must pass before merging. Coverage threshold failures will fail the build.
 
 ## Integration Points
 
@@ -175,4 +260,4 @@ The comment in `js/script.js:36` indicates where LLM integration should occur:
 // Simulate response (in real app, this would call your LLM)
 ```
 
-Command processing should replace the setTimeout placeholder with actual game logic/API calls.
+Command processing should replace the setTimeout placeholder with actual game logic/API calls to a backend MUD server.

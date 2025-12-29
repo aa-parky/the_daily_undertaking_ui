@@ -1,250 +1,292 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Undertaking - Interactive Fiction</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Special+Elite&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=IM+Fell+English+SC&family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=IM+Fell+English+SC&family=Inconsolata:wght@200..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
     <div class="container">
-        <!-- Masthead -->
-        <div class="masthead">
-            <div class="title">The Daily Undertaking</div>
-            <div class="subtitle">Your Interactive Fiction Chronicle • Volume I</div>
+      <!-- Masthead -->
+      <div class="masthead">
+        <div class="title">The Daily Undertaking</div>
+        <div class="subtitle">Your Interactive Fiction Chronicle • Volume I</div>
+      </div>
+
+      <!-- Sub-masthead Navigation -->
+      <div class="sub-masthead">
+        <div class="menu-item active">Adventure</div>
+        <div class="menu-separator"></div>
+        <div class="menu-item">Character</div>
+        <div class="menu-separator"></div>
+        <div class="menu-item">Inventory</div>
+        <div class="menu-separator"></div>
+        <div class="menu-item">Spellbook</div>
+        <div class="menu-separator"></div>
+        <div class="menu-item">Quests</div>
+        <div class="menu-separator"></div>
+        <div class="menu-item">Map</div>
+        <div class="menu-separator"></div>
+        <div class="menu-item">Journal</div>
+        <div class="menu-separator"></div>
+        <div class="menu-item">Settings</div>
+      </div>
+
+      <!-- Main Layout -->
+      <div class="main-layout">
+        <!-- Left: Character Panel -->
+        <div class="character-panel">
+          <div class="panel-title">Person of Record</div>
+
+          <div class="character-portrait">
+            <img src="assets/images/characters/brigg_fenwick.png" />
+          </div>
+
+          <div class="character-article">
+            <strong>Brigg Fenwick</strong>, tends to be nearby when things shift from manageable to
+            interesting. Several matters appear to resolve themselves once Brigg becomes involved,
+            though not always in the expected order.
+          </div>
+
+          <div class="stat-group">
+            <span class="stat-label">Vitality:</span>
+            <div class="stat-bar">
+              <div class="stat-bar-fill health" style="width: 75%"></div>
+              <div class="stat-bar-text">75 / 100 HP</div>
+            </div>
+          </div>
+
+          <div class="stat-group">
+            <span class="stat-label">Arcane Reserve:</span>
+            <div class="stat-bar">
+              <div class="stat-bar-fill mana" style="width: 60%"></div>
+              <div class="stat-bar-text">60 / 100 MP</div>
+            </div>
+          </div>
+
+          <div class="location-notice">Currently traversing the Whispering Woods</div>
         </div>
 
-        <!-- Sub-masthead Navigation -->
-        <div class="sub-masthead">
-            <div class="menu-item active">Adventure</div>
-            <div class="menu-separator"></div>
-            <div class="menu-item">Character</div>
-            <div class="menu-separator"></div>
-            <div class="menu-item">Inventory</div>
-            <div class="menu-separator"></div>
-            <div class="menu-item">Spellbook</div>
-            <div class="menu-separator"></div>
-            <div class="menu-item">Quests</div>
-            <div class="menu-separator"></div>
-            <div class="menu-item">Map</div>
-            <div class="menu-separator"></div>
-            <div class="menu-item">Journal</div>
-            <div class="menu-separator"></div>
-            <div class="menu-item">Settings</div>
+        <!-- Center: Game Output & Input -->
+        <div class="content-area">
+          <div class="game-output" id="gameOutput">
+            <div class="output-text">
+              <strong>▸ BREAKING: PIPE MISALIGNED, LEDGER UPDATED (AGAIN)</strong><br />
+              The Undertaking confirms that a minor discrepancy of uncertain origin occurred
+              somewhere between Intake Valve C, the Auxiliary Ration Cupboard, and a page of the
+              Ledger that everyone agrees was definitely blank yesterday. No injuries have been
+              recorded, several hats were misplaced, and the situation has been formally
+              reclassified from Concerning to Administrative. Residents are advised to continue
+              their duties as normal, unless their duties involve asking questions, in which case
+              alternative duties will be assigned.
+            </div>
+            <div class="output-text">
+              According to sources who are authorised to know things, the issue was resolved
+              promptly once it was written down, stamped twice, and read aloud to a room containing
+              at least one witness and a kettle. The resulting paperwork now exists in triplicate,
+              none of which agree with each other, which is considered a healthy outcome. A
+              spokesperson noted that “systems are functioning within expected tolerances,” before
+              adding that expectations had recently been adjusted to be more realistic.
+            </div>
+            <div class="output-text">
+              The Daily Undertaking reminds readers that order is not the absence of chaos, but the
+              proper filing of it. Any rumours suggesting pipes have opinions, or that the Ledger
+              occasionally sighs, are unhelpful and probably the result of fatigue. Further updates
+              will be issued as soon as they are approved, countersigned, misplaced, rediscovered,
+              and quietly celebrated as a success.
+            </div>
+            <div class="output-text">
+              <em style="opacity: 0.85"
+                >Meteorological Note: Gentle breeze carries whispers of what some claim are
+                forgotten spells...</em
+              >
+            </div>
+            <div class="output-text">
+              <strong>▸ WHAT ACTION WILL YOU TAKE?</strong>
+            </div>
+          </div>
+
+          <div class="game-input-area">
+            <div class="input-label">★ COMMAND TERMINAL ★</div>
+            <textarea
+              class="command-input"
+              id="commandInput"
+              placeholder="Enter your command... (e.g., 'examine archway', 'go north', 'cast spell')"
+            ></textarea>
+          </div>
         </div>
 
-        <!-- Main Layout -->
-        <div class="main-layout">
-            <!-- Left: Character Panel -->
-            <div class="character-panel">
-                <div class="panel-title">Person of Record</div>
-                
-                <div class="character-portrait">
-                    <img src="assets/images/characters/brigg_fenwick.png" />
+        <!-- Right: Inventory & Quests -->
+        <div class="right-panel">
+          <!-- Inventory Section -->
+          <div class="collapsible-section">
+            <div class="section-header" onclick="toggleSection(this)">Your Satchel</div>
+            <div class="section-content inventory-section">
+              <div class="inventory-grid">
+                <div
+                  class="inventory-slot filled"
+                  data-item-name="Hefty Stick"
+                  data-item-desc="A hefty stick."
+                >
+                  <img src="assets/images/items/stick.png" />
                 </div>
-
-                <div class="character-article">
-                    <strong>Brigg Fenwick</strong>, tends to be nearby when things shift from manageable to interesting. Several matters appear to resolve themselves once Brigg becomes involved, though not always in the expected order.
-                </div>
-
-                <div class="stat-group">
-                    <span class="stat-label">Vitality:</span>
-                    <div class="stat-bar">
-                        <div class="stat-bar-fill health" style="width: 75%"></div>
-                        <div class="stat-bar-text">75 / 100 HP</div>
-                    </div>
-                </div>
-
-                <div class="stat-group">
-                    <span class="stat-label">Arcane Reserve:</span>
-                    <div class="stat-bar">
-                        <div class="stat-bar-fill mana" style="width: 60%"></div>
-                        <div class="stat-bar-text">60 / 100 MP</div>
-                    </div>
-                </div>
-
-                <div class="location-notice">
-                    Currently traversing the Whispering Woods
-                </div>
+                <div class="inventory-slot"></div>
+                <div class="inventory-slot"></div>
+                <div class="inventory-slot"></div>
+                <div class="inventory-slot"></div>
+                <div class="inventory-slot"></div>
+                <div class="inventory-slot"></div>
+                <div class="inventory-slot"></div>
+                <div class="inventory-slot"></div>
+              </div>
             </div>
+          </div>
 
-            <!-- Center: Game Output & Input -->
-            <div class="content-area">
-                <div class="game-output" id="gameOutput">
-                    <div class="output-text">
-                        <strong>▸ BREAKING: PIPE MISALIGNED, LEDGER UPDATED (AGAIN)</strong><br>
-                        The Undertaking confirms that a minor discrepancy of uncertain origin occurred somewhere between Intake Valve C, the Auxiliary Ration Cupboard, and a page of the Ledger that everyone agrees was definitely blank yesterday. No injuries have been recorded, several hats were misplaced, and the situation has been formally reclassified from Concerning to Administrative. Residents are advised to continue their duties as normal, unless their duties involve asking questions, in which case alternative duties will be assigned.
-                    </div>
-                    <div class="output-text">
-                        According to sources who are authorised to know things, the issue was resolved promptly once it was written down, stamped twice, and read aloud to a room containing at least one witness and a kettle. The resulting paperwork now exists in triplicate, none of which agree with each other, which is considered a healthy outcome. A spokesperson noted that “systems are functioning within expected tolerances,” before adding that expectations had recently been adjusted to be more realistic.
-                    </div>
-                    <div class="output-text">
-                        The Daily Undertaking reminds readers that order is not the absence of chaos, but the proper filing of it. Any rumours suggesting pipes have opinions, or that the Ledger occasionally sighs, are unhelpful and probably the result of fatigue. Further updates will be issued as soon as they are approved, countersigned, misplaced, rediscovered, and quietly celebrated as a success.
-                    </div>
-                    <div class="output-text">
-                        <em style="opacity: 0.85;">Meteorological Note: Gentle breeze carries whispers of what some claim are forgotten spells...</em>
-                    </div>
-                    <div class="output-text">
-                        <strong>▸ WHAT ACTION WILL YOU TAKE?</strong>
-                    </div>
+          <!-- Equipment Section -->
+          <div class="collapsible-section">
+            <div class="section-header" onclick="toggleSection(this)">Useful Rubbish</div>
+            <div class="section-content">
+              <div class="equipment-item">
+                <div class="equipment-image">
+                  <img src="assets/images/items/key.png" />
                 </div>
-
-                <div class="game-input-area">
-                    <div class="input-label">★ COMMAND TERMINAL ★</div>
-                    <textarea 
-                        class="command-input" 
-                        id="commandInput" 
-                        placeholder="Enter your command... (e.g., 'examine archway', 'go north', 'cast spell')"></textarea>
+                <div class="equipment-info">
+                  <div class="equipment-name">Brass key</div>
+                  <div class="equipment-description">
+                    Uncertain relevance. Has opened something before. Not recently.
+                  </div>
                 </div>
+              </div>
+              <div class="equipment-item">
+                <div class="equipment-image">
+                  <img src="assets/images/items/pebble.png" />
+                </div>
+                <div class="equipment-info">
+                  <div class="equipment-name">Pebble With a Mark On It</div>
+                  <div class="equipment-description">The mark is not natural.</div>
+                </div>
+              </div>
+              <div class="equipment-item">
+                <div class="equipment-image">
+                  <img src="assets/images/items/token.png" />
+                </div>
+                <div class="equipment-info">
+                  <div class="equipment-name">A Token</div>
+                  <div class="equipment-description">Stamped "RETURNED" on one side</div>
+                </div>
+              </div>
+              <div class="equipment-item">
+                <div class="equipment-image">
+                  <img src="assets/images/items/receipt.png" />
+                </div>
+                <div class="equipment-info">
+                  <div class="equipment-name">A Crumpled receipt</div>
+                  <div class="equipment-description">For something not currently owned</div>
+                </div>
+              </div>
             </div>
+          </div>
 
-            <!-- Right: Inventory & Quests -->
-            <div class="right-panel">
-                <!-- Inventory Section -->
-                <div class="collapsible-section">
-                    <div class="section-header" onclick="toggleSection(this)">Your Satchel</div>
-                    <div class="section-content inventory-section">
-                        <div class="inventory-grid">
-                            <div class="inventory-slot filled" data-item-name="Hefty Stick" data-item-desc="A hefty stick."><img src="assets/images/items/stick.png" /></div>
-                            <div class="inventory-slot"></div>
-                            <div class="inventory-slot"></div>
-                            <div class="inventory-slot"></div>
-                            <div class="inventory-slot"></div>
-                            <div class="inventory-slot"></div>
-                            <div class="inventory-slot"></div>
-                            <div class="inventory-slot"></div>
-                            <div class="inventory-slot"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Equipment Section -->
-                <div class="collapsible-section">
-                    <div class="section-header" onclick="toggleSection(this)">Useful Rubbish</div>
-                    <div class="section-content">
-                        <div class="equipment-item">
-                            <div class="equipment-image">
-                                <img src="assets/images/items/key.png" />
-                            </div>
-                            <div class="equipment-info">
-                                <div class="equipment-name">Brass key</div>
-                                <div class="equipment-description">Uncertain relevance. Has opened something before. Not recently.</div>
-                            </div>
-                        </div>
-                        <div class="equipment-item">
-                            <div class="equipment-image">
-                                <img src="assets/images/items/pebble.png" />
-                            </div>
-                            <div class="equipment-info">
-                                <div class="equipment-name">Pebble With a Mark On It</div>
-                                <div class="equipment-description">The mark is not natural.</div>
-                            </div>
-                        </div>
-                        <div class="equipment-item">
-                            <div class="equipment-image">
-                                <img src="assets/images/items/token.png" />
-                            </div>
-                            <div class="equipment-info">
-                                <div class="equipment-name">A Token</div>
-                                <div class="equipment-description">Stamped "RETURNED" on one side</div>
-                            </div>
-                        </div>
-                        <div class="equipment-item">
-                            <div class="equipment-image">
-                                <img src="assets/images/items/receipt.png" />
-                            </div>
-                            <div class="equipment-info">
-                                <div class="equipment-name">A Crumpled receipt</div>
-                                <div class="equipment-description">For something not currently owned</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Active Quests Section -->
-                <div class="collapsible-section">
-                    <div class="section-header" onclick="toggleSection(this)">Matters Requiring Attention</div>
-                    <div class="section-content quest-section">
-                        <div class="quest-item">
-                            <div class="quest-title">⭐ The Lost Grimoire</div>
-                            <div class="quest-description">
-                                Seek the ancient tome hidden within the Whispering Woods.
-                            </div>
-                        </div>
-
-                        <div class="quest-item">
-                            <div class="quest-title">⭐ Echoes of the Past</div>
-                            <div class="quest-description">
-                                Uncover the secrets behind the luminescent runes.
-                            </div>
-                        </div>
-
-                        <div class="quest-item">
-                            <div class="quest-title">⭐ A Wanderer's Pact</div>
-                            <div class="quest-description">
-                                Meet the mysterious figure at midnight crossing.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Skills Section -->
-                <div class="collapsible-section">
-                    <div class="section-header collapsed" onclick="toggleSection(this)">Observed Tendencies</div>
-                    <div class="section-content collapsed">
-                        <ul class="skill-list">
-                            <li class="skill-item">
-                                <div class="skill-name">🔥 Fire Bolt</div>
-                                <div class="skill-level">Level 3 - 15 MP</div>
-                            </li>
-                            <li class="skill-item">
-                                <div class="skill-name">❄️ Ice Shield</div>
-                                <div class="skill-level">Level 2 - 10 MP</div>
-                            </li>
-                            <li class="skill-item">
-                                <div class="skill-name">⚡ Lightning Strike</div>
-                                <div class="skill-level">Level 1 - 20 MP</div>
-                            </li>
-                            <li class="skill-item">
-                                <div class="skill-name">🌿 Healing Touch</div>
-                                <div class="skill-level">Level 4 - 12 MP</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Notes Section -->
-                <div class="collapsible-section">
-                    <div class="section-header collapsed" onclick="toggleSection(this)">Notes</div>
-                    <div class="section-content collapsed">
-                        <textarea class="notes-area" placeholder="Record your observations and discoveries here...">The archway glows brightest at dusk.
-
-Strange symbols appear to shift position when not directly observed.</textarea>
-                    </div>
-                </div>
+          <!-- Active Quests Section -->
+          <div class="collapsible-section">
+            <div class="section-header" onclick="toggleSection(this)">
+              Matters Requiring Attention
             </div>
+            <div class="section-content quest-section">
+              <div class="quest-item">
+                <div class="quest-title">⭐ The Lost Grimoire</div>
+                <div class="quest-description">
+                  Seek the ancient tome hidden within the Whispering Woods.
+                </div>
+              </div>
+
+              <div class="quest-item">
+                <div class="quest-title">⭐ Echoes of the Past</div>
+                <div class="quest-description">
+                  Uncover the secrets behind the luminescent runes.
+                </div>
+              </div>
+
+              <div class="quest-item">
+                <div class="quest-title">⭐ A Wanderer's Pact</div>
+                <div class="quest-description">
+                  Meet the mysterious figure at midnight crossing.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills Section -->
+          <div class="collapsible-section">
+            <div class="section-header collapsed" onclick="toggleSection(this)">
+              Observed Tendencies
+            </div>
+            <div class="section-content collapsed">
+              <ul class="skill-list">
+                <li class="skill-item">
+                  <div class="skill-name">🔥 Fire Bolt</div>
+                  <div class="skill-level">Level 3 - 15 MP</div>
+                </li>
+                <li class="skill-item">
+                  <div class="skill-name">❄️ Ice Shield</div>
+                  <div class="skill-level">Level 2 - 10 MP</div>
+                </li>
+                <li class="skill-item">
+                  <div class="skill-name">⚡ Lightning Strike</div>
+                  <div class="skill-level">Level 1 - 20 MP</div>
+                </li>
+                <li class="skill-item">
+                  <div class="skill-name">🌿 Healing Touch</div>
+                  <div class="skill-level">Level 4 - 12 MP</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Notes Section -->
+          <div class="collapsible-section">
+            <div class="section-header collapsed" onclick="toggleSection(this)">Notes</div>
+            <div class="section-content collapsed">
+              <textarea
+                class="notes-area"
+                placeholder="Record your observations and discoveries here..."
+              >
+The archway glows brightest at dusk.
+
+Strange symbols appear to shift position when not directly observed.</textarea
+              >
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Item Detail Modal -->
     <div id="itemModal" class="item-modal">
-        <div class="item-modal-content">
-            <button class="modal-close" onclick="closeItemModal()">&times;</button>
-            <div class="modal-body">
-                <div class="modal-image">
-                    <img id="modalItemImage" src="" alt="Item image" />
-                </div>
-                <div class="modal-info">
-                    <h2 id="modalItemTitle" class="modal-title"></h2>
-                    <p id="modalItemDescription" class="modal-description"></p>
-                </div>
-            </div>
+      <div class="item-modal-content">
+        <button class="modal-close" onclick="closeItemModal()">&times;</button>
+        <div class="modal-body">
+          <div class="modal-image">
+            <img id="modalItemImage" src="" alt="Item image" />
+          </div>
+          <div class="modal-info">
+            <h2 id="modalItemTitle" class="modal-title"></h2>
+            <p id="modalItemDescription" class="modal-description"></p>
+          </div>
         </div>
+      </div>
     </div>
 
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>

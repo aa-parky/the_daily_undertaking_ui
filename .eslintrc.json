@@ -1,0 +1,38 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": false,
+    "jest": true
+  },
+  "extends": "airbnb-base",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": "off",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+    "prefer-destructuring": "warn",
+    "no-param-reassign": ["error", { "props": false }],
+    "func-names": "off",
+    "object-shorthand": "warn",
+    "no-shadow": "warn",
+    "no-underscore-dangle": "off",
+    "operator-linebreak": "off"
+  },
+  "overrides": [
+    {
+      "files": ["jest.config.js", "jest.setup.js"],
+      "env": {
+        "node": true,
+        "jest": true
+      }
+    }
+  ],
+  "globals": {
+    "openItemModal": "readonly",
+    "closeItemModal": "readonly",
+    "toggleSection": "readonly"
+  }
+}
