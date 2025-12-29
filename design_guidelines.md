@@ -196,6 +196,285 @@ body {
 - **Column Layout**: 45px column-gap for text
 - **Form Elements**: 20px gap between fields
 
+## Image Sizing & Aspect Ratios
+
+### Overview
+
+All images in The Daily Undertaking follow a strict canonical sizing system. This ensures visual consistency, optimizes asset generation, and maintains authentic newspaper aesthetic proportions. **Every image container must conform to one of the predefined sizes below.**
+
+### Canonical Generation Sizes
+
+These are the source dimensions for AI-generated assets:
+
+#### Square (1:1)
+
+- **1024 × 1024** - Primary square generation size
+
+#### Portrait
+
+- **9:16** → 720 × 1280 or 896 × 1600
+- **2:3** → 832 × 1280
+
+#### Landscape
+
+- **16:9** → 1280 × 720 or 1600 × 896
+- **3:2** → 1280 × 832 or 1536 × 1024
+
+### UI Size Palette
+
+> **Critical Rule**: All image containers MUST use one of these exact sizes. All sizes preserve native generation aspect ratios. If it's not listed here, it doesn't exist.
+
+#### 🟦 Square (1:1) — Identity & Objects
+
+**XS — 128 × 128**
+
+- **Source**: 1024² ÷ 8
+- **Use for**: Item icons, inline references, inventory lists
+- **Reads as**: _Object. Evidence._
+
+```css
+.item-icon {
+  width: 128px;
+  height: 128px;
+}
+```
+
+**S — 256 × 256** ⭐ Primary Square Size
+
+- **Source**: 1024² ÷ 4
+- **Use for**: Character portraits, "Person of Record" images, key NPCs
+- **Reads as**: _This individual is noted._
+
+```css
+.character-portrait {
+  width: 256px;
+  height: 256px;
+}
+```
+
+**M — 384 × 384**
+
+- **Source**: 1536² ÷ 4 (or upscale of 1024²)
+- **Use for**: Focus portraits, inspection views, dramatic pauses
+- **Reads as**: _Pay attention._
+
+```css
+.portrait-focus {
+  width: 384px;
+  height: 384px;
+}
+```
+
+#### 🟩 Portrait (9:16 / 2:3) — People & Pressure
+
+**S — 208 × 320** ⭐ Primary Portrait Size
+
+- **Source**: 832×1280 ÷ 4
+- **Use for**: Full goblin figures, NPC encounters, social interactions
+- **Reads as**: _You are being evaluated._
+
+```css
+.npc-portrait {
+  width: 208px;
+  height: 320px;
+}
+```
+
+**M — 256 × 384**
+
+- **Source**: Clean proportional upscale
+- **Use for**: Important encounters, character moments, procedural unease
+- **Reads as**: _You should remember this._
+
+```css
+.encounter-portrait {
+  width: 256px;
+  height: 384px;
+}
+```
+
+#### 🟨 Landscape (16:9) — Events & Situations
+
+**S — 320 × 180** ⭐ Primary Landscape Size
+
+- **Source**: 1280×720 ÷ 4
+- **Use for**: Article headers, Matters Requiring Attention, environmental context
+- **Reads as**: _This is happening._
+
+```css
+.article-header {
+  width: 320px;
+  height: 180px;
+}
+```
+
+**M — 480 × 270**
+
+- **Source**: 1280×720 ÷ 2.67 (still clean)
+- **Use for**: Major story beats, shared events, fractured narratives
+- **Reads as**: _This affected more than one person._
+
+```css
+.story-beat {
+  width: 480px;
+  height: 270px;
+}
+```
+
+#### 🟧 Landscape (3:2) — Records & Places
+
+**M — 384 × 256** ⭐ Primary Ledger Size
+
+- **Source**: 1536×1024 ÷ 4
+- **Use for**: Maps, diagrams, notices, plans, layouts
+- **Reads as**: _This has been documented._
+- **Note**: This ratio feels "ledger-y" and works well for official documents
+
+```css
+.document-image {
+  width: 384px;
+  height: 256px;
+}
+```
+
+**L — 320 × 208**
+
+- **Source**: 1280×832 ÷ 4
+- **Use for**: Alternative document size, smaller maps
+- **Reads as**: _Supporting documentation._
+
+```css
+.document-small {
+  width: 320px;
+  height: 208px;
+}
+```
+
+### Quick Reference Table
+
+| Size | Ratio | Dimensions | Primary Use       |
+| ---- | ----- | ---------- | ----------------- |
+| XS   | 1:1   | 128×128    | Items             |
+| S    | 1:1   | 256×256    | Portraits ⭐      |
+| M    | 1:1   | 384×384    | Focus             |
+| S    | 2:3   | 208×320    | NPCs ⭐           |
+| M    | 2:3   | 256×384    | Encounters        |
+| S    | 16:9  | 320×180    | Articles ⭐       |
+| M    | 16:9  | 480×270    | Events            |
+| M    | 3:2   | 384×256    | Maps/Documents ⭐ |
+| L    | 3:2   | 320×208    | Small Documents   |
+
+⭐ = Primary recommended size for each category
+
+### CSS Image Handling
+
+#### Core Image Rule
+
+**Always use this pattern** for images to preserve aspect ratios:
+
+```css
+.ui-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* or cover, intentionally chosen */
+}
+```
+
+**Never**:
+
+- Stretch to both width and height simultaneously
+- Let the container define a conflicting aspect ratio
+- Hard-code both width and height unless it matches the palette
+
+#### Aspect Ratio Containers
+
+Use these utility classes for image containers:
+
+```css
+.ui-frame--square {
+  aspect-ratio: 1 / 1;
+}
+
+.ui-frame--portrait {
+  aspect-ratio: 2 / 3;
+}
+
+.ui-frame--wide {
+  aspect-ratio: 16 / 9;
+}
+
+.ui-frame--ledger {
+  aspect-ratio: 3 / 2;
+}
+```
+
+**Usage Pattern**:
+
+```html
+<!-- Character portrait -->
+<div class="ui-frame--square" style="width: 256px;">
+  <img src="portrait.png" class="ui-image" alt="Character Name" />
+</div>
+
+<!-- Article header -->
+<div class="ui-frame--wide" style="width: 320px;">
+  <img src="event.png" class="ui-image" alt="Event Description" />
+</div>
+
+<!-- Document/map -->
+<div class="ui-frame--ledger" style="width: 384px;">
+  <img src="map.png" class="ui-image" alt="Location Map" />
+</div>
+```
+
+### UI Scaling from Generation Sizes
+
+#### Clean Divisor Method
+
+When scaling generated images for UI display, always use clean divisors:
+
+**Square (1024×1024)**
+
+- ÷ 4 = **256×256** ✅ (Primary UI size)
+- ÷ 8 = 128×128 (Small icons)
+
+**Portrait (832×1280)**
+
+- ÷ 4 = **208×320** ✅ (Primary portrait)
+
+**Landscape 16:9 (1280×720)**
+
+- ÷ 4 = **320×180** ✅ (Primary landscape)
+
+**Landscape 3:2 (1536×1024)**
+
+- ÷ 4 = **384×256** ✅ (Primary ledger)
+
+### Design Intent by Size
+
+Each size category communicates a specific intent to the player:
+
+- **128×128**: _This is an object, evidence, a thing._
+- **256×256**: _This person is noted in the Registry._
+- **384×384**: _Stop. Pay attention to this._
+- **208×320**: _You are being evaluated by this character._
+- **256×384**: _This moment matters. Remember it._
+- **320×180**: _This is happening now._
+- **480×270**: _This event affected multiple people._
+- **384×256**: _This has been officially documented._
+
+### Implementation Guidelines
+
+1. **Never improvise sizes** - Use only the canonical palette
+2. **Match aspect ratio to content type**:
+   - People → Square or Portrait
+   - Events → Landscape 16:9
+   - Documents → Landscape 3:2
+3. **Use clean divisors** when scaling from generation sizes
+4. **Apply CSS aspect-ratio** to containers for flexibility
+5. **Let images scale responsively** within their containers
+6. **Test at intended display size** during asset generation
+
 ## Component Library
 
 ### Buttons
