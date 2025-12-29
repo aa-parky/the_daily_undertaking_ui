@@ -625,6 +625,68 @@ function attachPasswordMatchValidation(passwordInput, confirmInput) {
   });
 }
 
+// ========== Modal Functions ==========
+
+/**
+ * Opens a form modal
+ * @param {string} modalId - ID of the modal to open
+ */
+function openFormModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add('active');
+    // Focus first input in the modal
+    const firstInput = modal.querySelector('input:not([type="hidden"])');
+    if (firstInput) {
+      setTimeout(() => firstInput.focus(), 100);
+    }
+  }
+}
+
+/**
+ * Closes a form modal
+ * @param {string} modalId - ID of the modal to close
+ */
+function closeFormModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove('active');
+    // Clear any form errors when closing
+    const form = modal.querySelector('form');
+    if (form) {
+      hideFormError(form);
+      // Clear all input errors and validation states
+      const inputs = modal.querySelectorAll('input');
+      inputs.forEach((input) => {
+        input.classList.remove('error', 'valid');
+        // Also clear the associated error message
+        const errorId = input.getAttribute('aria-describedby');
+        if (errorId) {
+          const errorIds = errorId.split(' ');
+          errorIds.forEach((id) => {
+            const errorElement = document.getElementById(id);
+            if (errorElement && errorElement.classList.contains('field-error')) {
+              errorElement.textContent = '';
+              errorElement.classList.remove('visible');
+            }
+          });
+        }
+      });
+    }
+  }
+}
+
+/**
+ * Closes modal when clicking outside the form
+ * @param {Event} event - Click event
+ * @param {string} modalId - ID of the modal
+ */
+function handleModalOverlayClick(event, modalId) {
+  if (event.target.classList.contains('modal-overlay')) {
+    closeFormModal(modalId);
+  }
+}
+
 // ========== Initialization ==========
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -707,6 +769,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Attach modal open button listeners
+  const openLoginBtn = document.getElementById('openLoginBtn');
+  const openRegisterBtn = document.getElementById('openRegisterBtn');
+
+  if (openLoginBtn) {
+    openLoginBtn.addEventListener('click', () => openFormModal('loginModal'));
+  }
+
+  if (openRegisterBtn) {
+    openRegisterBtn.addEventListener('click', () => openFormModal('registerModal'));
+  }
+
+  // Attach modal close button listeners
+  const loginModal = document.getElementById('loginModal');
+  const registerModal = document.getElementById('registerModal');
+
+  if (loginModal) {
+    const closeBtn = loginModal.querySelector('.modal-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => closeFormModal('loginModal'));
+    }
+    // Close on overlay click
+    loginModal.addEventListener('click', (e) => handleModalOverlayClick(e, 'loginModal'));
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && loginModal.classList.contains('active')) {
+        closeFormModal('loginModal');
+      }
+    });
+  }
+
+  if (registerModal) {
+    const closeBtn = registerModal.querySelector('.modal-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => closeFormModal('registerModal'));
+    }
+    // Close on overlay click
+    registerModal.addEventListener('click', (e) => handleModalOverlayClick(e, 'registerModal'));
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && registerModal.classList.contains('active')) {
+        closeFormModal('registerModal');
+      }
+    });
+  }
+
   // Expose functions for testing
   if (typeof window !== 'undefined') {
     window.validateUsername = validateUsername;
@@ -730,5 +838,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.redirectToGame = redirectToGame;
     window.handleLoginSubmit = handleLoginSubmit;
     window.handleRegisterSubmit = handleRegisterSubmit;
+    window.openFormModal = openFormModal;
+    window.closeFormModal = closeFormModal;
   }
 });

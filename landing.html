@@ -83,17 +83,52 @@
         </div>
       </section>
 
-      <!-- Forms Section -->
+      <!-- Forms Section - Buttons to Open Modals -->
       <section class="forms-section">
-        <!-- Login Form (Left Column) -->
-        <div class="classified-ad login-ad">
-          <div class="classified-corner tl">✦</div>
-          <div class="classified-corner tr">✦</div>
-          <div class="classified-corner bl">✧</div>
-          <div class="classified-corner br">✧</div>
+        <button type="button" class="registry-button login-button" id="openLoginBtn">
+          <div class="button-corner tl">✦</div>
+          <div class="button-corner tr">✦</div>
+          <div class="button-corner bl">✧</div>
+          <div class="button-corner br">✧</div>
+          <h3 class="button-header">Adventurer Registry</h3>
+          <p class="button-subtext">For Returning Correspondents</p>
+        </button>
 
-          <h3 class="classified-header">Adventurer Registry</h3>
-          <p class="classified-subtext">For Returning Correspondents</p>
+        <button type="button" class="registry-button register-button" id="openRegisterBtn">
+          <div class="button-corner tl">✦</div>
+          <div class="button-corner tr">✦</div>
+          <div class="button-corner bl">✧</div>
+          <div class="button-corner br">✧</div>
+          <h3 class="button-header">New Subscriber Enrollment</h3>
+          <p class="button-subtext">First-Time Petitioners Welcome</p>
+        </button>
+      </section>
+
+      <!-- Footer Notice -->
+      <footer class="footer-notice">
+        <p>
+          <strong>Disclaimer:</strong> <em>The Daily Undertaking</em> assumes no responsibility for
+          adventures undertaken, items acquired, or realities temporarily misplaced during the
+          course of your subscription. All experiences are subject to bureaucratic review and may be
+          adjusted for narrative consistency. Proceed at your own discretion, or someone else's if
+          yours is unavailable. Published occasionally on days ending in 'y'. Vol. ∞, No. π. All
+          rights reserved, catalogued, and filed in triplicate.
+        </p>
+      </footer>
+    </div>
+
+    <!-- Login Form Modal -->
+    <div id="loginModal" class="form-modal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+      <div class="modal-overlay"></div>
+      <div class="classified-ad login-ad modal-form">
+        <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
+        <div class="classified-corner tl">✦</div>
+        <div class="classified-corner tr">✦</div>
+        <div class="classified-corner bl">✧</div>
+        <div class="classified-corner br">✧</div>
+
+        <h3 class="classified-header" id="loginModalTitle">Adventurer Registry</h3>
+        <p class="classified-subtext">For Returning Correspondents</p>
 
           <form id="loginForm" novalidate>
             <div class="form-group">
@@ -146,17 +181,21 @@
               are currently experiencing unprecedented volumes. Please try the obvious first.
             </p>
           </form>
-        </div>
+      </div>
+    </div>
 
-        <!-- Registration Form (Right Column) -->
-        <div class="classified-ad register-ad">
-          <div class="classified-corner tl">✦</div>
-          <div class="classified-corner tr">✦</div>
-          <div class="classified-corner bl">✧</div>
-          <div class="classified-corner br">✧</div>
+    <!-- Registration Form Modal -->
+    <div id="registerModal" class="form-modal" role="dialog" aria-modal="true" aria-labelledby="registerModalTitle">
+      <div class="modal-overlay"></div>
+      <div class="classified-ad register-ad modal-form">
+        <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
+        <div class="classified-corner tl">✦</div>
+        <div class="classified-corner tr">✦</div>
+        <div class="classified-corner bl">✧</div>
+        <div class="classified-corner br">✧</div>
 
-          <h3 class="classified-header">New Subscriber Enrollment</h3>
-          <p class="classified-subtext">First-Time Petitioners Welcome</p>
+        <h3 class="classified-header" id="registerModalTitle">New Subscriber Enrollment</h3>
+        <p class="classified-subtext">First-Time Petitioners Welcome</p>
 
           <form id="registerForm" novalidate>
             <div class="form-group">
@@ -257,20 +296,7 @@
               or Tuesdays experienced out of sequence.
             </p>
           </form>
-        </div>
-      </section>
-
-      <!-- Footer Notice -->
-      <footer class="footer-notice">
-        <p>
-          <strong>Disclaimer:</strong> <em>The Daily Undertaking</em> assumes no responsibility for
-          adventures undertaken, items acquired, or realities temporarily misplaced during the
-          course of your subscription. All experiences are subject to bureaucratic review and may be
-          adjusted for narrative consistency. Proceed at your own discretion, or someone else's if
-          yours is unavailable. Published occasionally on days ending in 'y'. Vol. ∞, No. π. All
-          rights reserved, catalogued, and filed in triplicate.
-        </p>
-      </footer>
+      </div>
     </div>
 
     <!-- Loading/Success Modal -->

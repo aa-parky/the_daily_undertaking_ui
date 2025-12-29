@@ -25,7 +25,7 @@
 /* ========== Container Override ========== */
 body .container {
   width: 1250px;
-  height: 650px; /* 60px taller for forms */
+  height: 590px; /* Original height */
   margin: 30px auto;
   padding: 0;
   background: var(--paper);
@@ -76,38 +76,40 @@ body .container {
 
 /* ========== Headline Section ========== */
 .headline-section {
-  padding: 18px 25px;
+  padding: 15px 25px 12px;
   border-bottom: 3px solid var(--newsprint-black);
   background: var(--paper-dark);
+  flex: 1;
+  overflow-y: auto;
 }
 
 .headline-title {
   font-family: 'IM Fell English SC', serif;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 900;
   text-align: center;
   color: var(--newsprint-black);
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin: 0 0 12px;
-  padding: 8px 0;
+  margin: 0 0 10px;
+  padding: 6px 0;
   border-top: 2px solid var(--newsprint-black);
   border-bottom: 2px solid var(--newsprint-black);
 }
 
 .headline-story {
   font-family: 'EB Garamond', serif;
-  font-size: 12px;
-  line-height: 1.7;
+  font-size: 11.5px;
+  line-height: 1.6;
   color: var(--newsprint-black);
   column-count: 2;
-  column-gap: 25px;
+  column-gap: 20px;
   text-align: justify;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .headline-story p {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
 }
 
 .headline-story strong {
@@ -116,18 +118,18 @@ body .container {
 
 .editor-message {
   font-family: 'Courier Prime', monospace;
-  font-size: 11px;
-  line-height: 1.6;
+  font-size: 10.5px;
+  line-height: 1.5;
   color: var(--faded-ink);
   text-align: left;
-  padding: 12px 18px;
+  padding: 10px 15px;
   border: 1px solid var(--light-gray);
   background: rgb(139 115 85 / 3%);
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 .editor-message p {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
 }
 
 .editor-message p:last-child {
@@ -140,13 +142,145 @@ body .container {
 
 /* ========== Forms Section ========== */
 .forms-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  padding: 20px;
+  display: flex;
+  gap: 15px;
+  padding: 15px 30px;
   background: var(--paper);
-  flex: 1;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid var(--light-gray);
+}
+
+/* ========== Registry Buttons ========== */
+.registry-button {
+  background: var(--newsprint-black);
+  border: 2px solid var(--newsprint-black);
+  position: relative;
+  padding: 12px 24px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+  box-shadow: 2px 2px 0 rgb(43 43 43 / 25%);
+}
+
+.registry-button:hover {
+  background: var(--ink-gray);
+  box-shadow: 3px 3px 0 rgb(43 43 43 / 35%);
+  transform: translate(-1px, -1px);
+}
+
+.registry-button:active {
+  box-shadow: 1px 1px 0 rgb(43 43 43 / 25%);
+  transform: translate(1px, 1px);
+}
+
+.button-corner {
+  position: absolute;
+  font-family: Cinzel, serif;
+  font-size: 10px;
+  color: var(--paper);
+  opacity: 0.5;
+}
+
+.button-corner.tl {
+  top: 3px;
+  left: 5px;
+}
+
+.button-corner.tr {
+  top: 3px;
+  right: 5px;
+}
+
+.button-corner.bl {
+  bottom: 3px;
+  left: 5px;
+}
+
+.button-corner.br {
+  bottom: 3px;
+  right: 5px;
+}
+
+.button-header {
+  font-family: Cinzel, serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--paper);
+  margin: 0 0 3px;
+}
+
+.button-subtext {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--paper);
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* ========== Form Modals ========== */
+.form-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-modal.active {
+  display: flex;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(43 43 43 / 80%);
+  backdrop-filter: blur(3px);
+}
+
+.modal-form {
+  position: relative;
+  z-index: 1001;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
   overflow-y: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--newsprint-black);
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: transform 0.2s ease;
+}
+
+.modal-close:hover {
+  transform: scale(1.2);
+  color: var(--error-red);
 }
 
 /* ========== Classified Ad Styling ========== */

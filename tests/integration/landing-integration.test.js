@@ -3,46 +3,60 @@ import { fireEvent, waitFor } from '@testing-library/dom';
 
 describe('Landing Page Integration Tests', () => {
   beforeEach(() => {
-    // Set up complete landing page DOM
+    // Set up complete landing page DOM with modal structure
     document.body.innerHTML = `
       <div id="currentYear"></div>
-      <form id="loginForm">
-        <input id="loginUsername" aria-describedby="loginUsernameError" autocomplete="username" />
-        <div id="loginUsernameError" class="field-error"></div>
-        <div class="password-wrapper">
-          <input id="loginPassword" type="password" aria-describedby="loginPasswordError" autocomplete="current-password" />
-          <button type="button" class="password-toggle"><span class="toggle-icon">👁</span></button>
+      <button type="button" id="openLoginBtn">Open Login</button>
+      <button type="button" id="openRegisterBtn">Open Register</button>
+      <div id="loginModal" class="form-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-form">
+          <button type="button" class="modal-close">&times;</button>
+          <form id="loginForm">
+            <input id="loginUsername" aria-describedby="loginUsernameError" autocomplete="username" />
+            <div id="loginUsernameError" class="field-error"></div>
+            <div class="password-wrapper">
+              <input id="loginPassword" type="password" aria-describedby="loginPasswordError" autocomplete="current-password" />
+              <button type="button" class="password-toggle"><span class="toggle-icon">👁</span></button>
+            </div>
+            <div id="loginPasswordError" class="field-error"></div>
+            <div class="form-error"></div>
+            <button type="submit" class="submit-button">Login</button>
+          </form>
         </div>
-        <div id="loginPasswordError" class="field-error"></div>
-        <div class="form-error"></div>
-        <button type="submit" class="submit-button">Login</button>
-      </form>
-      <form id="registerForm">
-        <input id="registerUsername" aria-describedby="registerUsernameError" autocomplete="username" />
-        <div id="registerUsernameError" class="field-error"></div>
-        <input id="registerEmail" aria-describedby="registerEmailError" autocomplete="email" />
-        <div id="registerEmailError" class="field-error"></div>
-        <div class="password-wrapper">
-          <input id="registerPassword" type="password" aria-describedby="registerPasswordError registerPasswordStrength" autocomplete="new-password" />
-          <button type="button" class="password-toggle"><span class="toggle-icon">👁</span></button>
+      </div>
+      <div id="registerModal" class="form-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-form">
+          <button type="button" class="modal-close">&times;</button>
+          <form id="registerForm">
+            <input id="registerUsername" aria-describedby="registerUsernameError" autocomplete="username" />
+            <div id="registerUsernameError" class="field-error"></div>
+            <input id="registerEmail" aria-describedby="registerEmailError" autocomplete="email" />
+            <div id="registerEmailError" class="field-error"></div>
+            <div class="password-wrapper">
+              <input id="registerPassword" type="password" aria-describedby="registerPasswordError registerPasswordStrength" autocomplete="new-password" />
+              <button type="button" class="password-toggle"><span class="toggle-icon">👁</span></button>
+            </div>
+            <div id="registerPasswordError" class="field-error"></div>
+            <div id="registerPasswordStrength" class="password-strength">
+              <div class="strength-bar">
+                <div class="strength-fill" data-strength="none"></div>
+              </div>
+              <div class="strength-text">
+                <span class="strength-label">Not set</span>
+              </div>
+            </div>
+            <div class="password-wrapper">
+              <input id="registerPasswordConfirm" type="password" aria-describedby="registerPasswordConfirmError" autocomplete="new-password" />
+              <button type="button" class="password-toggle"><span class="toggle-icon">👁</span></button>
+            </div>
+            <div id="registerPasswordConfirmError" class="field-error"></div>
+            <div class="form-error"></div>
+            <button type="submit" class="submit-button">Register</button>
+          </form>
         </div>
-        <div id="registerPasswordError" class="field-error"></div>
-        <div id="registerPasswordStrength" class="password-strength">
-          <div class="strength-bar">
-            <div class="strength-fill" data-strength="none"></div>
-          </div>
-          <div class="strength-text">
-            <span class="strength-label">Not set</span>
-          </div>
-        </div>
-        <div class="password-wrapper">
-          <input id="registerPasswordConfirm" type="password" aria-describedby="registerPasswordConfirmError" autocomplete="new-password" />
-          <button type="button" class="password-toggle"><span class="toggle-icon">👁</span></button>
-        </div>
-        <div id="registerPasswordConfirmError" class="field-error"></div>
-        <div class="form-error"></div>
-        <button type="submit" class="submit-button">Register</button>
-      </form>
+      </div>
       <div id="authModal" class="auth-modal">
         <div class="modal-content">
           <h4 id="modalTitle" class="modal-title">Processing</h4>
@@ -512,6 +526,97 @@ describe('Landing Page Integration Tests', () => {
 
       // Previous errors should be cleared
       expect(usernameError.textContent).toBe('');
+    });
+  });
+
+  describe('Modal Functionality', () => {
+    it('should open login modal when login button is clicked', () => {
+      const openLoginBtn = document.getElementById('openLoginBtn');
+      const loginModal = document.getElementById('loginModal');
+
+      expect(loginModal.classList.contains('active')).toBe(false);
+
+      fireEvent.click(openLoginBtn);
+
+      expect(loginModal.classList.contains('active')).toBe(true);
+    });
+
+    it('should open register modal when register button is clicked', () => {
+      const openRegisterBtn = document.getElementById('openRegisterBtn');
+      const registerModal = document.getElementById('registerModal');
+
+      expect(registerModal.classList.contains('active')).toBe(false);
+
+      fireEvent.click(openRegisterBtn);
+
+      expect(registerModal.classList.contains('active')).toBe(true);
+    });
+
+    it('should close login modal when close button is clicked', () => {
+      const loginModal = document.getElementById('loginModal');
+      const closeBtn = loginModal.querySelector('.modal-close');
+
+      // Open modal first
+      window.openFormModal('loginModal');
+      expect(loginModal.classList.contains('active')).toBe(true);
+
+      // Close modal
+      fireEvent.click(closeBtn);
+      expect(loginModal.classList.contains('active')).toBe(false);
+    });
+
+    it('should close register modal when close button is clicked', () => {
+      const registerModal = document.getElementById('registerModal');
+      const closeBtn = registerModal.querySelector('.modal-close');
+
+      // Open modal first
+      window.openFormModal('registerModal');
+      expect(registerModal.classList.contains('active')).toBe(true);
+
+      // Close modal
+      fireEvent.click(closeBtn);
+      expect(registerModal.classList.contains('active')).toBe(false);
+    });
+
+    it('should close modal when clicking on overlay', () => {
+      const loginModal = document.getElementById('loginModal');
+      const overlay = loginModal.querySelector('.modal-overlay');
+
+      // Open modal first
+      window.openFormModal('loginModal');
+      expect(loginModal.classList.contains('active')).toBe(true);
+
+      // Click overlay
+      fireEvent.click(overlay);
+      expect(loginModal.classList.contains('active')).toBe(false);
+    });
+
+    it('should close modal when pressing Escape key', () => {
+      const loginModal = document.getElementById('loginModal');
+
+      // Open modal first
+      window.openFormModal('loginModal');
+      expect(loginModal.classList.contains('active')).toBe(true);
+
+      // Press Escape
+      fireEvent.keyDown(document, { key: 'Escape' });
+      expect(loginModal.classList.contains('active')).toBe(false);
+    });
+
+    it('should clear form errors when closing modal', () => {
+      const usernameInput = document.getElementById('loginUsername');
+
+      // Open modal and add error class
+      window.openFormModal('loginModal');
+      usernameInput.classList.add('error');
+      window.showFieldError(usernameInput, 'Test error');
+
+      expect(usernameInput.classList.contains('error')).toBe(true);
+
+      // Close modal
+      window.closeFormModal('loginModal');
+
+      expect(usernameInput.classList.contains('error')).toBe(false);
     });
   });
 
