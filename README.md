@@ -4,6 +4,9 @@
 
 [![CI/CD Pipeline](https://github.com/aa-parky/the_daily_undertaking_ui/actions/workflows/ci.yml/badge.svg)](https://github.com/aa-parky/the_daily_undertaking_ui/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/aa-parky/the_daily_undertaking_ui/branch/main/graph/badge.svg)](https://codecov.io/gh/aa-parky/the_daily_undertaking_ui)
+[![HTML5 Validated](https://img.shields.io/badge/HTML5-Validated-orange.svg)](https://github.com/aa-parky/the_daily_undertaking_ui/actions/workflows/ci.yml)
+[![CSS Lint](https://img.shields.io/badge/CSS-Stylelint%20%E2%9C%93-success.svg)](https://github.com/aa-parky/the_daily_undertaking_ui/actions/workflows/ci.yml)
+[![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/aa-parky/the_daily_undertaking_ui/pulls)
