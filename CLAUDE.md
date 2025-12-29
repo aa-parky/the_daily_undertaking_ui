@@ -42,7 +42,7 @@ Tests are written using Jest with jsdom environment. Test files are located in:
 - `tests/unit/` - Unit tests for individual functions
 - `tests/integration/` - Integration tests for UI interactions
 
-**Note**: Coverage thresholds are disabled because `script.js` is not modularized. Tests verify functionality using inline mocks rather than importing source files, which results in 0% code coverage metrics despite comprehensive test coverage of behavior.
+**Coverage**: Tests achieve **~87% code coverage** by loading the actual `script.js` file in a jsdom environment. The remaining uncovered lines are primarily async callbacks and edge cases.
 
 ### Code Quality
 
@@ -239,7 +239,7 @@ Current test coverage includes:
 - Command input handling (Enter vs Shift+Enter)
 - Menu item active state toggling
 
-**Important**: Since `script.js` is not currently modularized (no exports), tests mock the functions inline rather than importing them. When refactoring for testability, consider exporting functions or using a module pattern.
+**Testing Approach**: Tests load the actual `script.js` file using `require()` in a jsdom environment. The DOM is set up before loading the script, and DOMContentLoaded is triggered to initialize event listeners. Functions are exposed on the `window` object for testing (`window.toggleSection`, `window.openItemModal`, `window.closeItemModal`).
 
 ### CI/CD Pipeline
 

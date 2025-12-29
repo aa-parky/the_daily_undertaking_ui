@@ -163,7 +163,7 @@ npm run test:coverage
 npm run test:watch
 ```
 
-**Test Coverage**: Tests verify all core functionality (10 tests covering modals, sections, commands, inventory, and equipment). Note: Coverage metrics show 0% because `script.js` uses inline mocks rather than module imports—this is intentional for a vanilla JS project.
+**Test Coverage**: Tests achieve **~87% code coverage** by loading the actual `script.js` file in a jsdom environment (11 tests covering modals, sections, commands, inventory, equipment, and keyboard interactions).
 
 **Test Suites**:
 

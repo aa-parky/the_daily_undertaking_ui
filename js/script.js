@@ -91,6 +91,13 @@ function closeItemModal() {
   document.getElementById('itemModal').classList.remove('active');
 }
 
+// Expose functions globally for testing
+if (typeof window !== 'undefined') {
+  window.toggleSection = toggleSection;
+  window.openItemModal = openItemModal;
+  window.closeItemModal = closeItemModal;
+}
+
 // Initialize modal interactions
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('itemModal');
