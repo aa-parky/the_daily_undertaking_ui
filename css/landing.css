@@ -122,10 +122,11 @@ body .container {
   line-height: 1.5;
   color: var(--faded-ink);
   text-align: left;
-  padding: 10px 15px;
+  padding: 8px 15px;
   border: 1px solid var(--light-gray);
   background: rgb(139 115 85 / 3%);
   margin-top: 10px;
+  position: relative;
 }
 
 .editor-message p {
@@ -140,11 +141,22 @@ body .container {
   font-style: italic;
 }
 
+.official-stamp {
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  width: 80px;
+  height: auto;
+  transform: rotate(8deg);
+  z-index: 10;
+  opacity: 0.95;
+}
+
 /* ========== Forms Section ========== */
 .forms-section {
   display: flex;
   gap: 15px;
-  padding: 15px 30px;
+  padding: 4px 30px;
   background: var(--paper);
   justify-content: center;
   align-items: center;
@@ -213,8 +225,8 @@ body .container {
 }
 
 .button-subtext {
-  font-family: 'Special Elite', monospace;
-  font-size: 9px;
+  font-family: Inconsolata, monospace;
+  font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--paper);
