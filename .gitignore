@@ -213,9 +213,8 @@ __marimo__/
 # Pre-commit
 .pre-commit-framework/
 
-# Node modules (if installing ESLint/Prettier locally)
+# Node modules
 node_modules/
-package-lock.json
 
 # Secrets baseline
 .secrets.baseline
