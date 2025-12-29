@@ -19,7 +19,8 @@
     "object-shorthand": "warn",
     "no-shadow": "warn",
     "no-underscore-dangle": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "comma-dangle": ["error", "always-multiline"]
   },
   "overrides": [
     {
