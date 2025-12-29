@@ -321,10 +321,10 @@ function togglePasswordVisibility(toggleButton, passwordInput) {
   const toggleIcon = toggleButton.querySelector('.toggle-icon');
 
   if (passwordInput.type === 'password') {
-    passwordInput.type = 'text';
+    passwordInput.setAttribute('type', 'text');
     toggleIcon.textContent = '⚫';
   } else {
-    passwordInput.type = 'password';
+    passwordInput.setAttribute('type', 'password');
     toggleIcon.textContent = '👁';
   }
 }
@@ -453,7 +453,7 @@ async function handleLoginSubmit(event) {
   showLoadingModal('Submitting credentials to the Bureau...');
 
   try {
-    const result = await authenticateUser(username, password);
+    const result = await window.authenticateUser(username, password);
 
     if (result.success) {
       // Store token
@@ -538,14 +538,14 @@ async function handleRegisterSubmit(event) {
   showLoadingModal('Processing enrollment documentation...');
 
   try {
-    const result = await registerUser(username, email, password);
+    const result = await window.registerUser(username, email, password);
 
     if (result.success) {
       // Show success and auto-login
       showSuccessModal('Enrollment successful! Logging you in...');
 
       // Simulate auto-login
-      const loginResult = await authenticateUser(username, password);
+      const loginResult = await window.authenticateUser(username, password);
 
       if (loginResult.success) {
         localStorage.setItem('authToken', loginResult.token);
