@@ -1,0 +1,412 @@
+/* Daily News Page Styles
+ * Extends base styles from styles.css
+ * Maintains vintage newspaper aesthetic
+ */
+
+/* ===========================
+   MASTHEAD NAVIGATION
+   =========================== */
+
+.masthead-nav {
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 2px solid var(--newsprint-black);
+  text-align: center;
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.nav-link {
+  color: var(--newsprint-black);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 4px 8px;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background: var(--newsprint-black);
+  color: var(--paper);
+}
+
+.nav-link.active {
+  background: var(--newsprint-black);
+  color: var(--paper);
+}
+
+.nav-separator {
+  margin: 0 8px;
+  color: var(--ink-gray);
+}
+
+/* ===========================
+   NEWS CONTENT LAYOUT
+   =========================== */
+
+.news-content {
+  margin-top: 25px;
+}
+
+/* ===========================
+   LEAD STORY
+   =========================== */
+
+.lead-story {
+  border: 3px double var(--newsprint-black);
+  padding: 25px 30px;
+  margin-bottom: 25px;
+  background: var(--paper);
+  box-shadow:
+    inset 0 0 0 1px var(--newsprint-black),
+    3px 3px 0 rgb(43 43 43 / 15%);
+}
+
+.story-title {
+  font-family: Cinzel, serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 12px;
+  color: var(--newsprint-black);
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.story-byline {
+  font-family: 'Special Elite', cursive;
+  font-size: 10px;
+  text-align: center;
+  color: var(--ink-gray);
+  margin: 0 0 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.story-content {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--newsprint-black);
+  column-count: 2;
+  column-gap: 30px;
+  text-align: justify;
+}
+
+.story-content p {
+  margin: 0 0 14px;
+}
+
+.story-content p:last-child {
+  margin-bottom: 0;
+}
+
+.dateline {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.story-cta {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid var(--ink-gray);
+  text-align: center;
+}
+
+.play-button {
+  display: inline-block;
+  background: var(--newsprint-black);
+  color: var(--paper);
+  font-family: Cinzel, serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 32px;
+  border: 2px solid var(--newsprint-black);
+  box-shadow: 3px 3px 0 rgb(43 43 43 / 25%);
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.play-button:hover {
+  background: var(--paper);
+  color: var(--newsprint-black);
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 rgb(43 43 43 / 25%);
+}
+
+/* ===========================
+   WORLD NEWS GRID
+   =========================== */
+
+.world-news-section {
+  margin-bottom: 25px;
+}
+
+.section-title {
+  font-family: Cinzel, serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0 0 20px;
+  padding: 10px 0;
+  border-top: 3px double var(--newsprint-black);
+  border-bottom: 3px double var(--newsprint-black);
+  color: var(--newsprint-black);
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.news-item {
+  border: 2px solid var(--newsprint-black);
+  padding: 15px;
+  background: var(--paper);
+  transition: all 0.2s ease;
+}
+
+.news-item:hover {
+  box-shadow: 3px 3px 0 rgb(43 43 43 / 15%);
+  transform: translate(-1px, -1px);
+}
+
+.news-title {
+  font-family: Cinzel, serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 10px;
+  color: var(--newsprint-black);
+  border-bottom: 1px solid var(--ink-gray);
+  padding-bottom: 8px;
+}
+
+.news-excerpt {
+  font-family: 'EB Garamond', serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-gray);
+  margin: 0;
+  text-align: justify;
+}
+
+/* ===========================
+   COLLAPSIBLE SECTIONS
+   =========================== */
+
+.collapsible-section {
+  margin-bottom: 20px;
+}
+
+.section-header {
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 12px 20px;
+  background: var(--newsprint-black);
+  color: var(--paper);
+  border: 3px solid var(--newsprint-black);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  text-align: center;
+  position: relative;
+}
+
+.section-header:hover {
+  background: var(--ink-gray);
+  border-color: var(--ink-gray);
+}
+
+.toggle-arrow {
+  position: absolute;
+  left: 20px;
+  transition: transform 0.3s ease;
+}
+
+.section-header:not(.collapsed) .toggle-arrow {
+  transform: rotate(90deg);
+}
+
+.section-content {
+  max-height: 500px;
+  overflow: hidden;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease,
+    padding 0.3s ease;
+  border: 2px solid var(--newsprint-black);
+  border-top: none;
+  background: var(--paper);
+  padding: 20px;
+  opacity: 1;
+}
+
+.section-content.collapsed {
+  max-height: 0;
+  padding: 0 20px;
+  opacity: 0;
+  border: none;
+}
+
+/* ===========================
+   ARCHIVES LIST
+   =========================== */
+
+.archive-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.archive-item {
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(43 43 43 / 15%);
+  display: flex;
+  gap: 15px;
+  align-items: baseline;
+}
+
+.archive-item:last-child {
+  border-bottom: none;
+}
+
+.archive-date {
+  font-family: 'Special Elite', cursive;
+  font-size: 10px;
+  color: var(--ink-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 100px;
+}
+
+.archive-link {
+  font-family: 'EB Garamond', serif;
+  font-size: 14px;
+  color: var(--newsprint-black);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  flex: 1;
+}
+
+.archive-link:hover {
+  color: var(--ink-gray);
+  text-decoration: underline;
+}
+
+/* ===========================
+   LEADERBOARD TABLE
+   =========================== */
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'EB Garamond', serif;
+}
+
+.leaderboard-table thead {
+  background: var(--newsprint-black);
+  color: var(--paper);
+}
+
+.leaderboard-table th {
+  padding: 12px 10px;
+  text-align: left;
+  font-family: Cinzel, serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-right: 1px solid rgb(255 255 255 / 20%);
+}
+
+.leaderboard-table th:last-child {
+  border-right: none;
+}
+
+.rank-col {
+  width: 60px;
+  text-align: center;
+}
+
+.name-col {
+  width: 180px;
+}
+
+.score-col {
+  width: 100px;
+  text-align: right;
+}
+
+.achievement-col {
+  /* Flexible width */
+}
+
+.leaderboard-entry {
+  border-bottom: 1px solid rgb(43 43 43 / 15%);
+  transition: background 0.2s ease;
+}
+
+.leaderboard-entry:hover {
+  background: rgb(43 43 43 / 5%);
+}
+
+.leaderboard-entry:last-child {
+  border-bottom: none;
+}
+
+.leaderboard-table td {
+  padding: 10px;
+  font-size: 13px;
+  color: var(--newsprint-black);
+}
+
+.leaderboard-table .rank {
+  text-align: center;
+  font-family: 'Courier Prime', monospace;
+  font-weight: 700;
+  color: var(--ink-gray);
+}
+
+.leaderboard-table .name {
+  font-family: Cinzel, serif;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.leaderboard-table .score {
+  text-align: right;
+  font-family: 'Courier Prime', monospace;
+  font-weight: 700;
+}
+
+.leaderboard-table .achievement {
+  font-style: italic;
+  color: var(--ink-gray);
+}
+
+/* ===========================
+   RESPONSIVE ADJUSTMENTS
+   =========================== */
+
+/* Reduce columns on narrower layouts if container is ever made responsive */
+@media (width <= 1100px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .story-content {
+    column-count: 1;
+  }
+}

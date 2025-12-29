@@ -122,7 +122,7 @@ jobs:
       - name: Check HTML validity
         run: |
           pip install html5lib
-          python3 -c "import html5lib; html5lib.parse(open('index.html').read())"
+          python3 -c "import html5lib; html5lib.parse(open('daily.html').read()); html5lib.parse(open('landing.html').read()); html5lib.parse(open('game.html').read())"
 
   results:
     name: CI Results Summary

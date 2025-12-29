@@ -18,7 +18,7 @@ npm run dev
 # Then visit http://localhost:8000
 
 # Or open in browser directly
-open index.html
+open daily.html
 
 # Or use Python directly
 python3 -m http.server 8000
@@ -74,9 +74,18 @@ The project uses:
 
 ```
 /
-├── index.html              # Main UI structure and layout
-├── css/styles.css          # Newspaper-themed styling
-├── js/script.js            # Client-side interactivity
+├── daily.html              # Public news page (entry point)
+├── landing.html            # Login/registration page
+├── game.html               # Main game interface (authenticated)
+├── index.html              # Redirect stub for backward compatibility
+├── css/
+│   ├── styles.css          # Shared newspaper-themed styling
+│   ├── daily.css           # Daily news page specific styles
+│   └── landing.css         # Landing page specific styles
+├── js/
+│   ├── script.js           # Game interface interactivity
+│   ├── daily.js            # Daily news page interactivity
+│   └── landing.js          # Landing page authentication logic
 ├── assets/
 │   ├── images/
 │   │   ├── characters/     # Character portraits
@@ -102,7 +111,7 @@ The project uses:
 
 ### UI Layout System
 
-The interface uses a **3-column grid layout** defined in `index.html`:
+The game interface uses a **3-column grid layout** defined in `game.html`:
 
 1. **Left Panel (315px)**: Character information
    - Portrait display (from `assets/images/characters/`)

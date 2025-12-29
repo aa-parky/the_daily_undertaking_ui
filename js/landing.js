@@ -404,7 +404,7 @@ function redirectToGame() {
     }
     return;
   }
-  window.location.href = 'index.html';
+  window.location.href = 'game.html';
 }
 
 // ========== Form Handlers ==========

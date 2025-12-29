@@ -18,6 +18,8 @@ Built entirely with vanilla HTML, CSS, and JavaScript—no frameworks, no build 
 
 ## ✨ Features
 
+- **📰 Public News Page** - Read-only daily news feed with headlines, world lore, archives, and leaderboards—no login required
+- **🔐 Authentication System** - Login and registration pages with form validation and demo credentials
 - **🎨 Vintage Newspaper Design** - Authentic period typography and layout inspired by early 20th-century broadsheets
 - **📜 Interactive Fiction Engine** - Text-based adventure with command input and rich narrative responses
 - **🎒 Inventory System** - Visual 3x3 grid inventory with item details and descriptions
@@ -58,8 +60,8 @@ npm run dev
 **Option 2: Direct Browser**
 
 ```bash
-open index.html
-# or double-click index.html in your file browser
+open daily.html
+# or double-click daily.html in your file browser
 ```
 
 **Option 3: Python Simple Server**
@@ -104,13 +106,28 @@ npm run pre-commit          # Run all pre-commit hooks
 
 ### Project Structure
 
+The application uses a three-page architecture:
+
+1. **daily.html** - Public news page (entry point, no authentication)
+2. **landing.html** - Login and registration page
+3. **game.html** - Main game interface (authenticated gameplay)
+
+**Navigation Flow**: daily.html → landing.html → game.html
+
 ```
 the_daily_undertaking_ui/
-├── index.html              # Main UI structure (3-column layout)
+├── daily.html              # Public news page (entry point)
+├── landing.html            # Login/registration page
+├── game.html               # Main game interface (3-column layout)
+├── index.html              # Redirect stub for backward compatibility
 ├── css/
-│   └── styles.css          # Newspaper-themed styling
+│   ├── styles.css          # Shared newspaper-themed styling
+│   ├── daily.css           # Daily news page specific styles
+│   └── landing.css         # Landing page specific styles
 ├── js/
-│   └── script.js           # Client-side interactivity
+│   ├── script.js           # Game interface interactivity
+│   ├── daily.js            # Daily news page interactivity
+│   └── landing.js          # Landing page authentication logic
 ├── assets/
 │   ├── images/
 │   │   ├── characters/     # Character portraits
