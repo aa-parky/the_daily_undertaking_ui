@@ -118,7 +118,13 @@
     </div>
 
     <!-- Login Form Modal -->
-    <div id="loginModal" class="form-modal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+    <div
+      id="loginModal"
+      class="form-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="loginModalTitle"
+    >
       <div class="modal-overlay"></div>
       <div class="classified-ad login-ad modal-form">
         <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
@@ -130,62 +136,64 @@
         <h3 class="classified-header" id="loginModalTitle">Adventurer Registry</h3>
         <p class="classified-subtext">For Returning Correspondents</p>
 
-          <form id="loginForm" novalidate>
-            <div class="form-group">
-              <label for="loginUsername" class="form-label">Registry Name</label>
+        <form id="loginForm" novalidate>
+          <div class="form-group">
+            <label for="loginUsername" class="form-label">Registry Name</label>
+            <input
+              type="text"
+              id="loginUsername"
+              name="username"
+              class="form-input"
+              placeholder="As it appears in the ledger"
+              autocomplete="username"
+              required
+              aria-describedby="loginUsernameError"
+            />
+            <div id="loginUsernameError" class="field-error" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword" class="form-label">Authentication Cipher</label>
+            <div class="password-wrapper">
               <input
-                type="text"
-                id="loginUsername"
-                name="username"
+                type="password"
+                id="loginPassword"
+                name="password"
                 class="form-input"
-                placeholder="As it appears in the ledger"
-                autocomplete="username"
+                placeholder="Known only to you and the Bureau"
+                autocomplete="current-password"
                 required
-                aria-describedby="loginUsernameError"
+                aria-describedby="loginPasswordError"
               />
-              <div id="loginUsernameError" class="field-error" role="alert"></div>
+              <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                <span class="toggle-icon">👁</span>
+              </button>
             </div>
+            <div id="loginPasswordError" class="field-error" role="alert"></div>
+          </div>
 
-            <div class="form-group">
-              <label for="loginPassword" class="form-label">Authentication Cipher</label>
-              <div class="password-wrapper">
-                <input
-                  type="password"
-                  id="loginPassword"
-                  name="password"
-                  class="form-input"
-                  placeholder="Known only to you and the Bureau"
-                  autocomplete="current-password"
-                  required
-                  aria-describedby="loginPasswordError"
-                />
-                <button
-                  type="button"
-                  class="password-toggle"
-                  aria-label="Toggle password visibility"
-                >
-                  <span class="toggle-icon">👁</span>
-                </button>
-              </div>
-              <div id="loginPasswordError" class="field-error" role="alert"></div>
-            </div>
+          <div class="form-error" role="alert" aria-live="polite"></div>
 
-            <div class="form-error" role="alert" aria-live="polite"></div>
+          <button type="submit" class="submit-button">
+            <span class="button-text">Enter Registry</span>
+          </button>
 
-            <button type="submit" class="submit-button">
-              <span class="button-text">Enter Registry</span>
-            </button>
-
-            <p class="form-footnote">
-              Credentials misplaced? The Bureau regrets to inform you that memory recovery services
-              are currently experiencing unprecedented volumes. Please try the obvious first.
-            </p>
-          </form>
+          <p class="form-footnote">
+            Credentials misplaced? The Bureau regrets to inform you that memory recovery services
+            are currently experiencing unprecedented volumes. Please try the obvious first.
+          </p>
+        </form>
       </div>
     </div>
 
     <!-- Registration Form Modal -->
-    <div id="registerModal" class="form-modal" role="dialog" aria-modal="true" aria-labelledby="registerModalTitle">
+    <div
+      id="registerModal"
+      class="form-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="registerModalTitle"
+    >
       <div class="modal-overlay"></div>
       <div class="classified-ad register-ad modal-form">
         <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
@@ -197,105 +205,97 @@
         <h3 class="classified-header" id="registerModalTitle">New Subscriber Enrollment</h3>
         <p class="classified-subtext">First-Time Petitioners Welcome</p>
 
-          <form id="registerForm" novalidate>
-            <div class="form-group">
-              <label for="registerUsername" class="form-label">Desired Registry Name</label>
+        <form id="registerForm" novalidate>
+          <div class="form-group">
+            <label for="registerUsername" class="form-label">Desired Registry Name</label>
+            <input
+              type="text"
+              id="registerUsername"
+              name="username"
+              class="form-input"
+              placeholder="3-20 characters, choose wisely"
+              autocomplete="username"
+              required
+              aria-describedby="registerUsernameError"
+            />
+            <div id="registerUsernameError" class="field-error" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="registerEmail" class="form-label">Postal Telegraph Address</label>
+            <input
+              type="email"
+              id="registerEmail"
+              name="email"
+              class="form-input"
+              placeholder="For official correspondence only"
+              autocomplete="email"
+              required
+              aria-describedby="registerEmailError"
+            />
+            <div id="registerEmailError" class="field-error" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="registerPassword" class="form-label">Authentication Cipher</label>
+            <div class="password-wrapper">
               <input
-                type="text"
-                id="registerUsername"
-                name="username"
+                type="password"
+                id="registerPassword"
+                name="password"
                 class="form-input"
-                placeholder="3-20 characters, choose wisely"
-                autocomplete="username"
+                placeholder="Minimum 8 characters, adequately complex"
+                autocomplete="new-password"
                 required
-                aria-describedby="registerUsernameError"
+                aria-describedby="registerPasswordError registerPasswordStrength"
               />
-              <div id="registerUsernameError" class="field-error" role="alert"></div>
+              <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                <span class="toggle-icon">👁</span>
+              </button>
             </div>
+            <div class="password-strength" id="registerPasswordStrength" aria-live="polite">
+              <div class="strength-bar">
+                <div class="strength-fill" data-strength="none"></div>
+              </div>
+              <div class="strength-text">
+                Cipher strength: <span class="strength-label">Not set</span>
+              </div>
+            </div>
+            <div id="registerPasswordError" class="field-error" role="alert"></div>
+          </div>
 
-            <div class="form-group">
-              <label for="registerEmail" class="form-label">Postal Telegraph Address</label>
+          <div class="form-group">
+            <label for="registerPasswordConfirm" class="form-label">Confirm Cipher</label>
+            <div class="password-wrapper">
               <input
-                type="email"
-                id="registerEmail"
-                name="email"
+                type="password"
+                id="registerPasswordConfirm"
+                name="passwordConfirm"
                 class="form-input"
-                placeholder="For official correspondence only"
-                autocomplete="email"
+                placeholder="Repeat for verification purposes"
+                autocomplete="new-password"
                 required
-                aria-describedby="registerEmailError"
+                aria-describedby="registerPasswordConfirmError"
               />
-              <div id="registerEmailError" class="field-error" role="alert"></div>
+              <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                <span class="toggle-icon">👁</span>
+              </button>
             </div>
+            <div id="registerPasswordConfirmError" class="field-error" role="alert"></div>
+          </div>
 
-            <div class="form-group">
-              <label for="registerPassword" class="form-label">Authentication Cipher</label>
-              <div class="password-wrapper">
-                <input
-                  type="password"
-                  id="registerPassword"
-                  name="password"
-                  class="form-input"
-                  placeholder="Minimum 8 characters, adequately complex"
-                  autocomplete="new-password"
-                  required
-                  aria-describedby="registerPasswordError registerPasswordStrength"
-                />
-                <button
-                  type="button"
-                  class="password-toggle"
-                  aria-label="Toggle password visibility"
-                >
-                  <span class="toggle-icon">👁</span>
-                </button>
-              </div>
-              <div class="password-strength" id="registerPasswordStrength" aria-live="polite">
-                <div class="strength-bar">
-                  <div class="strength-fill" data-strength="none"></div>
-                </div>
-                <div class="strength-text">
-                  Cipher strength: <span class="strength-label">Not set</span>
-                </div>
-              </div>
-              <div id="registerPasswordError" class="field-error" role="alert"></div>
-            </div>
+          <div class="form-error" role="alert" aria-live="polite"></div>
 
-            <div class="form-group">
-              <label for="registerPasswordConfirm" class="form-label">Confirm Cipher</label>
-              <div class="password-wrapper">
-                <input
-                  type="password"
-                  id="registerPasswordConfirm"
-                  name="passwordConfirm"
-                  class="form-input"
-                  placeholder="Repeat for verification purposes"
-                  autocomplete="new-password"
-                  required
-                  aria-describedby="registerPasswordConfirmError"
-                />
-                <button
-                  type="button"
-                  class="password-toggle"
-                  aria-label="Toggle password visibility"
-                >
-                  <span class="toggle-icon">👁</span>
-                </button>
-              </div>
-              <div id="registerPasswordConfirmError" class="field-error" role="alert"></div>
-            </div>
+          <button type="submit" class="submit-button">
+            <span class="button-text">Submit Enrollment</span>
+          </button>
 
-            <div class="form-error" role="alert" aria-live="polite"></div>
-
-            <button type="submit" class="submit-button">
-              <span class="button-text">Submit Enrollment</span>
-            </button>
-
-            <p class="form-footnote">
-              By enrolling, you acknowledge that adventures may occur without warning and that The
-              Daily Undertaking assumes no responsibility for items acquired, realities misplaced,
-              or Tuesdays experienced out of sequence.
-            </p>
-          </form>
+          <p class="form-footnote">
+            By enrolling, you acknowledge that adventures may occur without warning and that The
+            Daily Undertaking assumes no responsibility for items acquired, realities misplaced, or
+            Tuesdays experienced out of sequence.
+          </p>
+        </form>
       </div>
     </div>
 
