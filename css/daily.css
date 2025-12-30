@@ -1,28 +1,12 @@
-/* CSS Variables for Theme */
-:root {
-  --bg-color: #f2efe9;
-  --text-color: #1a1a1a;
-  --border-color: #2c2c2c;
-  --accent-color: #8b0000;
-  --muted-color: #d6d1c7;
-  --font-masthead: 'IM Fell English SC', serif;
+/* ========================================
+   DAILY NEWSPAPER - PAGE-SPECIFIC STYLES
+   ======================================== */
 
-  /* --font-headline: 'Cinzel', serif; */
-  --font-headline: 'Libre Baskerville', serif;
-  --font-subhead: 'Special Elite', monospace;
-
-  /* --font-body: 'EB Garamond', serif; */
-  --font-body: 'Crimson Text', serif;
-  --font-mono: 'Courier Prime', monospace;
-  --font-data: 'Inconsolata', monospace;
-}
-
-/* Reset & Base Styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/*
+ * This file contains styles specific to the daily newspaper page.
+ * Shared variables, resets, and utilities are loaded from styles.css.
+ * CSS Variables used: defined in styles.css :root
+ */
 
 body {
   background-color: var(--bg-color);
@@ -51,30 +35,9 @@ body {
   }
 }
 
-/* Typography Utilities */
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-justify {
-  text-align: justify;
-}
-
-.uppercase {
-  text-transform: uppercase;
-}
-
-.font-bold {
-  font-weight: bold;
-}
-
-.italic {
-  font-style: italic;
-}
+/* ========================================
+   DAILY NEWSPAPER COMPONENTS
+   ======================================== */
 
 /* Header / Masthead */
 header {

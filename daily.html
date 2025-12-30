@@ -18,6 +18,9 @@
     />
 
     <!-- Stylesheets -->
+    <!-- Load shared base styles first (variables, utilities only) -->
+    <link rel="stylesheet" href="css/shared-base.css" />
+    <!-- Load page-specific styles second (layout and components) -->
     <link rel="stylesheet" href="css/daily.css" />
   </head>
   <body>
@@ -27,7 +30,7 @@
         <div class="masthead-top">
           <div class="edition-info">Today's Edition</div>
           <h1 class="masthead-title">The Daily Undertaking</h1>
-          <div style="position: relative">
+          <div class="daily-position-relative">
             <div class="free-stamp">FREE!</div>
             <div class="edition-info">YESTERDAY, REFILED</div>
           </div>
@@ -75,8 +78,7 @@
             <img
               src="assets/images/characters/orrin_pike_sitting.png"
               alt="Orrin Pike"
-              class="float-img"
-              style="height: 200px; object-position: 65% 35%"
+              class="float-img daily-img--orrin-crop"
             />
             <div class="caption">Orrin Pike, Risk Warden of the UU</div>
           </div>
@@ -122,16 +124,7 @@
 
           <div class="divider-text">----------------------------------------</div>
 
-          <h4
-            style="
-              font-family: var(--font-mono);
-              font-weight: bold;
-              text-transform: uppercase;
-              margin-bottom: 0.5rem;
-            "
-          >
-            The Mistress of Mayhem
-          </h4>
+          <h4 class="daily-character__title">The Mistress of Mayhem</h4>
 
           <!-- Table Section -->
           <div class="table-section">
@@ -140,29 +133,12 @@
               <img
                 src="assets/images/characters/mistress_mayhem_standing.png"
                 alt="Mistress of Mayhem"
-                style="
-                  width: 100%;
-                  height: 100%;
-                  object-fit: cover;
-                  object-position: 10% 80%;
-                  filter: grayscale(100%) contrast(125%) sepia(30%);
-                "
+                class="daily-img--mistress-crop"
               />
             </div>
             <div class="table-content-col">
-              <h5
-                style="
-                  font-weight: bold;
-                  border-bottom: 1px solid var(--border-color);
-                  padding-bottom: 4px;
-                  margin-bottom: 8px;
-                "
-              >
-                Registry of Notable Mis-Adventures
-              </h5>
-              <p style="font-style: italic; font-size: 0.75rem; margin-bottom: 1rem">
-                Filed for reference, not encouragement.
-              </p>
+              <h5 class="daily-registry__title">Registry of Notable Mis-Adventures</h5>
+              <p class="daily-registry__description">Filed for reference, not encouragement.</p>
 
               <table>
                 <thead>
@@ -267,15 +243,15 @@
           <!-- Pipeworks Status -->
           <section>
             <h3 class="section-title">PIPEWORKS STATUS</h3>
-            <div style="font-family: var(--font-data)">
-              <p style="margin-bottom: 4px"><span class="font-bold">Pressure:</span> nominal</p>
-              <p style="margin-bottom: 4px">
+            <div class="daily-pipeworks">
+              <p class="daily-pipeworks__item"><span class="font-bold">Pressure:</span> nominal</p>
+              <p class="daily-pipeworks__item">
                 <span class="font-bold">Flow:</span> uneven but honest
               </p>
-              <p style="margin-bottom: 4px">
+              <p class="daily-pipeworks__item">
                 <span class="font-bold">Vibrations:</span> being monitored
               </p>
-              <p style="margin-bottom: 4px">
+              <p class="daily-pipeworks__item">
                 <span class="font-bold">Interpretation:</span> ongoing
               </p>
             </div>
@@ -286,7 +262,7 @@
           <!-- Found / Misplaced -->
           <section>
             <h3 class="section-title">FOUND / MISPLACED</h3>
-            <ul class="sidebar-list" style="list-style-type: square">
+            <ul class="sidebar-list daily-list--square">
               <li><span class="font-bold">Found:</span> One brass washer. Warm.</li>
               <li><span class="font-bold">Misplaced:</span> Confidence in the west conduit.</li>
               <li><span class="font-bold">Returned:</span> A key, having learned nothing.</li>
@@ -298,7 +274,7 @@
           <!-- Market & Provisions -->
           <section>
             <h3 class="section-title">MARKET & PROVISIONS</h3>
-            <ul class="sidebar-list" style="list-style-type: square">
+            <ul class="sidebar-list daily-list--square">
               <li>Root vegetables: present</li>
               <li>Cloth: thinner than advertised</li>
               <li>Advice: plentiful</li>
@@ -311,7 +287,7 @@
           <!-- Weather -->
           <section>
             <h3 class="section-title">WEATHER (Filed Late)</h3>
-            <ul class="sidebar-list" style="list-style-type: square">
+            <ul class="sidebar-list daily-list--square">
               <li>Morning: Damp, unresolved</li>
               <li>Afternoon: Wind with intent</li>
               <li>Evening: Bell-related</li>
@@ -323,7 +299,7 @@
           <!-- Tomorrow -->
           <section>
             <h3 class="section-title">TOMORROW'S UNDERTAKING</h3>
-            <ul class="sidebar-list" style="list-style-type: square">
+            <ul class="sidebar-list daily-list--square">
               <li>Further clarification expected.</li>
               <li>Delays anticipated.</li>
               <li>Normal service unlikely.</li>
