@@ -68,6 +68,7 @@
   --font-body: 'Crimson Text', serif;
   --font-mono: 'Courier Prime', monospace;
   --font-data: 'Inconsolata', monospace;
+  --font-editorial: 'Libre Baskerville', serif;
 
   /* Alternate fonts for game/landing usage */
   --font-cinzel: 'Cinzel', serif;
@@ -111,6 +112,19 @@
 
 .italic {
   font-style: italic;
+}
+
+/* =================================================
+  Typographic Marks & Editorial Symbols Reference
+   ================================================= */
+
+/* The marker: editorial, print-feeling */
+.quest-title .marker {
+  font-family: var(--font-editorial); /* e.g. IM Fell, Libre Baskerville */
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--newsprint-black);
+  flex-shrink: 0;
 }
 
 /* ========================================

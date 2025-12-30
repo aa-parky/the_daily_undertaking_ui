@@ -587,9 +587,9 @@ body {
 }
 
 .quest-title {
-  font-family: 'Special Elite', monospace;
-  font-size: 10px;
-  font-weight: 400;
+  font-family: var(--font-data);
+  font-size: 12px;
+  font-weight: 600;
   color: var(--newsprint-black);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -623,16 +623,16 @@ body {
 }
 
 .skill-name {
-  font-family: 'Special Elite', monospace;
-  font-size: 10px;
-  font-weight: 400;
+  font-family: var(--font-data);
+  font-size: 12px;
+  font-weight: 600;
   color: var(--newsprint-black);
   text-transform: uppercase;
   margin-bottom: 3px;
 }
 
 .skill-level {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Courier Prime', monospace;
   font-size: 11px;
   color: var(--faded-ink);
 }
