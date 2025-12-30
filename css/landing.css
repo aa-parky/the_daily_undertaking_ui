@@ -3,18 +3,15 @@
    Vintage Newspaper Aesthetic
    ======================================== */
 
-/* ========== Color Variables ========== */
-:root {
-  /* Inherited from styles.css */
-  --paper: #f5f1e8;
-  --paper-dark: #ebe5d6;
-  --newsprint-black: #2b2b2b;
-  --ink-gray: #404040;
-  --faded-ink: #5a5a5a;
-  --light-gray: #c8c4b8;
-  --shadow: rgb(43 43 43 / 15%);
+/*
+ * This file contains styles specific to the landing/authentication page.
+ * Shared variables, resets, and utilities are loaded from shared-base.css.
+ * Base colors, typography, and utilities: see shared-base.css
+ */
 
-  /* Landing page specific */
+/* ========== Landing-Specific Color Variables ========== */
+:root {
+  /* Form & authentication colors (landing-specific) */
   --accent-gold: #a67c52;
   --error-red: #8b4545;
   --success-green: #5a7353;
@@ -22,10 +19,22 @@
   --medium-blue: #4a6b7c;
 }
 
-/* ========== Container Override ========== */
-body .container {
+/* ========== Landing Page Layout ========== */
+
+body {
+  font-family: var(--font-garamond);
+  background: var(--color-page-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.container {
   width: 1250px;
-  height: 590px; /* Original height */
+  height: 590px;
   margin: 30px auto;
   padding: 0;
   background: var(--paper);
@@ -601,7 +610,7 @@ body .container {
 
 /* Form footnote */
 .form-footnote {
-  font-family: 'EB Garadam', serif;
+  font-family: var(--font-garamond);
   font-size: 9px;
   font-style: italic;
   line-height: 1.4;

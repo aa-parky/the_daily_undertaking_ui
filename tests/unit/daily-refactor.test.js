@@ -48,18 +48,21 @@ describe('Daily.html CSS Refactoring - Layout Preservation Tests', () => {
   });
 
   describe('CSS Variables - Unified Color System', () => {
-    test('shared-base.css defines daily newspaper color palette', () => {
-      expect(sharedBaseCSS).toContain('--bg-color: #f2efe9');
-      expect(sharedBaseCSS).toContain('--text-color: #1a1a1a');
-      expect(sharedBaseCSS).toContain('--border-color: #2c2c2c');
-      expect(sharedBaseCSS).toContain('--accent-color: #8b0000');
-      expect(sharedBaseCSS).toContain('--muted-color: #d6d1c7');
+    test('shared-base.css defines base color palette with values', () => {
+      expect(sharedBaseCSS).toContain('--color-paper: #f2efe9');
+      expect(sharedBaseCSS).toContain('--color-page-bg: #2a2a2a');
+      expect(sharedBaseCSS).toContain('--color-text: #1a1a1a');
+      expect(sharedBaseCSS).toContain('--color-border: #2c2c2c');
+      expect(sharedBaseCSS).toContain('--color-accent: #8b0000');
+      expect(sharedBaseCSS).toContain('--color-muted: #d6d1c7');
     });
 
-    test('shared-base.css defines game interface color palette', () => {
-      expect(sharedBaseCSS).toContain('--paper: #f5f1e8');
-      expect(sharedBaseCSS).toContain('--newsprint-black: #2b2b2b');
-      expect(sharedBaseCSS).toContain('--ink-gray: #404040');
+    test('shared-base.css defines legacy color aliases', () => {
+      expect(sharedBaseCSS).toContain('--paper: var(--color-paper)');
+      expect(sharedBaseCSS).toContain('--bg-color: var(--color-paper)');
+      expect(sharedBaseCSS).toContain('--newsprint-black: var(--color-border)');
+      expect(sharedBaseCSS).toContain('--ink-gray: var(--color-text-secondary)');
+      expect(sharedBaseCSS).toContain('--text-color: var(--color-text)');
     });
 
     test('daily.css does NOT redefine color variables', () => {

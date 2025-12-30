@@ -19,26 +19,43 @@
 
 :root {
   /* ========================================
-     UNIFIED COLOR SYSTEM
+     UNIFIED COLOR PALETTE
+     All pages use the same color system
      ======================================== */
 
-  /* Game/Landing Color Palette */
-  --paper: #f5f1e8;
-  --paper-dark: #ebe5d6;
-  --newsprint-black: #2b2b2b;
-  --ink-gray: #404040;
-  --faded-ink: #5a5a5a;
-  --light-gray: #c8c4b8;
-  --shadow: rgb(43 43 43 / 15%);
+  /* Primary Colors */
+  --color-paper: #f2efe9; /* Newspaper paper background */
+  --color-page-bg: #2a2a2a; /* Page background (behind paper) */
+  --color-text: #1a1a1a; /* Primary text */
+  --color-border: #2c2c2c; /* Primary borders */
+  --color-accent: #8b0000; /* Accent color (red) */
+  --color-muted: #d6d1c7; /* Muted/secondary color */
 
-  /* Daily Newspaper Color Palette */
+  /* Extended Palette */
+  --color-text-secondary: #4a4a4a; /* Secondary text (kicker, etc) */
+  --color-text-light: #5a5a5a; /* Light text (faded) */
+  --color-text-lighter: #c8c4b8; /* Even lighter text */
+  --color-bg-dark: #ebe5d6; /* Darker background variant */
 
-  /* --bg-color: #f2efe9; */
-  --bg-color: #2a2a2a;
-  --text-color: #1a1a1a;
-  --border-color: #2c2c2c;
-  --accent-color: #8b0000;
-  --muted-color: #d6d1c7;
+  /* Shadows & Effects */
+  --color-shadow: rgb(0 0 0 / 10%); /* Light shadow */
+  --color-shadow-dark: rgb(43 43 43 / 15%); /* Darker shadow */
+  --color-overlay-light: rgb(214 209 199 / 20%); /* Light overlay */
+
+  /* Legacy Aliases (for backward compatibility during transition) */
+  --paper: var(--color-paper);
+  --paper-dark: var(--color-bg-dark);
+  --newsprint-black: var(--color-border);
+  --ink-gray: var(--color-text-secondary);
+  --faded-ink: var(--color-text-light);
+  --light-gray: var(--color-text-lighter);
+  --shadow: var(--color-shadow-dark);
+  --bg-color: var(--color-paper);
+  --text-color: var(--color-text);
+  --border-color: var(--color-border);
+  --accent-color: var(--color-accent);
+  --muted-color: var(--color-muted);
+  --page-bg: var(--color-page-bg);
 
   /* ========================================
      UNIFIED TYPOGRAPHY SYSTEM
@@ -52,7 +69,7 @@
   --font-mono: 'Courier Prime', monospace;
   --font-data: 'Inconsolata', monospace;
 
-  /* Alternate fonts for Cinzel usage in game */
+  /* Alternate fonts for game/landing usage */
   --font-cinzel: 'Cinzel', serif;
   --font-garamond: 'EB Garamond', serif;
 }
@@ -111,7 +128,7 @@
 /* Daily: Registry Section Title */
 .daily-registry__title {
   font-weight: bold;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--color-border);
   padding-bottom: 4px;
   margin-bottom: 8px;
 }
