@@ -429,18 +429,18 @@
     redirectToGame,
   } from '../../js/popup-manager.js';
 
-  // Initialize when DOM is ready
-  document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('dailyRegisterModal');
-    const form = document.getElementById('dailyRegisterForm');
-    const usernameInput = document.getElementById('dailyRegisterUsername');
-    const emailInput = document.getElementById('dailyRegisterEmail');
-    const passwordInput = document.getElementById('dailyRegisterPassword');
-    const confirmPasswordInput = document.getElementById('dailyRegisterPasswordConfirm');
-    const strengthIndicator = document.getElementById('dailyRegisterPasswordStrength');
-    const closeBtn = modal.querySelector('.modal-close');
-    const passwordToggles = modal.querySelectorAll('.password-toggle');
+  // Initialize immediately (popup is loaded dynamically after DOM is ready)
+  const modal = document.getElementById('dailyRegisterModal');
+  const form = document.getElementById('dailyRegisterForm');
+  const usernameInput = document.getElementById('dailyRegisterUsername');
+  const emailInput = document.getElementById('dailyRegisterEmail');
+  const passwordInput = document.getElementById('dailyRegisterPassword');
+  const confirmPasswordInput = document.getElementById('dailyRegisterPasswordConfirm');
+  const strengthIndicator = document.getElementById('dailyRegisterPasswordStrength');
+  const closeBtn = modal?.querySelector('.modal-close');
+  const passwordToggles = modal?.querySelectorAll('.password-toggle');
 
+  if (modal && form && usernameInput && emailInput && passwordInput && confirmPasswordInput) {
     // Attach field validation
     if (usernameInput) {
       attachFieldValidation(usernameInput, validateUsername);
@@ -568,15 +568,17 @@
     });
 
     // Password toggles
-    passwordToggles.forEach((toggle) => {
-      toggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        const wrapper = toggle.closest('.password-wrapper');
-        const input = wrapper.querySelector('input[type="password"], input[type="text"]');
-        if (input) {
-          togglePasswordVisibility(toggle, input);
-        }
+    if (passwordToggles) {
+      passwordToggles.forEach((toggle) => {
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          const wrapper = toggle.closest('.password-wrapper');
+          const input = wrapper.querySelector('input[type="password"], input[type="text"]');
+          if (input) {
+            togglePasswordVisibility(toggle, input);
+          }
+        });
       });
-    });
-  });
+    }
+  }
 </script>

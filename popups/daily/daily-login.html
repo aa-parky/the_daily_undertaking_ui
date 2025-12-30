@@ -327,15 +327,15 @@
     redirectToGame,
   } from '../../js/popup-manager.js';
 
-  // Initialize when DOM is ready
-  document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('dailyLoginModal');
-    const form = document.getElementById('dailyLoginForm');
-    const usernameInput = document.getElementById('dailyLoginUsername');
-    const passwordInput = document.getElementById('dailyLoginPassword');
-    const closeBtn = modal.querySelector('.modal-close');
-    const passwordToggle = modal.querySelector('.password-toggle');
+  // Initialize immediately (popup is loaded dynamically after DOM is ready)
+  const modal = document.getElementById('dailyLoginModal');
+  const form = document.getElementById('dailyLoginForm');
+  const usernameInput = document.getElementById('dailyLoginUsername');
+  const passwordInput = document.getElementById('dailyLoginPassword');
+  const closeBtn = modal?.querySelector('.modal-close');
+  const passwordToggle = modal?.querySelector('.password-toggle');
 
+  if (modal && form && usernameInput && passwordInput) {
     // Attach field validation
     if (usernameInput) {
       attachFieldValidation(usernameInput, validateUsername);
@@ -429,5 +429,5 @@
         togglePasswordVisibility(passwordToggle, passwordInput);
       });
     }
-  });
+  }
 </script>
