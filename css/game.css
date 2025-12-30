@@ -213,12 +213,6 @@ body {
   object-fit: cover;
 }
 
-/* .character-portrait::before {
-    content: '🫣';
-    position: relative;
-    z-index: 2;
-} */
-
 .stat-group {
   margin-bottom: 6px;
   display: flex;
@@ -252,7 +246,7 @@ body {
 }
 
 .character-article {
-  font-family: 'Courier Prime', monospace;
+  font-family: var(--font-mono);
   font-size: 13px;
   line-height: 1.6;
   color: var(--newsprint-black);
@@ -350,7 +344,7 @@ body {
   margin: 15px;
   padding: 15px;
   overflow-y: auto;
-  font-family: Inconsolata, monospace;
+  font-family: var(--font-mono);
   font-size: 14px;
   line-height: 1.7;
   color: var(--paper);
@@ -597,7 +591,7 @@ body {
 }
 
 .quest-description {
-  font-family: 'EB Garamond', serif;
+  font-family: var(--font-data);
   font-size: 12px;
   color: var(--faded-ink);
   line-height: 1.4;
@@ -709,7 +703,7 @@ body {
 }
 
 .equipment-description {
-  font-family: 'EB Garamond', serif;
+  font-family: var(--font-data);
   font-size: 11px;
   color: var(--faded-ink);
   line-height: 1.3;
