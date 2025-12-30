@@ -18,300 +18,319 @@
     />
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/daily.css" />
   </head>
   <body>
     <div class="container">
-      <!-- Masthead with Navigation -->
-      <header class="masthead">
-        <h1 class="title">The Daily Undertaking</h1>
-        <div class="subtitle">
-          Chronicle of Adventures &bull; Est. <span id="currentYear"></span> &bull; Volume ∞, No. π
+      <!-- Header -->
+      <header>
+        <div class="masthead-top">
+          <div class="edition-info">Today's Edition</div>
+          <h1 class="masthead-title">The Daily Undertaking</h1>
+          <div style="position: relative">
+            <div class="free-stamp">FREE!</div>
+            <div class="edition-info">Enter the World</div>
+          </div>
         </div>
-        <nav class="masthead-nav">
-          <a href="daily.html" class="nav-link active">Today's Edition</a>
-          <span class="nav-separator">|</span>
-          <a href="landing.html" class="nav-link">Play Adventure</a>
-        </nav>
+
+        <div class="meta-bar">
+          <span>Chronicle of Adventures - Est. 2025</span>
+          <span>Vol. IV, No. 82</span>
+          <span>Price: One Copper</span>
+        </div>
       </header>
 
-      <!-- Main News Content -->
-      <main class="news-content">
-        <!-- Today's Headline Story -->
-        <section class="lead-story">
-          <h2 class="story-title">
-            Registry Ink Develops Sentience; Bureau Declares Situation "Mostly Harmless"
-          </h2>
-          <p class="story-byline">By The Editor | <span id="currentDate"></span></p>
+      <!-- Main Headline -->
+      <section class="headline-section">
+        <div class="kicker">The UU Commit to Pipeworks Project...</div>
+        <h1 class="main-headline">Undermine Undertakers OnBoard!</h1>
+        <div class="separator-line"></div>
+        <div class="deck">A long-term effort to record what goes wrong, and why it mattered</div>
+      </section>
 
-          <div class="story-content">
-            <p>
-              <strong class="dateline">BUREAU HEADQUARTERS —</strong> Officials at the Bureau of
-              Undertakings confirmed today that the ink used in the official Registry has begun
-              exhibiting what they describe as "unprecedented levels of opiniolatedness." Several
-              adventurers attempting to sign in yesterday reported that their names had been
-              corrected for spelling, rearranged for aesthetic purposes, and in one case, replaced
-              entirely with the suggestion "perhaps something more heroic?"
-            </p>
+      <!-- Content Grid -->
+      <div class="content-grid">
+        <!-- Main Article (Left) -->
+        <main class="article-column">
+          <div class="byline">By Murnel Thatchwick, Staff Correspondent</div>
 
-            <p>
-              Chief Registrar Ambrose Quill issued a statement reassuring citizens that the
-              situation is under control, provided one defines "control" as "watching carefully
-              while taking extensive notes." The ink, sourced from what was believed to be a
-              perfectly ordinary squid, has apparently been infused with residual magic from years
-              of documenting improbable adventures.
-            </p>
+          <p>
+            <span class="drop-cap">T</span>he Undermine Undertakers confirmed this week that they
+            have formally committed to the Pipeworks Project, an ongoing effort to document
+            practical failures, near-misses, misunderstandings, and "things that seemed like a good
+            idea at the time."
+          </p>
 
-            <p>
-              "We always knew the Registry had character," explained Deputy Clerk Millicent Brass,
-              who discovered the phenomenon when her ledger corrected her handwriting mid-sentence.
-              "We just didn't expect it to have <em>opinions</em> about character development."
-            </p>
+          <p>
+            The project, which will be maintained in ledger form and updated as circumstances allow,
+            is not intended to prevent mistakes entirely. Instead, it aims to make them legible. "A
+            failure that can be read is a failure that can be survived," said one Undertaker,
+            speaking from behind a stack of damp papers that were, at one point, thought to be a
+            map.
+          </p>
 
-            <p>
-              The Bureau has ruled that all signatures made in the affected ink remain legally
-              binding, even if they now include unsolicited editorial commentary in the margins.
-              Adventurers are advised to argue politely if their credentials are questioned, as the
-              ink appears to respond well to constructive criticism and poorly to aggressive erasure
-              attempts.
-            </p>
-
-            <p>
-              Asked whether this might affect future record-keeping, the Chief Registrar noted that
-              "accuracy has always been somewhat negotiable when dealing with adventures that
-              involve time paradoxes, parallel dimensions, or particularly stubborn dragons." He
-              then added, after consulting with the ink itself, that cooperation between sentient
-              stationery and mortal bureaucrats represents "an exciting new chapter in
-              administrative history."
-            </p>
-
-            <p>
-              The squid responsible for the ink has declined to comment, citing contractual
-              obligations and a preference for remaining mysterious.
-            </p>
+          <!-- Floating Image 1 -->
+          <div class="float-img-container float-right">
+            <!-- Using object-position to crop to the goblin character -->
+            <img
+              src="assets/images/characters/orrin_pike_sitting.png"
+              alt="Orrin Pike"
+              class="float-img"
+              style="height: 200px; object-position: 65% 35%"
+            />
+            <div class="caption">Orrin Pike, Risk Warden of the UU</div>
           </div>
 
-          <div class="story-cta">
-            <a href="landing.html" class="play-button">⚔ Begin Today's Adventure →</a>
+          <p>
+            Pipeworks began as a modest attempt to keep track of tools. It has since expanded to
+            include misplaced assumptions, misaligned expectations, and several entries labelled
+            only 'Do Not Repeat', underlined twice. Unlike previous initiatives, the Pipeworks
+            Project does not seek to identify fault. No individual names will be recorded unless
+            they insist. Responsibility, the Undertakers note, is often distributed unevenly and
+            arrives late.
+          </p>
+
+          <p>
+            Early trials of the system have already yielded results. A recurring issue involving a
+            vibrating brass key was eventually traced not to enchantment, but to a table being
+            slightly uneven. The key has been returned to service. The table has not.
+          </p>
+
+          <p>
+            Importantly, the ledger includes space for what was learned, what was ignored, and what
+            was quietly worked around. Several pages remain blank. These are not considered
+            failures.
+          </p>
+
+          <blockquote>
+            "We expect to get this wrong," the statement continues. "What matters is that we
+            remember how."
+          </blockquote>
+
+          <p>
+            The Undertakers emphasised that Pipeworks is not a corrective programme, nor a
+            disciplinary one. It is, instead, a record of honest work carried out under imperfect
+            conditions, by people doing their best with partial information.
+          </p>
+
+          <p>
+            Market observers have already noted a subtle shift in tone among participating crews.
+            Errors are being reported earlier. Explanations are becoming shorter. Bells are being
+            rung less often. The project is expected to continue indefinitely, or until it proves
+            unnecessary. No timeline has been provided.
+          </p>
+
+          <div class="divider-text">----------------------------------------</div>
+
+          <h4
+            style="
+              font-family: var(--font-mono);
+              font-weight: bold;
+              text-transform: uppercase;
+              margin-bottom: 0.5rem;
+            "
+          >
+            The Mistress of Mayhem
+          </h4>
+
+          <!-- Table Section -->
+          <div class="table-section">
+            <div class="table-img-col">
+              <!-- Using object-position to crop to the mistress character -->
+              <img
+                src="assets/images/characters/mistress_mayhem_standing.png"
+                alt="Mistress of Mayhem"
+                style="
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  object-position: 10% 80%;
+                  filter: grayscale(100%) contrast(125%) sepia(30%);
+                "
+              />
+            </div>
+            <div class="table-content-col">
+              <h5
+                style="
+                  font-weight: bold;
+                  border-bottom: 1px solid var(--border-color);
+                  padding-bottom: 4px;
+                  margin-bottom: 8px;
+                "
+              >
+                Registry of Notable Mis-Adventures
+              </h5>
+              <p style="font-style: italic; font-size: 0.75rem; margin-bottom: 1rem">
+                Filed for reference, not encouragement.
+              </p>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Entry</th>
+                    <th>Individual (or Party)</th>
+                    <th>Ledger Weight</th>
+                    <th>Most Recent Failure (Filed)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0147</td>
+                    <td>Brigg Fenwick</td>
+                    <td>2,847</td>
+                    <td>Resolved paradox without creating new ones</td>
+                  </tr>
+                  <tr>
+                    <td>0148</td>
+                    <td>Seraphine Ironquill</td>
+                    <td>2,683</td>
+                    <td>Negotiated peace treaty with sentient furniture</td>
+                  </tr>
+                  <tr>
+                    <td>0149</td>
+                    <td>Mortimer Blackwood</td>
+                    <td>2,541</td>
+                    <td>Found lost library; returned all books on time</td>
+                  </tr>
+                  <tr>
+                    <td>0150</td>
+                    <td>Three Goblins</td>
+                    <td>2,119</td>
+                    <td>Successfully prevented escalation by leaving immediately</td>
+                  </tr>
+                  <tr>
+                    <td>0151</td>
+                    <td>Pell Understep</td>
+                    <td>1,994</td>
+                    <td>Identified incorrect lever after it had already been pulled</td>
+                  </tr>
+                  <tr>
+                    <td>0152</td>
+                    <td>West Conduit Group</td>
+                    <td>1,872</td>
+                    <td>Maintained operations despite understanding none of it</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-        </section>
 
-        <!-- World News Grid -->
-        <section class="world-news-section">
-          <h2 class="section-title">Matters of the Realm</h2>
-
-          <div class="news-grid">
-            <article class="news-item">
-              <h3 class="news-title">Whispering Woods Report Increased Eloquence</h3>
-              <p class="news-excerpt">
-                Local trees have upgraded from vague rustling to complete sentences. Hikers report
-                receiving unsolicited advice on trail selection, boot maintenance, and life choices.
-                The woods insist they're "just being helpful."
-              </p>
-            </article>
-
-            <article class="news-item">
-              <h3 class="news-title">Dragon Retirement Community Reaches Capacity</h3>
-              <p class="news-excerpt">
-                The Scorched Vale Elder Care Facility announced it can accept no new residents until
-                the existing dragons agree on thermostat settings. Negotiations continue, now in
-                their third decade.
-              </p>
-            </article>
-
-            <article class="news-item">
-              <h3 class="news-title">Mysterious Lights Identified as Punctual</h3>
-              <p class="news-excerpt">
-                The glowing phenomena above Midnight Crossing appear every evening at precisely
-                11:47 PM. Researchers have concluded they are "either very organized ghosts or
-                exceptionally committed fireflies."
-              </p>
-            </article>
-
-            <article class="news-item">
-              <h3 class="news-title">Time Variance Affects Tuesday</h3>
-              <p class="news-excerpt">
-                Citizens report last Tuesday occurred out of sequence, appearing briefly on Thursday
-                before settling into its proper position. The Bureau reminds everyone to file their
-                paperwork in triplicate, regardless of temporal irregularities.
-              </p>
-            </article>
-
-            <article class="news-item">
-              <h3 class="news-title">Prophecy Fulfillment Delayed Due to Scheduling Conflicts</h3>
-              <p class="news-excerpt">
-                The Chosen One and the Ancient Evil have both requested to reschedule their fated
-                confrontation. New apocalypse date pending availability of the Sacred Battleground,
-                currently booked for a farmers market.
-              </p>
-            </article>
-
-            <article class="news-item">
-              <h3 class="news-title">Enchanted Weapons Union Demands Better Working Conditions</h3>
-              <p class="news-excerpt">
-                Sentient swords across the realm are petitioning for mandatory rest periods between
-                quests. "We're not just props," stated the legendary blade Fatecarver. "We have
-                feelings. Mostly about proper maintenance."
-              </p>
-            </article>
+          <div class="footer-quote">
+            She prefers ink that dries slowly. She distrusts summaries. She dislikes patterns that
+            explain themselves.
           </div>
-        </section>
+        </main>
 
-        <!-- Archives Section -->
-        <section class="archives-section">
-          <h2 class="section-header">The Archives</h2>
-          <div class="section-content">
-            <ul class="archive-list">
-              <li class="archive-item">
-                <span class="archive-date">Yesterday</span>
-                <a href="#" class="archive-link"
-                  >Portal Maintenance Causes Brief Existential Crisis for Local Wizard</a
-                >
-              </li>
-              <li class="archive-item">
-                <span class="archive-date">Two Days Ago</span>
-                <a href="#" class="archive-link"
-                  >Bard's Performance So Moving, Audience Physically Relocated to Different
-                  Tavern</a
-                >
-              </li>
-              <li class="archive-item">
-                <span class="archive-date">Three Days Ago</span>
-                <a href="#" class="archive-link"
-                  >Mysterious Stranger Revealed to Be Local Shopkeeper in Slightly Different Hat</a
-                >
-              </li>
-              <li class="archive-item">
-                <span class="archive-date">Last Week</span>
-                <a href="#" class="archive-link"
-                  >Ancient Curse Broken; Responsible Party Files for Overtime Compensation</a
-                >
-              </li>
-              <li class="archive-item">
-                <span class="archive-date">Last Week</span>
-                <a href="#" class="archive-link"
-                  >Magic Mirror Develops Unhelpful Habit of Answering Questions Nobody Asked</a
-                >
-              </li>
-              <li class="archive-item">
-                <span class="archive-date">Two Weeks Ago</span>
-                <a href="#" class="archive-link"
-                  >Quest Completion Rate Drops as Adventurers Discover Cozy Inn with Excellent
-                  Stew</a
-                >
-              </li>
-              <li class="archive-item">
-                <span class="archive-date">Two Weeks Ago</span>
-                <a href="#" class="archive-link"
-                  >Legendary Artifact Turns Out to Be "Just Really Shiny Rock," Disappointment
-                  Widespread</a
-                >
-              </li>
-              <li class="archive-item">
-                <span class="archive-date">Last Month</span>
-                <a href="#" class="archive-link"
-                  >Ghost Haunting Wrong House for Centuries; Extremely Embarrassed</a
-                >
-              </li>
+        <!-- Sidebar (Right) -->
+        <aside class="sidebar-column">
+          <div class="sidebar-header">
+            <h2 class="sidebar-title">LEGERFALL DAILY</h2>
+          </div>
+
+          <!-- Notices -->
+          <section>
+            <h3 class="section-title">Notices (Unverified but Filed)</h3>
+            <ul class="sidebar-list">
+              <li>Item believed resolved has reappeared. Please stop resolving it.</li>
+              <li>Reminder: bells are not substitutes for explanations.</li>
+              <li>Whoever moved the bench has improved nothing.</li>
+              <li>This is the final notice regarding the previous final notice.</li>
             </ul>
-          </div>
-        </section>
+          </section>
 
-        <!-- Leaderboards Section -->
-        <section class="leaderboards-section">
-          <h2 class="section-header">Registry of Notable Adventurers</h2>
-          <div class="section-content">
-            <table class="leaderboard-table">
-              <thead>
-                <tr>
-                  <th class="rank-col">Rank</th>
-                  <th class="name-col">Adventurer</th>
-                  <th class="score-col">Renown</th>
-                  <th class="achievement-col">Most Recent Accomplishment</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="leaderboard-entry">
-                  <td class="rank">1</td>
-                  <td class="name">Brigg Fenwick</td>
-                  <td class="score">2,847</td>
-                  <td class="achievement">Resolved paradox without creating new ones</td>
-                </tr>
-                <tr class="leaderboard-entry">
-                  <td class="rank">2</td>
-                  <td class="name">Seraphine Ironquill</td>
-                  <td class="score">2,683</td>
-                  <td class="achievement">Negotiated peace treaty with sentient furniture</td>
-                </tr>
-                <tr class="leaderboard-entry">
-                  <td class="rank">3</td>
-                  <td class="name">Mortimer Blackwood</td>
-                  <td class="score">2,541</td>
-                  <td class="achievement">Found lost library, returned all books on time</td>
-                </tr>
-                <tr class="leaderboard-entry">
-                  <td class="rank">4</td>
-                  <td class="name">Celestia Brightspark</td>
-                  <td class="score">2,399</td>
-                  <td class="achievement">Invented new spell, filed appropriate paperwork</td>
-                </tr>
-                <tr class="leaderboard-entry">
-                  <td class="rank">5</td>
-                  <td class="name">Gideon Thornheart</td>
-                  <td class="score">2,156</td>
-                  <td class="achievement">Defeated evil twin, made peace with neutral twin</td>
-                </tr>
-                <tr class="leaderboard-entry">
-                  <td class="rank">6</td>
-                  <td class="name">Lyra Moonwhisper</td>
-                  <td class="score">1,998</td>
-                  <td class="achievement">Tamed wild magic, taught it manners</td>
-                </tr>
-                <tr class="leaderboard-entry">
-                  <td class="rank">7</td>
-                  <td class="name">Thaddeus Copperbeard</td>
-                  <td class="score">1,847</td>
-                  <td class="achievement">Excavated ruin, left it tidier than found</td>
-                </tr>
-                <tr class="leaderboard-entry">
-                  <td class="rank">8</td>
-                  <td class="name">Rowena Swiftblade</td>
-                  <td class="score">1,729</td>
-                  <td class="achievement">Completed quest ahead of prophecy schedule</td>
-                </tr>
-                <tr class="leaderboard-entry">
-                  <td class="rank">9</td>
-                  <td class="name">Cornelius Mistwalker</td>
-                  <td class="score">1,654</td>
-                  <td class="achievement">Discovered shortcut, updated all maps</td>
-                </tr>
-                <tr class="leaderboard-entry">
-                  <td class="rank">10</td>
-                  <td class="name">Eloise Nightshade</td>
-                  <td class="score">1,582</td>
-                  <td class="achievement">Banished darkness, installed better lighting</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-      </main>
+          <div class="sidebar-separator"></div>
 
-      <!-- Footer Notice -->
-      <footer class="footer-notice">
-        <p>
-          <strong>Disclaimer:</strong> <em>The Daily Undertaking</em> assumes no responsibility for
-          adventures undertaken, items acquired, or realities temporarily misplaced during the
-          course of your subscription. All experiences are subject to bureaucratic review and may be
-          adjusted for narrative consistency. Proceed at your own discretion, or someone else's if
-          yours is unavailable. Published occasionally on days ending in 'y'. Vol. ∞, No. π. All
-          rights reserved, catalogued, and filed in triplicate.
-        </p>
-      </footer>
+          <!-- Ledger Adjustments -->
+          <section>
+            <h3 class="section-title">LEDGER ADJUSTMENTS</h3>
+            <ul class="sidebar-list">
+              <li>Yesterday's total was correct for the wrong reasons.</li>
+              <li>An apology is issued to the concept of "after lunch."</li>
+              <li>The phrase "under control" has been withdrawn.</li>
+            </ul>
+          </section>
+
+          <div class="sidebar-separator"></div>
+
+          <!-- Small Misfortunes -->
+          <section>
+            <h3 class="section-title">SMALL MISFORTUNES</h3>
+            <ul class="sidebar-list">
+              <li>A clerk discovered their pen had been working better upside down.</li>
+              <li>The north stair now leads to the south. Temporarily.</li>
+              <li>A meeting concluded successfully, though no one attended.</li>
+            </ul>
+          </section>
+
+          <div class="sidebar-separator"></div>
+
+          <!-- Pipeworks Status -->
+          <section>
+            <h3 class="section-title">PIPEWORKS STATUS</h3>
+            <div style="font-family: var(--font-data)">
+              <p style="margin-bottom: 4px"><span class="font-bold">Pressure:</span> nominal</p>
+              <p style="margin-bottom: 4px">
+                <span class="font-bold">Flow:</span> uneven but honest
+              </p>
+              <p style="margin-bottom: 4px">
+                <span class="font-bold">Vibrations:</span> being monitored
+              </p>
+              <p style="margin-bottom: 4px">
+                <span class="font-bold">Interpretation:</span> ongoing
+              </p>
+            </div>
+          </section>
+
+          <div class="sidebar-separator"></div>
+
+          <!-- Found / Misplaced -->
+          <section>
+            <h3 class="section-title">FOUND / MISPLACED</h3>
+            <ul class="sidebar-list" style="list-style-type: square">
+              <li><span class="font-bold">Found:</span> One brass washer. Warm.</li>
+              <li><span class="font-bold">Misplaced:</span> Confidence in the west conduit.</li>
+              <li><span class="font-bold">Returned:</span> A key, having learned nothing.</li>
+            </ul>
+          </section>
+
+          <div class="sidebar-separator"></div>
+
+          <!-- Market & Provisions -->
+          <section>
+            <h3 class="section-title">MARKET & PROVISIONS</h3>
+            <ul class="sidebar-list" style="list-style-type: square">
+              <li>Root vegetables: present</li>
+              <li>Cloth: thinner than advertised</li>
+              <li>Advice: plentiful</li>
+              <li>Guarantees: withdrawn</li>
+            </ul>
+          </section>
+
+          <div class="sidebar-separator"></div>
+
+          <!-- Weather -->
+          <section>
+            <h3 class="section-title">WEATHER (Filed Late)</h3>
+            <ul class="sidebar-list" style="list-style-type: square">
+              <li>Morning: Damp, unresolved</li>
+              <li>Afternoon: Wind with intent</li>
+              <li>Evening: Bell-related</li>
+            </ul>
+          </section>
+
+          <div class="sidebar-separator"></div>
+
+          <!-- Tomorrow -->
+          <section>
+            <h3 class="section-title">TOMORROW'S UNDERTAKING</h3>
+            <ul class="sidebar-list" style="list-style-type: square">
+              <li>Further clarification expected.</li>
+              <li>Delays anticipated.</li>
+              <li>Normal service unlikely.</li>
+            </ul>
+          </section>
+        </aside>
+      </div>
     </div>
-
-    <!-- JavaScript -->
-    <script src="js/daily.js"></script>
   </body>
 </html>
