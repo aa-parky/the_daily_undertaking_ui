@@ -357,7 +357,11 @@
 
     <!-- Popup Loader Script -->
     <script type="module">
-      import { openFormModal } from './js/popup-manager.js';
+      import {
+        openFormModal,
+        initializeDailyLoginPopup,
+        initializeDailyRegisterPopup,
+      } from './js/popup-manager.js';
 
       document.addEventListener('DOMContentLoaded', () => {
         // Load login popup
@@ -368,6 +372,8 @@
               const response = await fetch('popups/daily/daily-login.html');
               const html = await response.text();
               document.body.insertAdjacentHTML('beforeend', html);
+              // Initialize event listeners after loading HTML
+              initializeDailyLoginPopup();
             }
             openFormModal('dailyLoginModal');
           });
@@ -381,6 +387,8 @@
               const response = await fetch('popups/daily/daily-register.html');
               const html = await response.text();
               document.body.insertAdjacentHTML('beforeend', html);
+              // Initialize event listeners after loading HTML
+              initializeDailyRegisterPopup();
             }
             openFormModal('dailyRegisterModal');
           });

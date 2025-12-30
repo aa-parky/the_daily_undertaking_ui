@@ -524,3 +524,268 @@ export function redirectToDaily() {
   }
   window.location.href = 'daily.html';
 }
+
+// ========== Popup Initialization Functions ==========
+
+/**
+ * Initializes the daily login popup with all event listeners
+ * Call this after dynamically loading the login popup HTML
+ */
+export function initializeDailyLoginPopup() {
+  const modal = document.getElementById('dailyLoginModal');
+  const form = document.getElementById('dailyLoginForm');
+  const usernameInput = document.getElementById('dailyLoginUsername');
+  const passwordInput = document.getElementById('dailyLoginPassword');
+  const closeBtn = modal?.querySelector('.modal-close');
+  const overlay = modal?.querySelector('.modal-overlay');
+  const passwordToggle = modal?.querySelector('.password-toggle');
+
+  if (!modal || !form || !usernameInput || !passwordInput) {
+    return;
+  }
+
+  // Attach field validation
+  attachFieldValidation(usernameInput, validateUsername);
+  attachFieldValidation(passwordInput, validatePassword);
+
+  // Attach form submission
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value;
+
+    // Clear previous errors
+    hideFormError(form);
+    hideFieldError(usernameInput);
+    hideFieldError(passwordInput);
+
+    // Validate
+    const usernameVal = validateUsername(username);
+    const passwordVal = validatePassword(password);
+
+    let isValid = true;
+
+    if (!usernameVal.valid) {
+      showFieldError(usernameInput, usernameVal.error);
+      isValid = false;
+    }
+
+    if (!passwordVal.valid) {
+      showFieldError(passwordInput, passwordVal.error);
+      isValid = false;
+    }
+
+    if (!isValid) {
+      showFormError(form, 'Please correct the errors above');
+      return;
+    }
+
+    // Show loading
+    showLoadingModal('dailyAuthModal', 'Submitting credentials to the Bureau...');
+
+    try {
+      // TODO: Replace with actual API call
+      const result = { success: true, token: `demo-token-${Date.now()}` };
+
+      if (result.success) {
+        setAuthToken(result.token);
+        showSuccessModal('dailyAuthModal', 'Enrollment confirmed! Redirecting...');
+
+        setTimeout(() => {
+          redirectToGame();
+        }, 1500);
+      } else {
+        hideLoadingModal('dailyAuthModal');
+        showFormError(form, result.error || 'Authentication failed');
+      }
+    } catch (error) {
+      hideLoadingModal('dailyAuthModal');
+      showFormError(form, 'Unable to reach the Bureau. Please try again.');
+    }
+  });
+
+  // Close button
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => closeFormModal('dailyLoginModal'));
+  }
+
+  // Overlay click
+  if (overlay) {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closeFormModal('dailyLoginModal');
+      }
+    });
+  }
+
+  // Escape key
+  const handleEscape = (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeFormModal('dailyLoginModal');
+    }
+  };
+  document.addEventListener('keydown', handleEscape);
+
+  // Password toggle
+  if (passwordToggle && passwordInput) {
+    passwordToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      togglePasswordVisibility(passwordToggle, passwordInput);
+    });
+  }
+}
+
+/**
+ * Initializes the daily register popup with all event listeners
+ * Call this after dynamically loading the register popup HTML
+ */
+export function initializeDailyRegisterPopup() {
+  const modal = document.getElementById('dailyRegisterModal');
+  const form = document.getElementById('dailyRegisterForm');
+  const usernameInput = document.getElementById('dailyRegisterUsername');
+  const emailInput = document.getElementById('dailyRegisterEmail');
+  const passwordInput = document.getElementById('dailyRegisterPassword');
+  const confirmPasswordInput = document.getElementById('dailyRegisterPasswordConfirm');
+  const strengthIndicator = document.getElementById('dailyRegisterPasswordStrength');
+  const closeBtn = modal?.querySelector('.modal-close');
+  const overlay = modal?.querySelector('.modal-overlay');
+  const passwordToggles = modal?.querySelectorAll('.password-toggle');
+
+  if (!modal || !form || !usernameInput || !emailInput || !passwordInput || !confirmPasswordInput) {
+    return;
+  }
+
+  // Attach field validation
+  attachFieldValidation(usernameInput, validateUsername);
+  attachFieldValidation(emailInput, validateEmail);
+  attachFieldValidation(passwordInput, validatePassword);
+  attachPasswordMatchValidation(passwordInput, confirmPasswordInput);
+
+  // Password strength indicator
+  if (passwordInput && strengthIndicator) {
+    passwordInput.addEventListener('input', () => {
+      updatePasswordStrength(passwordInput.value, strengthIndicator);
+    });
+  }
+
+  // Attach form submission
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const username = usernameInput.value.trim();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+    const confirmPassword = confirmPasswordInput.value;
+
+    // Clear previous errors
+    hideFormError(form);
+    hideFieldError(usernameInput);
+    hideFieldError(emailInput);
+    hideFieldError(passwordInput);
+    hideFieldError(confirmPasswordInput);
+
+    // Validate all
+    const usernameVal = validateUsername(username);
+    const emailVal = validateEmail(email);
+    const passwordVal = validatePassword(password);
+    const matchVal = validatePasswordMatch(password, confirmPassword);
+
+    let isValid = true;
+
+    if (!usernameVal.valid) {
+      showFieldError(usernameInput, usernameVal.error);
+      isValid = false;
+    }
+
+    if (!emailVal.valid) {
+      showFieldError(emailInput, emailVal.error);
+      isValid = false;
+    }
+
+    if (!passwordVal.valid) {
+      showFieldError(passwordInput, passwordVal.error);
+      isValid = false;
+    }
+
+    if (!matchVal.valid) {
+      showFieldError(confirmPasswordInput, matchVal.error);
+      isValid = false;
+    }
+
+    if (!isValid) {
+      showFormError(form, 'Please correct the errors above');
+      return;
+    }
+
+    // Show loading
+    showLoadingModal('dailyAuthModal', 'Processing enrollment documentation...');
+
+    try {
+      // TODO: Replace with actual API call
+      const result = { success: true };
+
+      if (result.success) {
+        // Auto-login
+        const loginResult = { success: true, token: `demo-token-${Date.now()}` };
+
+        if (loginResult.success) {
+          setAuthToken(loginResult.token);
+          showSuccessModal('dailyAuthModal', 'Enrollment successful! Logging you in...');
+
+          setTimeout(() => {
+            redirectToGame();
+          }, 1500);
+        } else {
+          hideLoadingModal('dailyAuthModal');
+          showFormError(
+            form,
+            'Enrollment successful, but auto-login failed. Please log in manually.',
+          );
+        }
+      } else {
+        hideLoadingModal('dailyAuthModal');
+        showFormError(form, result.error || 'Registration failed');
+      }
+    } catch (error) {
+      hideLoadingModal('dailyAuthModal');
+      showFormError(form, 'Unable to process enrollment. Please try again later.');
+    }
+  });
+
+  // Close button
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => closeFormModal('dailyRegisterModal'));
+  }
+
+  // Overlay click
+  if (overlay) {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closeFormModal('dailyRegisterModal');
+      }
+    });
+  }
+
+  // Escape key
+  const handleEscape = (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeFormModal('dailyRegisterModal');
+    }
+  };
+  document.addEventListener('keydown', handleEscape);
+
+  // Password toggles
+  if (passwordToggles) {
+    passwordToggles.forEach((toggle) => {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const wrapper = toggle.closest('.password-wrapper');
+        const input = wrapper?.querySelector('input[type="password"], input[type="text"]');
+        if (input) {
+          togglePasswordVisibility(toggle, input);
+        }
+      });
+    });
+  }
+}
