@@ -238,7 +238,8 @@ body {
 
   /* filter: blur removed for Safari compatibility */
   white-space: nowrap;
-  min-width: 90px;
+  width: 140px;
+  flex-shrink: 0;
 }
 
 .stat-value {
@@ -273,13 +274,16 @@ body {
 }
 
 .stat-bar {
-  flex: 1;
+  width: 100px;
   height: 16px;
   background: var(--paper-dark);
   border: 2px solid var(--newsprint-black);
   position: relative;
   overflow: hidden;
   box-shadow: inset 1px 1px 0 rgb(43 43 43 / 10%);
+  flex-shrink: 0;
+  margin-left: auto;
+  box-sizing: border-box;
 }
 
 .stat-bar-fill {
