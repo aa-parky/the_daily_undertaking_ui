@@ -6,9 +6,13 @@
   --accent-color: #8b0000;
   --muted-color: #d6d1c7;
   --font-masthead: 'IM Fell English SC', serif;
-  --font-headline: 'Cinzel', serif;
+
+  /* --font-headline: 'Cinzel', serif; */
+  --font-headline: 'Libre Baskerville', serif;
   --font-subhead: 'Special Elite', monospace;
-  --font-body: 'EB Garamond', serif;
+
+  /* --font-body: 'EB Garamond', serif; */
+  --font-body: 'Crimson Text', serif;
   --font-mono: 'Courier Prime', monospace;
   --font-data: 'Inconsolata', monospace;
 }
@@ -103,13 +107,13 @@ header {
 
 @media (width >= 1024px) {
   .masthead-title {
-    font-size: 6rem;
+    font-size: 5rem;
   }
 }
 
 .edition-info {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -169,7 +173,7 @@ header {
 
 @media (width >= 768px) {
   .main-headline {
-    font-size: 4.5rem;
+    font-size: 2.5rem;
   }
 }
 
