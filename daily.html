@@ -37,9 +37,29 @@
         </div>
 
         <div class="meta-bar">
-          <span>Vol. IV, No. 82</span>
-          <span>A Record of Proceedings and Consequences - Est. 2025</span>
-          <span>Price: One Copper</span>
+          <div class="meta-section meta-left">
+            <span>Vol. IV, No. 82</span>
+            <button
+              type="button"
+              class="auth-button auth-login"
+              id="openDailyLoginBtn"
+              aria-label="Login to your account"
+            >
+              <span class="auth-button-text">Registry</span>
+            </button>
+          </div>
+          <span class="meta-center">A Record of Proceedings and Consequences - Est. 2025</span>
+          <div class="meta-section meta-right">
+            <button
+              type="button"
+              class="auth-button auth-register"
+              id="openDailyRegisterBtn"
+              aria-label="Create a new account"
+            >
+              <span class="auth-button-text">Enroll</span>
+            </button>
+            <span>Price: One Copper</span>
+          </div>
         </div>
       </header>
 
@@ -308,5 +328,64 @@
         </aside>
       </div>
     </div>
+
+    <!-- Auth Modal Container (for loading/success states) -->
+    <div
+      id="dailyAuthModal"
+      class="auth-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="modalTitle" class="modal-title">Processing Documentation</h4>
+        </div>
+        <div class="modal-body">
+          <div class="spinner-wrapper">
+            <div class="spinner"></div>
+            <div class="spinner-stamps">
+              <span class="stamp stamp-1">FILED</span>
+              <span class="stamp stamp-2">VERIFIED</span>
+              <span class="stamp stamp-3">APPROVED</span>
+            </div>
+          </div>
+          <p id="modalMessage" class="modal-message">Submitting credentials to the Bureau...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup Loader Script -->
+    <script type="module">
+      import { openFormModal } from './js/popup-manager.js';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        // Load login popup
+        const loginBtn = document.getElementById('openDailyLoginBtn');
+        if (loginBtn) {
+          loginBtn.addEventListener('click', async () => {
+            if (!document.getElementById('dailyLoginModal')) {
+              const response = await fetch('popups/daily/daily-login.html');
+              const html = await response.text();
+              document.body.insertAdjacentHTML('beforeend', html);
+            }
+            openFormModal('dailyLoginModal');
+          });
+        }
+
+        // Load register popup
+        const registerBtn = document.getElementById('openDailyRegisterBtn');
+        if (registerBtn) {
+          registerBtn.addEventListener('click', async () => {
+            if (!document.getElementById('dailyRegisterModal')) {
+              const response = await fetch('popups/daily/daily-register.html');
+              const html = await response.text();
+              document.body.insertAdjacentHTML('beforeend', html);
+            }
+            openFormModal('dailyRegisterModal');
+          });
+        }
+      });
+    </script>
   </body>
 </html>

@@ -22,8 +22,10 @@
 /* ========== Landing Page Layout ========== */
 
 body {
-  font-family: var(--font-garamond);
-  background: var(--color-page-bg);
+  background-color: var(--color-page-bg);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  line-height: 1.6;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,7 +55,7 @@ body {
 
 /* ========== Masthead ========== */
 .masthead {
-  background: var(--paper-dark);
+  background: var(--color-paper);
   padding: 15px 20px 10px;
   border-bottom: 3px solid var(--newsprint-black);
   text-align: center;
@@ -87,7 +89,7 @@ body {
 .headline-section {
   padding: 15px 25px 12px;
   border-bottom: 3px solid var(--newsprint-black);
-  background: var(--paper-dark);
+  background: var(--color-paper);
   flex: 1;
   overflow-y: auto;
 }

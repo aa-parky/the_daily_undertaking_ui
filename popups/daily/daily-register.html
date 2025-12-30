@@ -1,0 +1,582 @@
+<!-- Daily Register Popup -->
+<div
+  id="dailyRegisterModal"
+  class="form-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="dailyRegisterTitle"
+>
+  <div class="modal-overlay"></div>
+  <div class="classified-ad register-ad modal-form">
+    <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="classified-corner tl">✦</div>
+    <div class="classified-corner tr">✦</div>
+    <div class="classified-corner bl">✧</div>
+    <div class="classified-corner br">✧</div>
+
+    <h3 class="classified-header" id="dailyRegisterTitle">New Subscriber Enrollment</h3>
+    <p class="classified-subtext">First-Time Petitioners Welcome</p>
+
+    <form id="dailyRegisterForm" novalidate>
+      <div class="form-group">
+        <label for="dailyRegisterUsername" class="form-label">Desired Registry Name</label>
+        <input
+          type="text"
+          id="dailyRegisterUsername"
+          name="username"
+          class="form-input"
+          placeholder="3-20 characters, choose wisely"
+          autocomplete="username"
+          required
+          aria-describedby="dailyRegisterUsernameError"
+        />
+        <div id="dailyRegisterUsernameError" class="field-error" role="alert"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="dailyRegisterEmail" class="form-label">Postal Telegraph Address</label>
+        <input
+          type="email"
+          id="dailyRegisterEmail"
+          name="email"
+          class="form-input"
+          placeholder="For official correspondence only"
+          autocomplete="email"
+          required
+          aria-describedby="dailyRegisterEmailError"
+        />
+        <div id="dailyRegisterEmailError" class="field-error" role="alert"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="dailyRegisterPassword" class="form-label">Authentication Cipher</label>
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="dailyRegisterPassword"
+            name="password"
+            class="form-input"
+            placeholder="Minimum 8 characters, adequately complex"
+            autocomplete="new-password"
+            required
+            aria-describedby="dailyRegisterPasswordError dailyRegisterPasswordStrength"
+          />
+          <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+            <span class="toggle-icon">👁</span>
+          </button>
+        </div>
+        <div class="password-strength" id="dailyRegisterPasswordStrength" aria-live="polite">
+          <div class="strength-bar">
+            <div class="strength-fill" data-strength="none"></div>
+          </div>
+          <div class="strength-text">
+            Cipher strength: <span class="strength-label">Not set</span>
+          </div>
+        </div>
+        <div id="dailyRegisterPasswordError" class="field-error" role="alert"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="dailyRegisterPasswordConfirm" class="form-label">Confirm Cipher</label>
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="dailyRegisterPasswordConfirm"
+            name="passwordConfirm"
+            class="form-input"
+            placeholder="Repeat for verification purposes"
+            autocomplete="new-password"
+            required
+            aria-describedby="dailyRegisterPasswordConfirmError"
+          />
+          <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+            <span class="toggle-icon">👁</span>
+          </button>
+        </div>
+        <div id="dailyRegisterPasswordConfirmError" class="field-error" role="alert"></div>
+      </div>
+
+      <div class="form-error" role="alert" aria-live="polite"></div>
+
+      <button type="submit" class="submit-button">
+        <span class="button-text">Submit Enrollment</span>
+      </button>
+
+      <p class="form-footnote">
+        By enrolling, you acknowledge that adventures may occur without warning and that The Daily
+        Undertaking assumes no responsibility for items acquired, realities misplaced, or Tuesdays
+        experienced out of sequence.
+      </p>
+    </form>
+  </div>
+</div>
+
+<style>
+  /* Daily Register Popup Styles */
+  #dailyRegisterModal.form-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #dailyRegisterModal.form-modal.active {
+    display: flex;
+  }
+
+  #dailyRegisterModal .modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+  }
+
+  #dailyRegisterModal .modal-form {
+    position: relative;
+    z-index: 1001;
+    width: 90%;
+    max-width: 500px;
+    background: var(--color-paper);
+    border: 3px solid var(--color-border);
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  #dailyRegisterModal .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--color-border);
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #dailyRegisterModal .modal-close:hover {
+    color: var(--color-accent);
+  }
+
+  #dailyRegisterModal .classified-corner {
+    position: absolute;
+    font-family: var(--font-cinzel);
+    font-size: 12px;
+    color: var(--color-border);
+    opacity: 0.5;
+  }
+
+  #dailyRegisterModal .classified-corner.tl {
+    top: 8px;
+    left: 12px;
+  }
+
+  #dailyRegisterModal .classified-corner.tr {
+    top: 8px;
+    right: 12px;
+  }
+
+  #dailyRegisterModal .classified-corner.bl {
+    bottom: 8px;
+    left: 12px;
+  }
+
+  #dailyRegisterModal .classified-corner.br {
+    bottom: 8px;
+    right: 12px;
+  }
+
+  #dailyRegisterModal .classified-header {
+    font-family: var(--font-cinzel);
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-border);
+    margin: 0 0 4px;
+    text-align: center;
+  }
+
+  #dailyRegisterModal .classified-subtext {
+    font-family: var(--font-data);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-secondary);
+    margin: 0 0 20px;
+    text-align: center;
+  }
+
+  #dailyRegisterModal .form-group {
+    margin-bottom: 16px;
+  }
+
+  #dailyRegisterModal .form-label {
+    display: block;
+    font-family: var(--font-subhead);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-border);
+    margin-bottom: 6px;
+  }
+
+  #dailyRegisterModal .form-input {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    border: 1px solid var(--color-muted);
+    background-color: white;
+    color: var(--color-text);
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+  }
+
+  #dailyRegisterModal .form-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.1);
+  }
+
+  #dailyRegisterModal .form-input.error {
+    border-color: var(--color-accent);
+    background-color: rgba(139, 0, 0, 0.05);
+  }
+
+  #dailyRegisterModal .form-input.valid {
+    border-color: var(--color-text-secondary);
+  }
+
+  #dailyRegisterModal .password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  #dailyRegisterModal .password-toggle {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 8px;
+    color: var(--color-text-secondary);
+  }
+
+  #dailyRegisterModal .password-toggle:hover {
+    color: var(--color-border);
+  }
+
+  #dailyRegisterModal .field-error {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--color-accent);
+    margin-top: 4px;
+    min-height: 16px;
+  }
+
+  #dailyRegisterModal .password-strength {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  #dailyRegisterModal .strength-bar {
+    width: 100%;
+    height: 6px;
+    background-color: var(--color-muted);
+    border: 1px solid var(--color-text-lighter);
+    margin-bottom: 4px;
+    overflow: hidden;
+  }
+
+  #dailyRegisterModal .strength-fill {
+    height: 100%;
+    width: 0%;
+    transition:
+      width 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  #dailyRegisterModal .strength-fill[data-strength='none'] {
+    width: 0%;
+    background-color: transparent;
+  }
+
+  #dailyRegisterModal .strength-fill[data-strength='weak'] {
+    width: 33%;
+    background-color: var(--color-accent);
+  }
+
+  #dailyRegisterModal .strength-fill[data-strength='medium'] {
+    width: 66%;
+    background-color: #b8863b;
+  }
+
+  #dailyRegisterModal .strength-fill[data-strength='strong'] {
+    width: 100%;
+    background-color: #5a7353;
+  }
+
+  #dailyRegisterModal .strength-text {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--color-text-secondary);
+  }
+
+  #dailyRegisterModal .strength-label {
+    font-weight: 600;
+  }
+
+  #dailyRegisterModal .form-error {
+    display: none;
+    padding: 12px;
+    margin-bottom: 16px;
+    background-color: rgba(139, 0, 0, 0.1);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-size: 13px;
+    border-radius: 2px;
+  }
+
+  #dailyRegisterModal .form-error.visible {
+    display: block;
+  }
+
+  #dailyRegisterModal .submit-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: var(--color-border);
+    color: var(--color-paper);
+    border: 2px solid var(--color-border);
+    font-family: var(--font-subhead);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  #dailyRegisterModal .submit-button:hover:not(:disabled) {
+    background-color: var(--color-text-secondary);
+    border-color: var(--color-text-secondary);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  #dailyRegisterModal .submit-button:active:not(:disabled) {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  #dailyRegisterModal .submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  #dailyRegisterModal .form-footnote {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1.4;
+  }
+</style>
+
+<script type="module">
+  import {
+    validateUsername,
+    validateEmail,
+    validatePassword,
+    validatePasswordMatch,
+    showFieldError,
+    hideFieldError,
+    markFieldValid,
+    showFormError,
+    hideFormError,
+    updatePasswordStrength,
+    attachFieldValidation,
+    attachPasswordMatchValidation,
+    openFormModal,
+    closeFormModal,
+    handleModalOverlayClick,
+    togglePasswordVisibility,
+    showLoadingModal,
+    hideLoadingModal,
+    showSuccessModal,
+    setAuthToken,
+    redirectToGame,
+  } from '../../js/popup-manager.js';
+
+  // Initialize when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('dailyRegisterModal');
+    const form = document.getElementById('dailyRegisterForm');
+    const usernameInput = document.getElementById('dailyRegisterUsername');
+    const emailInput = document.getElementById('dailyRegisterEmail');
+    const passwordInput = document.getElementById('dailyRegisterPassword');
+    const confirmPasswordInput = document.getElementById('dailyRegisterPasswordConfirm');
+    const strengthIndicator = document.getElementById('dailyRegisterPasswordStrength');
+    const closeBtn = modal.querySelector('.modal-close');
+    const passwordToggles = modal.querySelectorAll('.password-toggle');
+
+    // Attach field validation
+    if (usernameInput) {
+      attachFieldValidation(usernameInput, validateUsername);
+    }
+
+    if (emailInput) {
+      attachFieldValidation(emailInput, validateEmail);
+    }
+
+    if (passwordInput) {
+      attachFieldValidation(passwordInput, validatePassword);
+
+      // Password strength indicator
+      passwordInput.addEventListener('input', () => {
+        updatePasswordStrength(passwordInput.value, strengthIndicator);
+      });
+    }
+
+    if (passwordInput && confirmPasswordInput) {
+      attachPasswordMatchValidation(passwordInput, confirmPasswordInput);
+    }
+
+    // Attach form submission
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const username = usernameInput.value.trim();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+
+        // Clear previous errors
+        hideFormError(form);
+        hideFieldError(usernameInput);
+        hideFieldError(emailInput);
+        hideFieldError(passwordInput);
+        hideFieldError(confirmPasswordInput);
+
+        // Validate all
+        const usernameVal = validateUsername(username);
+        const emailVal = validateEmail(email);
+        const passwordVal = validatePassword(password);
+        const matchVal = validatePasswordMatch(password, confirmPassword);
+
+        let isValid = true;
+
+        if (!usernameVal.valid) {
+          showFieldError(usernameInput, usernameVal.error);
+          isValid = false;
+        }
+
+        if (!emailVal.valid) {
+          showFieldError(emailInput, emailVal.error);
+          isValid = false;
+        }
+
+        if (!passwordVal.valid) {
+          showFieldError(passwordInput, passwordVal.error);
+          isValid = false;
+        }
+
+        if (!matchVal.valid) {
+          showFieldError(confirmPasswordInput, matchVal.error);
+          isValid = false;
+        }
+
+        if (!isValid) {
+          showFormError(form, 'Please correct the errors above');
+          return;
+        }
+
+        // Show loading
+        showLoadingModal('dailyAuthModal', 'Processing enrollment documentation...');
+
+        try {
+          // TODO: Replace with actual API call
+          // const result = await registerUser(username, email, password);
+          const result = { success: true };
+
+          if (result.success) {
+            // Auto-login
+            const loginResult = { success: true, token: `demo-token-${Date.now()}` };
+
+            if (loginResult.success) {
+              setAuthToken(loginResult.token);
+              showSuccessModal('dailyAuthModal', 'Enrollment successful! Logging you in...');
+
+              setTimeout(() => {
+                redirectToGame();
+              }, 1500);
+            } else {
+              hideLoadingModal('dailyAuthModal');
+              showFormError(
+                form,
+                'Enrollment successful, but auto-login failed. Please log in manually.',
+              );
+            }
+          } else {
+            hideLoadingModal('dailyAuthModal');
+            showFormError(form, result.error || 'Registration failed');
+          }
+        } catch (error) {
+          hideLoadingModal('dailyAuthModal');
+          showFormError(form, 'Unable to process enrollment. Please try again later.');
+        }
+      });
+    }
+
+    // Close button
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => closeFormModal('dailyRegisterModal'));
+    }
+
+    // Overlay click
+    if (modal) {
+      modal.addEventListener('click', (e) => handleModalOverlayClick(e, 'dailyRegisterModal'));
+    }
+
+    // Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeFormModal('dailyRegisterModal');
+      }
+    });
+
+    // Password toggles
+    passwordToggles.forEach((toggle) => {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const wrapper = toggle.closest('.password-wrapper');
+        const input = wrapper.querySelector('input[type="password"], input[type="text"]');
+        if (input) {
+          togglePasswordVisibility(toggle, input);
+        }
+      });
+    });
+  });
+</script>

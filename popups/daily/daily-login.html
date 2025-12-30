@@ -1,0 +1,433 @@
+<!-- Daily Login Popup -->
+<div
+  id="dailyLoginModal"
+  class="form-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="dailyLoginTitle"
+>
+  <div class="modal-overlay"></div>
+  <div class="classified-ad login-ad modal-form">
+    <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="classified-corner tl">✦</div>
+    <div class="classified-corner tr">✦</div>
+    <div class="classified-corner bl">✧</div>
+    <div class="classified-corner br">✧</div>
+
+    <h3 class="classified-header" id="dailyLoginTitle">Adventurer Registry</h3>
+    <p class="classified-subtext">For Returning Correspondents</p>
+
+    <form id="dailyLoginForm" novalidate>
+      <div class="form-group">
+        <label for="dailyLoginUsername" class="form-label">Registry Name</label>
+        <input
+          type="text"
+          id="dailyLoginUsername"
+          name="username"
+          class="form-input"
+          placeholder="As it appears in the ledger"
+          autocomplete="username"
+          required
+          aria-describedby="dailyLoginUsernameError"
+        />
+        <div id="dailyLoginUsernameError" class="field-error" role="alert"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="dailyLoginPassword" class="form-label">Authentication Cipher</label>
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="dailyLoginPassword"
+            name="password"
+            class="form-input"
+            placeholder="Known only to you and the Bureau"
+            autocomplete="current-password"
+            required
+            aria-describedby="dailyLoginPasswordError"
+          />
+          <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+            <span class="toggle-icon">👁</span>
+          </button>
+        </div>
+        <div id="dailyLoginPasswordError" class="field-error" role="alert"></div>
+      </div>
+
+      <div class="form-error" role="alert" aria-live="polite"></div>
+
+      <button type="submit" class="submit-button">
+        <span class="button-text">Enter Registry</span>
+      </button>
+
+      <p class="form-footnote">
+        Credentials misplaced? The Bureau regrets to inform you that memory recovery services are
+        currently experiencing unprecedented volumes. Please try the obvious first.
+      </p>
+    </form>
+  </div>
+</div>
+
+<style>
+  /* Daily Login Popup Styles */
+  #dailyLoginModal.form-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #dailyLoginModal.form-modal.active {
+    display: flex;
+  }
+
+  #dailyLoginModal .modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+  }
+
+  #dailyLoginModal .modal-form {
+    position: relative;
+    z-index: 1001;
+    width: 90%;
+    max-width: 500px;
+    background: var(--color-paper);
+    border: 3px solid var(--color-border);
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  #dailyLoginModal .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--color-border);
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #dailyLoginModal .modal-close:hover {
+    color: var(--color-accent);
+  }
+
+  #dailyLoginModal .classified-corner {
+    position: absolute;
+    font-family: var(--font-cinzel);
+    font-size: 12px;
+    color: var(--color-border);
+    opacity: 0.5;
+  }
+
+  #dailyLoginModal .classified-corner.tl {
+    top: 8px;
+    left: 12px;
+  }
+
+  #dailyLoginModal .classified-corner.tr {
+    top: 8px;
+    right: 12px;
+  }
+
+  #dailyLoginModal .classified-corner.bl {
+    bottom: 8px;
+    left: 12px;
+  }
+
+  #dailyLoginModal .classified-corner.br {
+    bottom: 8px;
+    right: 12px;
+  }
+
+  #dailyLoginModal .classified-header {
+    font-family: var(--font-cinzel);
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-border);
+    margin: 0 0 4px;
+    text-align: center;
+  }
+
+  #dailyLoginModal .classified-subtext {
+    font-family: var(--font-data);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-secondary);
+    margin: 0 0 20px;
+    text-align: center;
+  }
+
+  #dailyLoginModal .form-group {
+    margin-bottom: 16px;
+  }
+
+  #dailyLoginModal .form-label {
+    display: block;
+    font-family: var(--font-subhead);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-border);
+    margin-bottom: 6px;
+  }
+
+  #dailyLoginModal .form-input {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    border: 1px solid var(--color-muted);
+    background-color: white;
+    color: var(--color-text);
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+  }
+
+  #dailyLoginModal .form-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.1);
+  }
+
+  #dailyLoginModal .form-input.error {
+    border-color: var(--color-accent);
+    background-color: rgba(139, 0, 0, 0.05);
+  }
+
+  #dailyLoginModal .form-input.valid {
+    border-color: var(--color-text-secondary);
+  }
+
+  #dailyLoginModal .password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  #dailyLoginModal .password-toggle {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 8px;
+    color: var(--color-text-secondary);
+  }
+
+  #dailyLoginModal .password-toggle:hover {
+    color: var(--color-border);
+  }
+
+  #dailyLoginModal .field-error {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--color-accent);
+    margin-top: 4px;
+    min-height: 16px;
+  }
+
+  #dailyLoginModal .form-error {
+    display: none;
+    padding: 12px;
+    margin-bottom: 16px;
+    background-color: rgba(139, 0, 0, 0.1);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-size: 13px;
+    border-radius: 2px;
+  }
+
+  #dailyLoginModal .form-error.visible {
+    display: block;
+  }
+
+  #dailyLoginModal .submit-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: var(--color-border);
+    color: var(--color-paper);
+    border: 2px solid var(--color-border);
+    font-family: var(--font-subhead);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  #dailyLoginModal .submit-button:hover:not(:disabled) {
+    background-color: var(--color-text-secondary);
+    border-color: var(--color-text-secondary);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  #dailyLoginModal .submit-button:active:not(:disabled) {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  #dailyLoginModal .submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  #dailyLoginModal .form-footnote {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1.4;
+  }
+</style>
+
+<script type="module">
+  import {
+    validateUsername,
+    validatePassword,
+    showFieldError,
+    hideFieldError,
+    markFieldValid,
+    showFormError,
+    hideFormError,
+    attachFieldValidation,
+    openFormModal,
+    closeFormModal,
+    handleModalOverlayClick,
+    togglePasswordVisibility,
+    showLoadingModal,
+    hideLoadingModal,
+    showSuccessModal,
+    setAuthToken,
+    redirectToGame,
+  } from '../../js/popup-manager.js';
+
+  // Initialize when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('dailyLoginModal');
+    const form = document.getElementById('dailyLoginForm');
+    const usernameInput = document.getElementById('dailyLoginUsername');
+    const passwordInput = document.getElementById('dailyLoginPassword');
+    const closeBtn = modal.querySelector('.modal-close');
+    const passwordToggle = modal.querySelector('.password-toggle');
+
+    // Attach field validation
+    if (usernameInput) {
+      attachFieldValidation(usernameInput, validateUsername);
+    }
+
+    if (passwordInput) {
+      attachFieldValidation(passwordInput, validatePassword);
+    }
+
+    // Attach form submission
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value;
+
+        // Clear previous errors
+        hideFormError(form);
+        hideFieldError(usernameInput);
+        hideFieldError(passwordInput);
+
+        // Validate
+        const usernameVal = validateUsername(username);
+        const passwordVal = validatePassword(password);
+
+        let isValid = true;
+
+        if (!usernameVal.valid) {
+          showFieldError(usernameInput, usernameVal.error);
+          isValid = false;
+        }
+
+        if (!passwordVal.valid) {
+          showFieldError(passwordInput, passwordVal.error);
+          isValid = false;
+        }
+
+        if (!isValid) {
+          showFormError(form, 'Please correct the errors above');
+          return;
+        }
+
+        // Show loading
+        showLoadingModal('dailyAuthModal', 'Submitting credentials to the Bureau...');
+
+        try {
+          // TODO: Replace with actual API call
+          // const result = await authenticateUser(username, password);
+          const result = { success: true, token: `demo-token-${Date.now()}` };
+
+          if (result.success) {
+            setAuthToken(result.token);
+            showSuccessModal('dailyAuthModal', 'Enrollment confirmed! Redirecting...');
+
+            setTimeout(() => {
+              redirectToGame();
+            }, 1500);
+          } else {
+            hideLoadingModal('dailyAuthModal');
+            showFormError(form, result.error || 'Authentication failed');
+          }
+        } catch (error) {
+          hideLoadingModal('dailyAuthModal');
+          showFormError(form, 'Unable to reach the Bureau. Please try again.');
+        }
+      });
+    }
+
+    // Close button
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => closeFormModal('dailyLoginModal'));
+    }
+
+    // Overlay click
+    if (modal) {
+      modal.addEventListener('click', (e) => handleModalOverlayClick(e, 'dailyLoginModal'));
+    }
+
+    // Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeFormModal('dailyLoginModal');
+      }
+    });
+
+    // Password toggle
+    if (passwordToggle && passwordInput) {
+      passwordToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        togglePasswordVisibility(passwordToggle, passwordInput);
+      });
+    }
+  });
+</script>
