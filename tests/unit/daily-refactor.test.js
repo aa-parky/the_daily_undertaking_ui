@@ -76,10 +76,12 @@ describe('Daily.html CSS Refactoring - Layout Preservation Tests', () => {
     test('shared-base.css defines typography variables', () => {
       expect(sharedBaseCSS).toContain('--font-masthead:');
       expect(sharedBaseCSS).toContain('--font-headline:');
-      expect(sharedBaseCSS).toContain('--font-subhead:');
       expect(sharedBaseCSS).toContain('--font-body:');
-      expect(sharedBaseCSS).toContain('--font-mono:');
+      expect(sharedBaseCSS).toContain('--font-record:');
       expect(sharedBaseCSS).toContain('--font-data:');
+      expect(sharedBaseCSS).toContain('--font-console:');
+      expect(sharedBaseCSS).toContain('--font-symbols:');
+      expect(sharedBaseCSS).toContain('--font-accent:');
     });
 
     test('daily.css does NOT redefine typography variables', () => {
