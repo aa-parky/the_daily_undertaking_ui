@@ -58,17 +58,17 @@
   --page-bg: var(--color-page-bg);
 
   /* ========================================
-     UNIFIED TYPOGRAPHY SYSTEM
-     ======================================== */
+     TYPOGRAPHY ROLES (CANONICAL)
+  ======================================== */
 
-  /* Font Families */
-  --font-masthead: 'IM Fell English SC', serif;
-  --font-headline: 'Libre Baskerville', serif;
-  --font-subhead: 'Special Elite', monospace;
-  --font-body: 'Crimson Text', serif;
-  --font-mono: 'Courier Prime', monospace;
+  --font-masthead: 'IM Fell English SC', serif; /* Titles, nameplates */
+  --font-headline: 'Libre Baskerville', serif; /* Headlines */
+  --font-body: 'Crimson Text', serif; /* Long-form reading */
+  --font-record: 'Courier Prime', monospace; /* Filed data, registries */
   --font-data: 'Courier Prime', monospace;
-  --font-editorial: 'IM Fell English', serif;
+  --font-console: 'Courier Prime', monospace; /* Live terminal output */
+  --font-symbols: 'IM Fell English', serif; /* Typographic marks only */
+  --font-accent: 'Special Elite', monospace; /* Rare anomalies */
 }
 
 /* ========================================
@@ -111,13 +111,11 @@
 }
 
 /* =================================================
-  Typographic Marks & Editorial Symbols Reference
+   Typographic Marks & Editorial Symbols
    ================================================= */
 
-/* The marker: editorial, print-feeling */
-.quest-title .marker {
-  font-family: var(--font-editorial); /* e.g. IM Fell, Libre Baskerville */
-  font-size: 13px;
+.marker {
+  font-family: var(--font-symbols);
   font-weight: 400;
   opacity: 0.85;
   color: var(--newsprint-black);

@@ -86,8 +86,8 @@ body {
 }
 
 .subtitle {
-  font-family: Cinzel, serif;
-  font-size: 10px;
+  font-family: var(--font-body);
+  font-size: 12px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--faded-ink);
@@ -114,8 +114,8 @@ body {
 }
 
 .menu-item {
-  font-family: 'Special Elite', monospace;
-  font-size: 9px;
+  font-family: var(--font-data);
+  font-size: 11px;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -246,8 +246,8 @@ body {
 }
 
 .character-article {
-  font-family: var(--font-mono);
-  font-size: 13px;
+  font-family: var(--font-body);
+  font-size: 16px;
   line-height: 1.6;
   color: var(--newsprint-black);
   text-align: justify;
@@ -344,7 +344,7 @@ body {
   margin: 15px;
   padding: 15px;
   overflow-y: auto;
-  font-family: var(--font-mono);
+  font-family: var(--font-console);
   font-size: 14px;
   line-height: 1.7;
   color: var(--paper);
@@ -417,7 +417,7 @@ body {
   background: var(--paper);
   border: 3px solid var(--newsprint-black);
   padding: 8px 12px;
-  font-family: Inconsolata, monospace;
+  font-family: var(--font-console);
   font-size: 13px;
   color: var(--newsprint-black);
   resize: none;
@@ -566,7 +566,6 @@ body {
 
 .quest-item {
   margin-bottom: 10px;
-  font-family: 'EB Garamond', serif;
   font-size: 12px;
   line-height: 1.5;
   color: var(--newsprint-black);
@@ -581,6 +580,9 @@ body {
 }
 
 .quest-title {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
   font-family: var(--font-data);
   font-size: 12px;
   font-weight: 600;
@@ -637,7 +639,7 @@ body {
   background: var(--paper-dark);
   border: 2px solid var(--newsprint-black);
   padding: 10px;
-  font-family: 'EB Garamond', serif;
+  font-family: var(--font-data);
   font-size: 13px;
   color: var(--newsprint-black);
   resize: vertical;
@@ -693,9 +695,9 @@ body {
 }
 
 .equipment-name {
-  font-family: 'Special Elite', monospace;
-  font-size: 10px;
-  font-weight: 400;
+  font-family: var(--font-data);
+  font-size: 12px;
+  font-weight: 600;
   color: var(--newsprint-black);
   text-transform: uppercase;
   letter-spacing: 0.5px;
