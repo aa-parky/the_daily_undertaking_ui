@@ -81,35 +81,6 @@
   box-sizing: border-box;
 }
 
-/* ========================================
-   SHARED UTILITY CLASSES
-   ======================================== */
-
-/* Typography Utilities */
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-justify {
-  text-align: justify;
-}
-
-.uppercase {
-  text-transform: uppercase;
-}
-
-.font-bold {
-  font-weight: bold;
-}
-
-.italic {
-  font-style: italic;
-}
-
 /* =================================================
    Typographic Marks & Editorial Symbols
    ================================================= */
@@ -117,7 +88,13 @@
 .marker {
   font-family: var(--font-symbols);
   font-weight: 400;
-  opacity: 0.85;
+  color: var(--newsprint-black);
+  flex-shrink: 0;
+}
+
+.ReferenceMark {
+  font-family: var(--font-symbols);
+  font-weight: 400;
   color: var(--newsprint-black);
   flex-shrink: 0;
 }
@@ -181,4 +158,12 @@
 /* Daily: Position Relative Wrapper (for absolute positioning children) */
 .daily-position-relative {
   position: relative;
+}
+
+/* ===========================================
+ SHARED SEMANTIC TOKENS
+ ============================================ */
+
+.name {
+  /* intentionally empty */
 }
