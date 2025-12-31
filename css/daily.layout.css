@@ -249,10 +249,9 @@ td {
   margin-bottom: 1rem;
 }
 
-.footer-quote {
-  text-align: center;
-  padding: 10px 0;
+.signature.accent {
   margin-top: 2rem;
+  opacity: 0.9;
 }
 
 .daily-pipeworks {

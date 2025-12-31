@@ -11,8 +11,55 @@ body {
   color: var(--ink-newsprint-black);
   background-clip: padding-box;
   font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .container {
   background: var(--paper);
+}
+
+.masthead,
+.masthead-title {
+  font-family: var(--font-masthead);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.headline,
+.main-headline {
+  font-family: var(--font-headline);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.section-title {
+  font-family: var(--font-headline);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+article p {
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+.byline,
+.meta-bar,
+.meta-section,
+.meta-center,
+.edition-info {
+  font-family: var(--font-record);
+  font-size: 0.9em;
+}
+
+.ledger,
+.notice,
+.registry {
+  font-family: var(--font-record);
+}
+
+.accent,
+.pull-quote {
+  font-family: var(--font-accent);
 }
