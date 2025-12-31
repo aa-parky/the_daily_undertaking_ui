@@ -19,6 +19,7 @@ body {
   background: var(--paper);
 }
 
+.masthead,
 .masthead-title {
   font-family: var(--font-masthead);
   letter-spacing: 0.03em;
@@ -110,4 +111,28 @@ tbody tr:hover {
 /* Optional: Alternating row colors for long tables */
 tbody tr:nth-child(even) {
   background-color: rgb(235 229 214 / 30%);
+}
+
+/* ========================================
+   TABBED SECTION — THEME
+   ======================================== */
+
+.tabs-nav {
+  background-color: transparent;
+}
+
+.tab-button {
+  color: var(--ink-newsprint-black);
+}
+
+.tab-button:hover {
+  color: var(--ink-accent);
+}
+
+.tab-button.active {
+  color: var(--ink-newsprint-black);
+}
+
+.tab-pane {
+  color: var(--ink-newsprint-black);
 }

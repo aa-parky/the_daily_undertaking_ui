@@ -236,7 +236,10 @@ td {
 
 @media (width >= 1024px) {
   .sidebar-column {
+    max-height: calc(100vh - 400px);
+    overflow-y: auto;
     padding-left: 2rem;
+    padding-right: 1rem;
   }
 }
 
@@ -262,6 +265,79 @@ td {
 
 .daily-pipeworks__item {
   margin: 0;
+}
+
+/* ========================================
+   TABBED SECTION (LAYOUT)
+   ======================================== */
+
+.reference-block.tabbed-section {
+  margin-top: 3rem;
+  padding: 0;
+}
+
+.tabs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 2px solid var(--rule);
+  margin-bottom: 2rem;
+}
+
+.tab-button {
+  flex: 1;
+  min-width: 150px;
+  padding: 12px 16px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  font-family: var(--font-record);
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+  background-color: var(--paper-muted);
+}
+
+.tab-button.active {
+  border-bottom-color: var(--ink-newsprint-black);
+  font-weight: 700;
+}
+
+.tabs-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+  animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive tabs */
+@media (width < 768px) {
+  .tab-button {
+    min-width: 100px;
+    padding: 10px 8px;
+    font-size: 0.85em;
+  }
 }
 
 /* ========================================
