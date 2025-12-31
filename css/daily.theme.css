@@ -19,7 +19,6 @@ body {
   background: var(--paper);
 }
 
-.masthead,
 .masthead-title {
   font-family: var(--font-masthead);
   letter-spacing: 0.03em;
