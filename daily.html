@@ -9,19 +9,10 @@
       content="Your source for adventures and peculiar happenings from the Bureau of Undertakings"
     />
 
-    <!-- Google Fonts - Vintage Newspaper Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=IM+Fell+English+SC&family=Inconsolata:wght@200..900&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Special+Elite&display=swap"
-      rel="stylesheet"
-    />
-
     <!-- Stylesheets -->
-    <!-- Load shared base styles first (variables, utilities only) -->
     <link rel="stylesheet" href="css/shared-base.css" />
-    <!-- Load page-specific styles second (layout and components) -->
-    <link rel="stylesheet" href="css/daily.css" />
+    <link rel="stylesheet" href="css/daily.layout.css" />
+    <link rel="stylesheet" href="css/daily.theme.css" />
   </head>
   <body>
     <div class="container">
@@ -30,14 +21,14 @@
         <div class="masthead-top">
           <div class="edition-info">Today's Edition</div>
           <h1 class="masthead-title">The Daily Undertaking</h1>
-          <div class="daily-position-relative">
+          <div>
             <div class="free-stamp">FREE!</div>
             <div class="edition-info">YESTERDAY, REFILED</div>
           </div>
         </div>
 
         <div class="meta-bar">
-          <div class="meta-section meta-left">
+          <div class="meta-section">
             <span>Vol. IV, No. 82</span>
             <button
               type="button"
@@ -49,7 +40,7 @@
             </button>
           </div>
           <span class="meta-center">A Record of Proceedings and Consequences - Est. 2025</span>
-          <div class="meta-section meta-right">
+          <div class="meta-section">
             <button
               type="button"
               class="auth-button auth-register"
@@ -94,11 +85,10 @@
 
           <!-- Floating Image 1 -->
           <div class="float-img-container float-right">
-            <!-- Using object-position to crop to the goblin character -->
             <img
               src="assets/images/characters/orrin_pike_sitting.png"
               alt="Orrin Pike"
-              class="float-img daily-img--orrin-crop"
+              class="float-img"
             />
             <div class="caption">Orrin Pike, Risk Warden of the UU</div>
           </div>
@@ -144,21 +134,20 @@
 
           <div class="divider-text">----------------------------------------</div>
 
-          <h4 class="daily-character__title">The Mistress of Mayhem</h4>
+          <h4>The Mistress of Mayhem</h4>
 
           <!-- Table Section -->
           <div class="table-section">
             <div class="table-img-col">
-              <!-- Using object-position to crop to the mistress character -->
               <img
                 src="assets/images/characters/mistress_mayhem_standing.png"
                 alt="Mistress of Mayhem"
-                class="daily-img--mistress-crop"
+                class="float-img"
               />
             </div>
             <div class="table-content-col">
-              <h5 class="daily-registry__title">Registry of Notable Mis-Adventures</h5>
-              <p class="daily-registry__description">Filed for reference, not encouragement.</p>
+              <h5>Registry of Notable Mis-Adventures</h5>
+              <p>Filed for reference, not encouragement.</p>
 
               <table>
                 <thead>
@@ -264,16 +253,10 @@
           <section>
             <h3 class="section-title">PIPEWORKS STATUS</h3>
             <div class="daily-pipeworks">
-              <p class="daily-pipeworks__item"><span class="font-bold">Pressure:</span> nominal</p>
-              <p class="daily-pipeworks__item">
-                <span class="font-bold">Flow:</span> uneven but honest
-              </p>
-              <p class="daily-pipeworks__item">
-                <span class="font-bold">Vibrations:</span> being monitored
-              </p>
-              <p class="daily-pipeworks__item">
-                <span class="font-bold">Interpretation:</span> ongoing
-              </p>
+              <p class="daily-pipeworks__item"><span>Pressure:</span> nominal</p>
+              <p class="daily-pipeworks__item"><span>Flow:</span> uneven but honest</p>
+              <p class="daily-pipeworks__item"><span>Vibrations:</span> being monitored</p>
+              <p class="daily-pipeworks__item"><span>Interpretation:</span> ongoing</p>
             </div>
           </section>
 
@@ -282,10 +265,10 @@
           <!-- Found / Misplaced -->
           <section>
             <h3 class="section-title">FOUND / MISPLACED</h3>
-            <ul class="sidebar-list daily-list--square">
-              <li><span class="font-bold">Found:</span> One brass washer. Warm.</li>
-              <li><span class="font-bold">Misplaced:</span> Confidence in the west conduit.</li>
-              <li><span class="font-bold">Returned:</span> A key, having learned nothing.</li>
+            <ul class="sidebar-list">
+              <li><span>Found:</span> One brass washer. Warm.</li>
+              <li><span>Misplaced:</span> Confidence in the west conduit.</li>
+              <li><span>Returned:</span> A key, having learned nothing.</li>
             </ul>
           </section>
 
@@ -294,7 +277,7 @@
           <!-- Market & Provisions -->
           <section>
             <h3 class="section-title">MARKET & PROVISIONS</h3>
-            <ul class="sidebar-list daily-list--square">
+            <ul class="sidebar-list">
               <li>Root vegetables: present</li>
               <li>Cloth: thinner than advertised</li>
               <li>Advice: plentiful</li>
@@ -307,7 +290,7 @@
           <!-- Weather -->
           <section>
             <h3 class="section-title">WEATHER (Filed Late)</h3>
-            <ul class="sidebar-list daily-list--square">
+            <ul class="sidebar-list">
               <li>Morning: Damp, unresolved</li>
               <li>Afternoon: Wind with intent</li>
               <li>Evening: Bell-related</li>
@@ -319,7 +302,7 @@
           <!-- Tomorrow -->
           <section>
             <h3 class="section-title">TOMORROW'S UNDERTAKING</h3>
-            <ul class="sidebar-list daily-list--square">
+            <ul class="sidebar-list">
               <li>Further clarification expected.</li>
               <li>Delays anticipated.</li>
               <li>Normal service unlikely.</li>
@@ -345,9 +328,9 @@
           <div class="spinner-wrapper">
             <div class="spinner"></div>
             <div class="spinner-stamps">
-              <span class="stamp stamp-1">FILED</span>
-              <span class="stamp stamp-2">VERIFIED</span>
-              <span class="stamp stamp-3">APPROVED</span>
+              <span class="stamp">FILED</span>
+              <span class="stamp">VERIFIED</span>
+              <span class="stamp">APPROVED</span>
             </div>
           </div>
           <p id="modalMessage" class="modal-message">Submitting credentials to the Bureau...</p>

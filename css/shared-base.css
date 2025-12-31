@@ -1,173 +1,268 @@
-/* ========================================
-   SHARED BASE STYLES
-   ======================================== */
+/* =========================================================
+   shared-base.css
+   The Daily Undertaking — Shared Foundation Only
 
-/*
- * This file contains ONLY shared foundation:
- * - CSS Variables (colors, fonts)
- * - Reset styles
- * - Utility classes
- * - Shared BEM components
- *
- * NO LAYOUT-SPECIFIC STYLES (body, .container, etc.)
- * Each page (daily, game, landing) defines its own layout.
- */
+   PURPOSE
+   - Global tokens (inks, paper, typography roles)
+   - Minimal reset + sane defaults
+   - Neutral utilities + semantic hooks
+   - Shared micro-components that are truly cross-page
 
-/* ========================================
-   CSS VARIABLES
-   ======================================== */
+   NOT ALLOWED HERE
+   - Page layout (body/container grids, fixed widths, etc.)
+   - Page-specific component styling (daily-*, game-*)
+   - “Theme” decisions that belong in page CSS or theme files
+
+   RULE OF THUMB
+   shared-base.css defines vocabulary.
+   page CSS writes sentences.
+   ========================================================= */
+
+/* =========================================================
+   1) TOKENS — SEMANTIC PRIMITIVES
+   ========================================================= */
 
 :root {
-  /* ========================================
-     UNIFIED COLOR PALETTE
-     All pages use the same color system
-     ======================================== */
+  /* -----------------------------
+     1.1 Inks (Semantic Output Channels)
+     These are not “palette picks”.
+     They are meaning-carrying inks that themes may remap later.
+     ----------------------------- */
 
-  /* Primary Colors */
-  --color-paper: #f2efe9; /* Newspaper paper background */
-  --color-page-bg: #2a2a2a; /* Page background (behind paper) */
-  --color-text: #1a1a1a; /* Primary text */
-  --color-border: #2c2c2c; /* Primary borders */
-  --color-accent: #8b0000; /* Accent color (red) */
-  --color-muted: #d6d1c7; /* Muted/secondary color */
+  /* Absolute anchors (rarely use directly in rules) */
+  --ink-absolute: #000;
+  --ink-none: transparent;
 
-  /* Extended Palette */
-  --color-text-secondary: #4a4a4a; /* Secondary text (kicker) */
-  --color-text-light: #5a5a5a; /* Light text (faded) */
-  --color-text-lighter: #c8c4b8; /* Even lighter text */
-  --color-bg-dark: #ebe5d6; /* Darker background variant */
+  /* Newsprint inks */
+  --ink-newsprint-black: var(--ink-absolute); /* primary record */
+  --ink-newsprint-gray: #2b2b2b; /* secondary record */
+  --ink-newsprint-faded: #4a4a4a; /* marginal / low weight */
 
-  /* Shadows & Effects */
-  --color-shadow: rgb(0 0 0 / 10%); /* Light shadow */
-  --color-shadow-dark: rgb(43 43 43 / 15%); /* Darker shadow */
-  --color-overlay-light: rgb(214 209 199 / 20%); /* Light overlay */
+  /* Functional inks (still conservative by default) */
+  --ink-accent: #1a1a1a; /* “attention” without colour drama (theme may override) */
+  --ink-warning: #1a1a1a;
+  --ink-error: #1a1a1a;
+  --ink-success: #1a1a1a;
 
-  /* Legacy Aliases (for backward compatibility during transition) */
+  /* -----------------------------
+     1.2 Paper & Surfaces
+     These are neutral surfaces; page CSS decides how to deploy them.
+     ----------------------------- */
+  --paper: #f2efe9; /* newsprint sheet */
+  --paper-muted: #ebe5d6; /* aged / shaded paper */
+  --surface-backdrop: #2a2a2a; /* behind the paper (page background) */
 
-  --newsprint-black: var(--color-border);
-  --ink-gray: var(--color-text-secondary);
-  --faded-ink: var(--color-text-light);
-  --shadow: var(--color-shadow-dark);
+  /* -----------------------------
+     1.3 Lines, Borders, Hairlines
+     ----------------------------- */
+  --rule: #2c2c2c; /* primary hairline/border */
+  --rule-muted: #3a3a3a; /* secondary hairline */
+  --rule-faint: #5a5a5a; /* faint dividers */
 
-  /* ========================================
-     TYPOGRAPHY ROLES (CANONICAL)
-  ======================================== */
+  /* -----------------------------
+     1.4 Shadows & Overlays (subtle, optional)
+     ----------------------------- */
+  --shadow-soft: rgb(0 0 0 / 10%);
+  --shadow-medium: rgb(43 43 43 / 15%);
+  --overlay-paper: rgb(214 209 199 / 20%);
 
-  --font-masthead: 'IM Fell English SC', serif; /* Titles, nameplates */
-  --font-headline: 'Libre Baskerville', serif; /* Headlines */
-  --font-body: 'Crimson Text', serif; /* Long-form reading */
-  --font-record: 'Courier Prime', monospace; /* Filed data, registries */
-  --font-data: 'Courier Prime', monospace;
-  --font-console: 'Courier Prime', monospace; /* Live terminal output */
-  --font-symbols: 'IM Fell English', serif; /* Typographic marks only */
-  --font-accent: 'Special Elite', monospace; /* Rare anomalies */
+  /* -----------------------------
+     1.5 Typography Roles (Canonical)
+     Fonts are semantic roles, not decoration.
+     ----------------------------- */
+  --font-masthead: 'IM Fell English SC', serif;
+  --font-headline: 'Libre Baskerville', serif;
+  --font-body: 'Crimson Text', serif;
+  --font-record:
+    'Courier Prime', ui-monospace, sfmono-regular, menlo, monaco, consolas, 'Liberation Mono',
+    monospace;
+  --font-data:
+    'Courier Prime', ui-monospace, sfmono-regular, menlo, monaco, consolas, 'Liberation Mono',
+    monospace;
+  --font-console:
+    'Courier Prime', ui-monospace, sfmono-regular, menlo, monaco, consolas, 'Liberation Mono',
+    monospace;
+  --font-symbols: 'IM Fell English', serif;
+  --font-accent:
+    'Special Elite', ui-monospace, sfmono-regular, menlo, monaco, consolas, 'Liberation Mono',
+    monospace;
+
+  /* -----------------------------
+     1.6 Font Sizes & Rhythm
+     Keep neutral; pages may override scale for layout needs.
+     ----------------------------- */
+  --text-size: 16px;
+  --text-line: 1.35;
+
+  /* -----------------------------
+     1.7 Spacing Scale (small, strict)
+     Used by shared utilities; pages may extend locally.
+     ----------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* -----------------------------
+     1.8 Radii (minimal)
+     ----------------------------- */
+  --radius-1: 2px;
+  --radius-2: 4px;
 }
 
-/* ========================================
-   RESET STYLES
-   ======================================== */
+/* =========================================================
+   2) RESET — MINIMAL + PREDICTABLE
+   ========================================================= */
 
-* {
-  margin: 0;
-  padding: 0;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-/* ========================================
- Background Textures
- ======================================== */
-
-.texture-asfalt-dark {
-  background-image: url('../assets/images/textures/asfalt-dark.png');
-
-  /* You might want to add other related properties here too */
-  background-repeat: repeat;
-  background-size: auto; /* Or 'cover', 'contain', etc. */
+html {
+  text-size-adjust: 100%;
 }
 
-/* =================================================
-   Typographic Marks & Editorial Symbols
-   ================================================= */
-
-.marker {
-  font-family: var(--font-symbols);
-  font-weight: 400;
-  color: var(--newsprint-black);
-  flex-shrink: 0;
+body {
+  margin: 0; /* Allowed: reset only. Layout belongs in page CSS. */
 }
 
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+/* =========================================================
+   3) BASE DEFAULTS — NEUTRAL (NOT LAYOUT)
+   ========================================================= */
+
+:root {
+  color: var(--ink-newsprint-black);
+  font-size: var(--text-size);
+  line-height: var(--text-line);
+}
+
+::selection {
+  background: var(--overlay-paper);
+}
+
+/* =========================================================
+   4) ACCESSIBILITY & MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   5) SHARED UTILITIES — SMALL SET ONLY
+   ========================================================= */
+
+.u-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.u-nowrap {
+  white-space: nowrap;
+}
+
+.u-muted {
+  color: var(--ink-newsprint-faded);
+}
+
+.u-faint {
+  color: var(--ink-newsprint-faded);
+  opacity: 0.85;
+}
+
+.u-rule-top {
+  border-top: 1px solid var(--rule);
+}
+
+.u-rule-bottom {
+  border-bottom: 1px solid var(--rule);
+}
+
+/* =========================================================
+   6) EDITORIAL MARKS — TYPOGRAPHIC GLYPHS
+   These are shared “print-era” signals.
+   ========================================================= */
+
+.marker,
 .ReferenceMark {
   font-family: var(--font-symbols);
   font-weight: 400;
-  color: var(--newsprint-black);
+  color: var(--ink-newsprint-black);
   flex-shrink: 0;
+  line-height: 1;
 }
 
-/* ========================================
-   SHARED BEM COMPONENTS (Daily-specific)
-   ======================================== */
-
-/* Daily: Character Section Title */
-.daily-character__title {
-  font-family: var(--font-mono);
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-/* Daily: Registry Section Title */
-.daily-registry__title {
-  font-weight: bold;
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: 4px;
-  margin-bottom: 8px;
-}
-
-/* Daily: Registry Description */
-.daily-registry__description {
-  font-style: italic;
-  font-size: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-/* Daily: Pipeworks Status Container */
-.daily-pipeworks {
-  font-family: var(--font-data);
-}
-
-/* Daily: Pipeworks Status Item */
-.daily-pipeworks__item {
-  margin-bottom: 4px;
-}
-
-/* Daily: List Style Square */
-.daily-list--square {
-  list-style-type: square;
-}
-
-/* Daily: Image Crop Wrapper */
-.daily-img--orrin-crop {
-  height: 200px;
-  object-position: 65% 35%;
-}
-
-.daily-img--mistress-crop {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 10% 80%;
-  filter: grayscale(100%) contrast(125%) sepia(30%);
-}
-
-/* Daily: Position Relative Wrapper (for absolute positioning children) */
-.daily-position-relative {
-  position: relative;
-}
-
-/* ===========================================
- SHARED SEMANTIC TOKENS
- ============================================ */
+/* =========================================================
+   7) SEMANTIC HOOKS — IDENTITY, NOT STYLE
+   ========================================================= */
 
 .name {
-  /* intentionally empty */
+  /* intentionally empty
+     Names inherit the voice of their context.
+     Contextual styling belongs in page CSS:
+     .article-body .name { ... }
+     .registry .name { ... }
+  */
 }

@@ -1,0 +1,18 @@
+/* ========================================
+   DAILY NEWSPAPER — THEME (MINIMAL)
+   Purpose:
+   - Establish default ink, paper, and voice
+   - No ornamentation
+   - No cleverness
+   ======================================== */
+
+body {
+  background: var(--surface-backdrop);
+  color: var(--ink-newsprint-black);
+  background-clip: padding-box;
+  font-family: var(--font-body);
+}
+
+.container {
+  background: var(--paper);
+}
