@@ -32,7 +32,7 @@
   --color-muted: #d6d1c7; /* Muted/secondary color */
 
   /* Extended Palette */
-  --color-text-secondary: #4a4a4a; /* Secondary text (kicker, etc) */
+  --color-text-secondary: #4a4a4a; /* Secondary text (kicker) */
   --color-text-light: #5a5a5a; /* Light text (faded) */
   --color-text-lighter: #c8c4b8; /* Even lighter text */
   --color-bg-dark: #ebe5d6; /* Darker background variant */
@@ -43,19 +43,11 @@
   --color-overlay-light: rgb(214 209 199 / 20%); /* Light overlay */
 
   /* Legacy Aliases (for backward compatibility during transition) */
-  --paper: var(--color-paper);
-  --paper-dark: var(--color-bg-dark);
+
   --newsprint-black: var(--color-border);
   --ink-gray: var(--color-text-secondary);
   --faded-ink: var(--color-text-light);
-  --light-gray: var(--color-text-lighter);
   --shadow: var(--color-shadow-dark);
-  --bg-color: var(--color-paper);
-  --text-color: var(--color-text);
-  --border-color: var(--color-border);
-  --accent-color: var(--color-accent);
-  --muted-color: var(--color-muted);
-  --page-bg: var(--color-page-bg);
 
   /* ========================================
      TYPOGRAPHY ROLES (CANONICAL)
