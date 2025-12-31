@@ -112,7 +112,7 @@ header {
 
 @media (width >= 1024px) {
   .content-grid {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 0.85fr;
     gap: 3rem;
   }
 }

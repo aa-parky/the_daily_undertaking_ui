@@ -62,3 +62,52 @@ article p {
 .pull-quote {
   font-family: var(--font-accent);
 }
+
+/* ========================================
+   TABLE STYLING — REGISTRY & DATA TABLES
+   ======================================== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+}
+
+thead {
+  border-top: 2px solid var(--rule);
+  border-bottom: 2px solid var(--rule);
+}
+
+th {
+  padding: 12px 8px;
+  text-align: left;
+  font-weight: 700;
+  font-family: var(--font-record);
+  font-size: 0.9em;
+  color: var(--ink-newsprint-black);
+  letter-spacing: 0.02em;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--rule-faint);
+}
+
+tbody tr:last-child {
+  border-bottom: 2px solid var(--rule);
+}
+
+td {
+  padding: 10px 8px;
+  vertical-align: top;
+  color: var(--ink-newsprint-black);
+}
+
+/* Subtle hover effect for readability */
+tbody tr:hover {
+  background-color: var(--paper-muted);
+}
+
+/* Optional: Alternating row colors for long tables */
+tbody tr:nth-child(even) {
+  background-color: rgb(235 229 214 / 30%);
+}
