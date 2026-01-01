@@ -89,17 +89,6 @@ header {
   margin-bottom: 1rem;
 }
 
-.deck {
-  padding: 10px 0;
-  margin-top: 1rem;
-}
-
-.separator-line {
-  height: 2px;
-  margin: 1rem 0;
-  width: 100%;
-}
-
 /* ========================================
    CONTENT GRID
    ======================================== */
