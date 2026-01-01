@@ -12,6 +12,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  overflow: hidden; /* Clips elements extending beyond bounds */
 }
 
 @media (width >= 768px) {
@@ -50,7 +51,6 @@ header {
   top: -40px;
   right: 0;
   padding: 4px 8px;
-  z-index: 10;
 }
 
 .meta-bar {

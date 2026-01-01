@@ -31,6 +31,7 @@
   --ink-newsprint-black: var(--ink-absolute);
   --ink-newsprint-gray: #2b2b2b;
   --ink-newsprint-faded: #4a4a4a;
+  --ink-red: #c41e3a; /* Red ink for stamps, emphasis, notices */
 
   /* Functional inks */
   --ink-accent: #1a1a1a;

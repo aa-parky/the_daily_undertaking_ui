@@ -75,6 +75,27 @@ img {
   filter: grayscale(60%) sepia(20%) contrast(95%) brightness(97%);
 }
 
+.float-img-container {
+  transform: rotate(-1deg);
+  box-shadow: 2px 2px 4px var(--shadow-soft);
+}
+
+/* ========================================
+   MASTHEAD — FREE STAMP
+   ======================================== */
+
+.free-stamp {
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink-red);
+  border: 2px solid var(--ink-red);
+  background: transparent;
+  padding: 4px 10px;
+  transform: rotate(-8deg);
+  letter-spacing: 0.05em;
+}
+
 /* ========================================
    MASTHEAD ORNAMENTAL SEPARATOR
    ======================================== */
@@ -180,6 +201,12 @@ header::after {
   font-size: 0.8rem;
 }
 
+.sidebar-separator {
+  border-top: 2px dotted var(--rule-faint);
+  margin: 0.75rem 0;
+  opacity: 0.5; /* Controls spacing around the line */
+}
+
 /* ========================================
    TABLE STYLING — REGISTRY & DATA TABLES
    ======================================== */
@@ -251,4 +278,23 @@ tbody tr:nth-child(even) {
 
 .tab-pane {
   color: var(--ink-newsprint-black);
+}
+
+/* ========================================
+   TAB CONTENT HEADERS
+   ======================================== */
+
+.tab-content-title {
+  font-family: var(--font-headline);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.tab-content-tagline {
+  font-family: var(--font-accent);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink-newsprint-gray);
+  margin-bottom: 1.5rem;
 }
