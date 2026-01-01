@@ -65,6 +65,51 @@ article p {
 }
 
 /* ========================================
+   AUTH BUTTONS — REGISTRY & ENROLL
+   ======================================== */
+
+.auth-button {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1.5px solid var(--rule);
+  background-color: transparent;
+  color: var(--ink-newsprint-black);
+  font-family: var(--font-record);
+  font-size: 0.9em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.auth-button:hover {
+  background-color: var(--paper-muted);
+  border-color: var(--ink-newsprint-black);
+  font-weight: 500;
+}
+
+.auth-button:focus {
+  outline: 2px solid var(--ink-newsprint-black);
+  outline-offset: 2px;
+}
+
+.auth-button:active {
+  background-color: var(--rule-faint);
+  border-color: var(--ink-newsprint-black);
+}
+
+/* Distinguish login vs register visually (optional) */
+.auth-button.auth-login {
+  border-style: dashed;
+}
+
+.auth-button.auth-register {
+  border-style: dashed;
+}
+
+/* ========================================
    TABLE STYLING — REGISTRY & DATA TABLES
    ======================================== */
 

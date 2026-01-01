@@ -238,3 +238,32 @@ h6 {
      .registry .name { ... }
   */
 }
+
+/* =========================================================
+   8) SCROLLBAR STYLING — GLOBAL UI
+   ========================================================= */
+
+/* WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rule);
+  border-radius: var(--radius-1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rule-muted);
+}
+
+/* Firefox */
+* {
+  scrollbar-color: var(--rule) var(--paper);
+  scrollbar-width: thin;
+}
