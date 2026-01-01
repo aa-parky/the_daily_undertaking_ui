@@ -226,8 +226,13 @@ td {
 
 @media (width >= 1024px) {
   .sidebar-column {
-    max-height: calc(100vh - 400px);
-    overflow-y: auto;
+    /*    max-height: calc(100vh - 400px); */
+
+    /* temporarily  off testing */
+
+    /*    overflow-y: auto; */
+
+    /* temporarily  off testing */
     padding-left: 2rem;
     padding-right: 1rem;
   }
