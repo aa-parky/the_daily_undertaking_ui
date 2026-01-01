@@ -190,7 +190,7 @@ blockquote {
 }
 
 .table-img-col {
-  flex: 1;
+  flex: 0.51;
   padding-right: 1rem;
   overflow: hidden;
 }
@@ -220,7 +220,7 @@ td {
 .sidebar-column {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 @media (width >= 1024px) {
