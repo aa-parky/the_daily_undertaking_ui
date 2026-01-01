@@ -66,18 +66,61 @@ article p {
   font-family: var(--font-accent);
 }
 
-/* ========================================
-   IMAGES — NEWSPRINT FILTER
-   ======================================== */
+/* ============================================= */
+
+/*  IMAGES Filed — NEWSPRINT FILTER - CAPTIONS */
+
+/* ============================================= */
 
 img {
-  border: 3px solid;
-  filter: grayscale(60%) sepia(20%) contrast(95%) brightness(97%);
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .float-img-container {
+  /* hold */
+}
+
+.float-img-container .filed-illustration {
+  display: inline-block;
   transform: rotate(-1deg);
   box-shadow: 2px 2px 4px var(--shadow-soft);
+  background: transparent;
+}
+
+.filed-illustration img {
+  filter: grayscale(60%) sepia(20%) contrast(95%) brightness(97%);
+  margin: 0;
+  padding: 0;
+}
+
+.filed-illustration figcaption {
+  margin-top: 0.25rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  font-size: 0.85em;
+  color: var(--ink-muted);
+  font-style: italic;
+  max-width: calc(100% - 0.5rem);
+}
+
+/* ========================================
+   IMAGES — RECORDED PORTRAITS
+   ======================================== */
+
+.recorded-portrait {
+  display: inline-block;
+  padding: 0.75rem; /* mount board */
+  border: 2px solid var(--ink-newsprint-black);
+  background: var(--paper-muted);
+  margin: 0;
+}
+
+.recorded-portrait img {
+  display: block;
+  width: 100%;
+  filter: grayscale(40%) contrast(100%);
 }
 
 /* ========================================
@@ -187,7 +230,27 @@ header::after {
 
 /* ======================================== */
 
-/*   SIDEBAR Title & LISTS                   */
+/*   Main Article                           */
+
+/* ======================================== */
+
+.article-column .pull-quote {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--ink-muted);
+  font-style: italic;
+}
+
+.article-column blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--ink-muted);
+  font-style: italic;
+}
+
+/* ======================================== */
+
+/*   SIDEBAR Title & LISTS                  */
 
 /* ======================================== */
 
@@ -297,4 +360,12 @@ tbody tr:nth-child(even) {
   font-style: italic;
   color: var(--ink-newsprint-gray);
   margin-bottom: 1.5rem;
+}
+
+.tab-pane p {
+  margin-bottom: 0.75rem;
+}
+
+.tab-pane p:last-child {
+  margin-bottom: 0;
 }

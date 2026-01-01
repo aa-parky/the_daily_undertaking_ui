@@ -114,6 +114,18 @@ header {
   text-align: justify;
 }
 
+.article-column p {
+  margin-bottom: 1rem;
+}
+
+.article-column p:last-child {
+  margin-bottom: 0;
+}
+
+.article-column p + p {
+  text-indent: 0;
+}
+
 .byline {
   display: inline-block;
   padding-bottom: 4px;
@@ -125,10 +137,6 @@ header {
   padding-top: 4px;
   padding-right: 8px;
   padding-left: 3px;
-}
-
-p {
-  margin-bottom: 1rem;
 }
 
 /* ========================================
@@ -155,17 +163,6 @@ p {
   object-fit: cover;
 }
 
-.caption {
-  padding-top: 4px;
-  margin-top: 4px;
-  text-align: center;
-}
-
-blockquote {
-  margin: 1.5rem 0;
-  padding: 10px 10px 10px 20px;
-}
-
 .divider-text {
   text-align: center;
   margin: 2rem 0;
@@ -190,7 +187,7 @@ blockquote {
 }
 
 .table-img-col {
-  flex: 0.51;
+  flex: 0.58;
   padding-right: 1rem;
   overflow: hidden;
 }
