@@ -102,7 +102,7 @@ header {
 @media (width >= 1024px) {
   .content-grid {
     grid-template-columns: 2fr 0.85fr;
-    gap: 3rem;
+    gap: 1rem;
   }
 }
 
@@ -135,8 +135,12 @@ header {
 .drop-cap {
   float: left;
   padding-top: 4px;
-  padding-right: 8px;
+  padding-right: 4px;
   padding-left: 3px;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 80%;
 }
 
 /* ========================================
@@ -150,8 +154,8 @@ header {
 
 @media (width >= 768px) {
   .float-right {
-    float: right;
-    margin-left: 1.5rem;
+    float: left;
+    margin-left: -1.5rem;
     width: 250px;
   }
 }
