@@ -109,63 +109,104 @@ npm run pre-commit          # Run all pre-commit hooks
 The application uses a three-page architecture:
 
 1. **daily.html** - Public news page (entry point, no authentication)
-2. **landing.html** - Login and registration page
-3. **game.html** - Main game interface (authenticated gameplay)
-
-**Navigation Flow**: daily.html → landing.html → game.html
-
-```
-the_daily_undertaking_ui/
-├── daily.html              # Public news page (entry point)
-├── landing.html            # Login/registration page
-├── game.html               # Main game interface (3-column layout)
-├── index.html              # Redirect stub for backward compatibility
-├── css/
-│   ├── styles.css          # Shared newspaper-themed styling
-│   ├── daily.css           # Daily news page specific styles
-│   └── landing.css         # Landing page specific styles
-├── js/
-│   ├── script.js           # Game interface interactivity
-│   ├── daily.js            # Daily news page interactivity
-│   └── landing.js          # Landing page authentication logic
-├── assets/
-│   ├── images/
-│   │   ├── characters/     # Character portraits
-│   │   ├── items/          # Item images
-│   │   └── textures/       # Background textures
-│   └── data/               # Item metadata (JSON)
-├── tests/
-│   ├── unit/               # Unit tests
-│   └── integration/        # Integration tests
-└── .github/
-    └── workflows/          # CI/CD pipeline
-```
+2. **game.html** - Main game interface (authenticated gameplay)
 
 ## 🎨 Design System
 
+The Daily Undertaking UI uses a restrained, print-first design system inspired by newsprint, archival records, and mechanical typesetting.
+
+The goal is **legibility, restraint, and semantic clarity** rather than decoration.
+
+The shared design system defines _vocabulary_, not layout.
+
+Pages compose meaning using these primitives.
+
+---
+
 ### Color Palette
 
-```css
---paper: #f5f1e8 /* Aged paper background */ --newsprint-black: #2b2b2b
-  /* Primary text and borders */ --ink-gray: #404040 /* Secondary elements */ --faded-ink: #5a5a5a
-  /* Tertiary text */;
-```
+The palette is intentionally narrow and semantic. Colors are named by _function_, not appearance.
+
+**Inks (Text & Marks)**
+
+- **Newsprint Black** — primary reading ink
+- **Newsprint Gray / Faded** — secondary and de-emphasised content
+- **Accent / Warning / Error / Success** — deliberately unified to avoid UI “noise”
+
+This ensures emphasis is conveyed through **structure and hierarchy**, not colour saturation.
+
+**Paper & Surfaces**
+
+- **Paper** — warm off-white base for reading surfaces
+- **Muted Paper** — subtle contrast for inset areas
+- **Backdrop** — dark neutral used sparingly for non-paper contexts
+
+**Rules & Dividers**
+
+- Hairline rules replace boxes and panels
+- Multiple strengths allow hierarchy without visual clutter
+
+**Shadows & Overlays**
+
+- Extremely soft, print-like shadows
+- Overlays mimic ink bleed and paper translucency rather than modern UI depth
+
+Overall, the system avoids pure white and pure grey UI conventions, favouring a tactile, editorial feel.
+
+---
 
 ### Typography
 
-- **Masthead**: IM Fell English SC (ornate, all-caps)
-- **Headers**: Cinzel, Special Elite (vintage typewriter)
-- **Body**: EB Garamond (classic serif)
-- **Character Info**: Courier Prime (typewriter monospace)
-- **Game Output**: Inconsolata (modern monospace)
+Typography is role-based and semantic, not decorative.
+
+Fonts are chosen to echo **print history, ledgers, and archival records** while remaining readable on modern screens.
+
+**Primary Roles**
+
+- **Masthead** — formal, characterful serif for titles and identity
+- **Headline** — readable editorial serif for section headers
+- **Body** — book-style serif optimised for long reading
+- **Record / Data / Console** — monospaced faces for logs, registers, and system output
+- **Accent** — typewriter-influenced face for stamps, signatures, and marginalia
+- **Symbols** — historical serif for typographic marks and glyphs
+
+**Rhythm & Scale**
+
+- Conservative base size and tight line height
+- Optimised for column reading rather than expansive layouts
+- Vertical rhythm favours consistency over dramatic contrast
+
+Typography is expected to _inherit context_.
+
+Styling decisions belong to the page or component level, not the global system.
+
+### Typography
+
+The system uses **role-based typography**. Fonts are assigned by _purpose_, not by component, allowing pages to compose tone through context rather than hard styling.
+
+| **Role**     | **CSS Token**   | **Font Stack**                           | **Intended Use**                                     |
+| ------------ | --------------- | ---------------------------------------- | ---------------------------------------------------- |
+| **Masthead** | --font-masthead | IM Fell English SC, serif                | Publication titles, mastheads, formal identity marks |
+| **Headline** | --font-headline | Libre Baskerville, serif                 | Article headings, section titles, editorial emphasis |
+| **Body**     | --font-body     | Crimson Text, serif                      | Primary reading text, long-form content              |
+| **Record**   | --font-record   | Courier Prime, system monospace fallback | Ledgers, registers, archival records                 |
+| **Data**     | --font-data     | Courier Prime, system monospace fallback | Tables, figures, structured data                     |
+| **Console**  | --font-console  | Courier Prime, system monospace fallback | System output, logs, terminal-style UI               |
+| **Accent**   | --font-accent   | Special Elite, monospace fallback        | Stamps, signatures, marginal notes                   |
+| **Symbols**  | --font-symbols  | IM Fell English, serif                   | Typographic marks, reference glyphs                  |
+
+---
+
+#### Typographic Principles
+
+- **Semantic first** — font choice reflects _meaning_, not appearance
+- **Contextual inheritance** — typography adapts to where it appears
+- **Print-inspired rhythm** — optimised for reading, not UI spectacle
+- **Minimal hierarchy** — structure carries emphasis more than size or weight
+
+Global font sizing and rhythm are intentionally conservative to support dense, column-based reading without fatigue.
 
 ### Layout
-
-Fixed 3-column newspaper layout (1250x590px):
-
-- **Left (315px)**: Character information with portrait and stats
-- **Center (580px)**: Game output and command input
-- **Right (350px)**: Collapsible panels for inventory, equipment, quests, skills, notes
 
 ## 🧪 Testing
 
@@ -251,48 +292,18 @@ Health (HP) and Mana (MP) are displayed as visual bars with percentage widths. U
 - [ ] Quest tracking and completion
 - [ ] Map navigation interface
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
-
-### Contribution Guidelines
-
-- Follow existing code style (enforced by ESLint/Prettier)
-- Add tests for new functionality
-- Update documentation as needed
-- Ensure all CI checks pass
-- Keep the vanilla JS/CSS/HTML approach (no frameworks)
-
 ## 📝 Browser Compatibility
 
 - **Chrome/Edge** - Fully supported
-- **Firefox** - Fully supported
-- **Safari** - Supported (blur filters removed for compatibility)
+- **Safari** - Supported
 
 ## 📄 License
 
 This project is licensed under the **GNU General Public License v3.0** - see the [LICENSE](LICENSE) file for details.
 
-Key points of GPL-3.0:
-
-- ✅ Commercial use allowed
-- ✅ Modification allowed
-- ✅ Distribution allowed
-- ✅ Patent use allowed
-- ⚠️ Disclose source - Source code must be made available when distributing
-- ⚠️ License and copyright notice - Must include original license
-- ⚠️ Same license - Modifications must use the same GPL-3.0 license
-- ⚠️ State changes - Document changes made to the code
-
 ## 🙏 Acknowledgments
 
-- Typography: Google Fonts (IM Fell English SC, Cinzel, EB Garamond, Courier Prime, Inconsolata, Special Elite)
+- Typography: Google Fonts (IM Fell English SC, EB Garamond, Courier Prime, Special Elite)
 - Inspired by classic interactive fiction and vintage newspaper design
 - Built with modern web standards and zero runtime dependencies
 
