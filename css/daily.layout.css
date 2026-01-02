@@ -269,6 +269,7 @@ td {
 .reference-block.tabbed-section {
   margin-top: 3rem;
   padding: 0;
+  min-height: 525px;
 }
 
 .tabs-nav {
