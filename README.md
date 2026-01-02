@@ -34,8 +34,9 @@ Built entirely with vanilla HTML, CSS, and JavaScript—no frameworks, no build 
 ### Prerequisites
 
 - **Node.js** 18.x or 20.x (for development tools only)
+- **Python 3.x** (required for pre-commit hooks and optional dev server)
+- **pip** (Python package manager)
 - A modern web browser
-- Python 3.x (optional, for local server)
 
 ### Installation
 
@@ -46,6 +47,12 @@ cd the_daily_undertaking_ui
 
 # Install development dependencies
 npm install
+
+# Install Python dependencies (pre-commit hooks)
+pip install -r requirements.txt
+
+# Set up pre-commit git hooks
+pre-commit install
 ```
 
 ### Running the Application

@@ -1,0 +1,5 @@
+# Python dependencies for The Daily Undertaking UI
+# Install with: pip install -r requirements.txt
+
+# Pre-commit framework for git hooks
+pre-commit>=3.5.0
